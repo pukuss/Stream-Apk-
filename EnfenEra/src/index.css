@@ -1,0 +1,79 @@
+@import "tailwindcss";
+
+
+
+/* ===== CSS Variables with Vibrant Colors ===== */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Passion+One:wght@400;700;900&display=swap');
+
+body {
+  font-family: 'Poppins', sans-serif;
+}
+
+:root {
+     /* Vibrant color scheme */
+            --primary-gradient: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            --accent-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+            --danger-gradient: linear-gradient(135deg, #ff0844 0%, #ffb199 100%);
+            --warning-gradient: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+            
+
+            --app-bg: #000000b7;
+            --card-bg: rgba(30, 41, 59, 0.85);
+            --card-bg-solid: #1e293b;
+            --header-bg: rgba(15, 23, 42, 0.95);
+            --chat-bg: #0f172a;
+            --message-out-bg: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            --message-in-bg: rgba(30, 41, 59, 0.85);
+            --input-bg: rgba(30, 41, 59, 0.7);
+            --border-color: rgba(255, 255, 255, 0.1);
+            --icon-color: #f8fafc;
+            --text-primary: #f1f5f9;
+            --text-secondary: #94a3b8;
+            --text-tertiary: #64748b;
+            --shadow-color: rgba(0, 0, 0, 0.3);
+            --overlay-bg: rgba(15, 23, 42, 0.9);
+
+            --success-color: #10b981;
+            --error-color: #ef4444;
+
+
+
+            --button-bg: linear-gradient(135deg, #00d0ff 0%, #00ccf9 100%);
+
+            font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: var(--app-bg);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* .button-back {
+  linear-gradient(135deg, #00d0ff 0%, #00ccf9 100%);
+}; */
+
+.button-back{
+  background: linear-gradient(135deg, #010528 0%, #004B8E 100%);
+}
+.button-back2{
+  background: linear-gradient(135deg, #00d0ff 0%, #5f0fe9 100%);
+}
+.primary-back {
+  background: linear-gradient(135deg, #065054 0%, #010528 100%);
+}
+
+.Log-back {
+  background: linear-gradient(135deg, # 0%, #03fbffaf 100%);
+}
+
+.auth-color {
+  background: linear-gradient(135deg,#0648ab 0%, #1e012b 0%, #680352 100%);
+}
+

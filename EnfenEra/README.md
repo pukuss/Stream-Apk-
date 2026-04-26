@@ -1,0 +1,15 @@
+# React + Vite
+
+### TechNology Use 
+1 React Vite
+2 Lucide React
+3 Tailwindcss
+4 React-router-dom
+5 appwrite as a backend
+5 react-redux
+
+<div className="flex items-center gap-2">
+              <span className="text-2xl font-bold bg-gradient-to-r from-teal-400 via-indigo-400 to-violet-400 bg-clip-text text-transparent">
+                Aurora
+              </span>
+            </div>
