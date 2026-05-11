@@ -4,7 +4,7 @@ import { Link , useNavigate } from 'react-router-dom'
 import { Gamepad2Icon, CreativeCommons, LayoutDashboard } from 'lucide-react'
 import { useDispatch, useSelector } from 'react-redux';
 
-function T_createButton() {
+function T_createBar() {
     const navigate = useNavigate();
 
     const dispach = useDispatch();
@@ -14,10 +14,10 @@ function T_createButton() {
 
     return (
         <div className='w-full h-full'>
-            <div className='border  m-5 p-4 auth-color rounded-2xl border-pink-600/20'>
+            <div className='border  mx-5 p-4 primary-back rounded-2xl border-pink-600/20'>
                 <div>
-                    <span className='font-medium flex w-full justify-between  text-purple-300'>
-                        <h1>Tournament Organization Plartform</h1>
+                    <span className='font-black flex w-full justify-between  text-amber-50'>
+                        <h1 className='text-xl font-black'>Tournament Organization Plartform</h1>
                         <CreativeCommons color='purple' />
                     </span>
                     <p className='text-[10px] font-medium text-blue-300'>Creating Tournament With Us  </p>
@@ -57,4 +57,4 @@ function T_createButton() {
     )
 }
 
-export default T_createButton
+export default T_createBar

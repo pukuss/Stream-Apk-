@@ -1,6 +1,14 @@
 import React, { useState } from 'react'
 import { ReceiptIndianRupee, Timer } from 'lucide-react'
 import { use } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setDate, setHeading, setTitel } from '../../REDUX/Feachour/Notification';
+import { useNavigation } from 'react-router-dom';
+
+
+
+
+
 function T_InputBox({
   Placeholder = "Text Input",
   name = "name",
@@ -8,6 +16,7 @@ function T_InputBox({
   discrip = "name of the  creator "
 }) {
 
+const navigate = useNavigation()
 
   //Reuseable Event Handlear
   function HandelForm(e) {
@@ -38,6 +47,19 @@ function T_InputBox({
   })
 
 
+  const dispatch = useDispatch();
+  const select = useSelector((state) => state.notification.Heading);
+  const discop = useSelector((state)=> state.notification.Titel)
+  
+  
+  function SendNotification() {
+    dispatch(setTitel(
+      DETA.DISCRIPTION),
+      setDate(DETA.DATE),
+      setHeading(DETA.USER_ID));
+  }
+   
+
 
 
 
@@ -65,6 +87,7 @@ function T_InputBox({
               <h1>{Element.name}</h1>
               <h6 className='text-[10px] space-x-0'> {Element.Titel}</h6>
             </label>
+            {/* <h1>{select,discop}</h1> */}
             <input
               className='border border-rose-600/50 px-4  font-medium text-cyan-100 placeholder:text-gray-500 placeholder:text-[12px] m-3 p-1 h-10 rounded-xl'
               type="text"
@@ -174,7 +197,7 @@ function T_InputBox({
         </div>
 
 
-        {/* EXPECTED PLAYERS TO JOIN IN A MATCG =========================================== */}
+        {/* EXPECTED PLAYERS TO JOIN IN A MATCH =========================================== */}
         <div className='flex flex-col bg-linear-to-r from-pink-600/20 to-black mt-3 border border-pink-700/20 rounded-2xl p-2'>
           <label
             className='px-5 font-bold '
@@ -185,7 +208,10 @@ function T_InputBox({
 
           <div className='flex items-center w-full  px-4 gap-5'>
             <input
-              className='border in-range:bg-amber-900 border-rose-600/50 px-4 w-full  font-medium text-cyan-100 placeholder:text-gray-500 placeholder:text-[12px] m-3 p-1 h-10 rounded-xl'
+              style={{
+                
+              }}
+              className='border in-range:bg-amber-900  border-rose-600/50 px-4 w-full  font-medium text-cyan-100 placeholder:text-gray-500 placeholder:text-[12px] m-3 p-1 h-10 rounded-xl'
               type="range"
               required
               inputMode="numeric"
@@ -206,28 +232,27 @@ function T_InputBox({
         {/* ============================= */}
         {/* SUBMIT BUTTON================ */}
         {/* ============================= */}
-        <div className='flex flex-col bg-linear-to-r from-pink-600/20 to-black mt-3 border border-pink-700/20 rounded-2xl p-2'>
+        <div className='flex cursor-pointer flex-col bg-linear-to-r from-pink-600/20 to-black mt-3 border border-pink-700/20 rounded-2xl p-2'>
           <label
             className='px-5 font-bold '
-            htmlFor={Element.ID}>
+            // htmlFor={Element.ID}
+            >
             <h1>ENTRY FEES AND PAY AMMOUNT</h1>
             <h6 className='text-[10px] space-x-0'> What Is The Amount To Pay And Players Payeble Amount </h6>
           </label>
           <button
             onClick={() => {
-
               console.log(DETA);
-
+              // dispatch(setHeading(DETA.USER_ID))
+              console.log(DETA.USER_ID);
+              // navigate('/studio')
+              SendNotification()
             }}
-            className='border py-3 rounded-xl primary-back m-4 border-cyan-500/50 font-black hover:bg-blue-600'
-            type="submit">
+            className='border py-3 z-20 rounded-xl primary-back m-4 hover:cursor-pointer border-cyan-500/50 font-black hover:bg-blue-600'
+            type="">
             Quick Request
           </button>
         </div>
-
-
-
- 
     </div>
 
 

@@ -7,6 +7,7 @@
 
 body {
   font-family: 'Poppins', sans-serif;
+  /* display: ; */
 }
 
 :root {
@@ -74,6 +75,12 @@ body {
 }
 
 .auth-color {
-  background: linear-gradient(135deg,#0648ab 0%, #1e012b 0%, #680352 100%);
+  background: linear-gradient(135deg,#3bb5d08b 25%, #6004ffa4 55%, #b914f0 100%);
 }
 
+.Settings-Button {
+  background: linear-gradient(135deg,#26658C 25%, #023859 55%, #011C40 100%);
+}
+.Rank-Button {
+  background: linear-gradient(135deg,#7B337E 25%, #420D4B 55%, #210635 100%);
+}

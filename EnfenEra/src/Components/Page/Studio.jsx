@@ -3,7 +3,7 @@ import FooterBackground from '../horizon/FooterBackground'
 import { Bell, Check, CheckCircle2, CreativeCommons, Gamepad, Gamepad2Icon, Power } from 'lucide-react'
 
 
-import { T_createButton } from '../../pages/STUDIO/index'
+import { T_createBar, T_ProfileBar } from '../../pages/STUDIO/index'
 import TournamentCard from '../../pages/TOURNAMENT_DETAILS/TournamentCard'
 import NotificationPOPUP from '../../pages/STUDIO/Notification'
 
@@ -13,7 +13,7 @@ function Studio() {
     const [Notification, SetNotification] = useState(false);
 
 
-
+    const itembox = [1,2,3,4,5,6]
     return (
         <>
                     <div className='w-full'>
@@ -23,9 +23,13 @@ function Studio() {
                 <div className='relative  h-screen max-w-350  m-auto'>
                     {/* NOTIFICATION ==================================== */}
                         {Notification && (
-                            <div className='not-md:hidden fixed top-0 z-10 w-200 h-full  bg-linear-to-br from-black/50 to-pink-800/50 '>
-                                <div className='flex max-w-200 h-full justify-center items-center  m-auto p-4'>
-                                    <NotificationPOPUP />
+                            <div className='not-md:hidden fixed top-0 z-10 w-130 h-full  bg-black/90'>
+                                <div className='flex-col gap-2 overflow-y-scroll flex max-w-200 h-full justify-center items-center  m-auto p-4'>
+                                    {itembox.map((element) => (
+                                    
+                                            <NotificationPOPUP/>
+                                    
+                                    ))}
                                 </div>
                                 
                             </div>
@@ -61,14 +65,15 @@ function Studio() {
                                 </button>
 
                                 <button
-                                    className='button-back px-5 py-2 flex rounded-xl'
+                                    className='Rank-Button px-5 py-2 flex rounded-xl'
                                 >HOST YOUR TOURNAMENT</button>
                             </div>
                         </div>
                     </div>
 
-                    <div className='relative top-30'>
-                        <T_createButton />
+                    <div className='relative top-30 flex flex-col gap-3'>
+                        <T_createBar />
+                        <T_ProfileBar />
                     </div>
 
 

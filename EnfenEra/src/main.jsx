@@ -9,11 +9,19 @@ import {
   Home,
   Studio,
   GameZone,
-} from './Components/Page/index'
+  Tournament_Profile_Page,
+  Engine,
+  Explore,
+  Connect
+} from './Components/Page/index';
+
+
 import Root from './Layout/Root'
 import RootPage from './pages/HOME/RootPage'
 import Profile from './pages/PROFILE/Profile'
 import Trequest from './Components/Page/Admin/Trequest'
+
+
 const router = createBrowserRouter([
   {
     path :"/",
@@ -23,6 +31,8 @@ const router = createBrowserRouter([
         path : "",
         element : <Home />
       },
+
+
       {
         path : "/studio",
         element : <Studio />
@@ -32,12 +42,30 @@ const router = createBrowserRouter([
         element : <Trequest />
       },
       {
+        path : "/studio/t_profile",
+        element : <Tournament_Profile_Page />
+      },
+
+
+      {
         path : "/playzone",
         element : <GameZone />
       },
       {
         path : "?profile",
         element : <Profile />
+      },
+      {
+        path : '/explore',
+        element : <Explore />
+      },
+      {
+        path : '/engine',
+        element : <Engine />
+      },
+      {
+        path : '/connect',
+        element : <Connect />
       }
 
     ]

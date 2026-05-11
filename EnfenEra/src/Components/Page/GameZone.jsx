@@ -8,10 +8,13 @@ import {
   Plus,
   UserRoundMinusIcon,
   IceCream2,
-  Lock
+  Lock,
+  Banknote,
+  PiggyBank
 } from 'lucide-react';
 
 import {Link} from 'react-router-dom'
+import UserProfileBar from '../../pages/GAMEWORLD/UserProfileBar';
 
 const GameZone = () => {
     
@@ -53,92 +56,27 @@ const GameZone = () => {
         {/* ============================== */}
         {/* LEFT COLUMN: WALLET & PROFILE  */}
         {/* ============================== */}
-        <div className="xl:col-span-4 space-y-6 md:w-350 m-auto">
-          
-          {/* USER INFO & WALLET SECTION */}
-          <motion.div variants={fadeUp} className=" bg-slate-900/80 border w-full border-slate-800 rounded-2xl p-6  overflow-hidden">
-            <div className="absolute top-0 right-0  w-full h-32 bg-cyan-500/10 blur-3xl rounded-full pointer-events-none" />
-            
-            <div className="flex justify-between  items-start mb-6">
-              <div>
-                <h2 className="text-2xl font-black bg-linear-to-r from-teal-400 via-indigo-400 to-violet-400 uppercase  bg-clip-text text-transparent tracking-tight">  {User.username}</h2>
-                <p className="text-cyan-400 text-sm font-mono mt-1">LEVEL : {User.Level}</p>
-                <p className='font-medium text-sm'>UID : <span>{User.UserUID}</span></p>
-              </div>
-              <div className="p-3 bg-slate-800 rounded-xl">
-                <User2 color='lightgreen' />
-              </div>
-            </div>
 
-            {/* WALLET AREA ======================= */}
-            <div className="mb-6 ">
-                <div className='  py-3 bg-cyan-900/20 rounded-2xl text-2xl font-black '>
-                    <div className='flex items-center'>
-                        <span className='px-3'><Wallet className='bg-gray-50 p-1  rounded-xl' color='PURPLE ' /></span>
-                        <span className='flex gap-3 items-center'>
-                            <h1 className='font-medium text-[15px]'>WALLETE</h1>
-                            <span className=' bg-amber-50 p-2 text-[15px] rounded-lg  border  border-amber-300/40 px-5   items-center text-yellow-400 flex gap-2'>
-                                <span className='font-sans text-[13px] text-black'>Available Balance</span>
-                                <img width="24" height="24" src="https://img.icons8.com/pastel-glyph/64/exchange--shekel.png" alt="coins"/>
-                                {User.balance}
-                                <span className="text-slate-500 text-lg font-light text-[12px]">Unit</span>    
-                            </span>
-                        </span>
-                    </div>
-                </div>
-
-                
-              {/* ADD MONEY SECTION ===================  */}
-              <div className=' flex items-center gap-5 my-5'>
-                <div>
-                  <button className=' items-center rounded-xl border-cyan-300/50 border px-5 font-bold bg-cyan-700/20 flex gap-3 p-1 '>
-                    ADD UNIT'S 
-                    <span><Plus size={20} className=' rounded-2xl p-1 font-black border-2' /></span>
-                  </button>
-                </div>
-                <div className='flex gap-2 sm:text-[16px] text-[10px] flex-3 flex-wrap'>
-                  <span className=' px-5 font-medium py-1 rounded-sm bg-purple-700/20'>ADD 50 UNITS</span>
-                  <span className=' px-5 font-medium py-1 rounded-sm bg-purple-700/20'>ADD 100 UNITS</span>
-                  <span className=' px-5 font-medium py-1 rounded-sm bg-purple-700/20'>ADD 500 UNITS</span>
-                </div>
-              </div>
-
-              <div className='z'>
-                <span className=''>
-                  <h1 className='font-medium'>Devoloper Community</h1>
-                  <p className='font-bold  bg-linear-to-r from-teal-400 via-indigo-400 to-violet-400 text-transparent bg-clip-text text-2xl '>Join the epic Gaming Community</p>
-                </span>
-              
-              </div> <hr className='mt-2 ' />
-              
-            </div>
-
-            {/* PAY / DEPOSIT ACTIONS */}
-            <div className="grid grid-cols-2 gap-3">
-              <button className="flex items-center justify-center gap-2 bg-cyan-500 hover:bg-cyan-400 text-slate-950 py-3 rounded-lg font-bold transition-colors">
-                <CreditCard size={18} /> DEPOSIT
-              </button>
-              <button className="flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 text-white py-3 rounded-lg font-bold transition-colors border border-slate-700">
-                <ArrowUpRight size={18} /> WITHDRAW
-              </button>
-            </div>
-          </motion.div>
+        <div className="xl:col-span-4 space-y-6 md:w-350 max-w-350 m-auto">
+          {/* Import User Profile and Deta By REDUS TOOL ============ */}
+          <UserProfileBar />
 
 
           <motion.div 
             className='bg-purple-900/20 border border-pink-400 rounded-2xl p-2 '
             variants={fadeUp} 
           >
-            <span className='flex gap-3 px-4  font-black '>
-            Tournament  publish Ruin <IceCream2 color='lightgreen' /></span>
+            <span className='flex gap-3 px-4 items-center  font-black text-xl  '>
+            Tournament  publish Ruin <PiggyBank color='gray' /> </span>
+
             <span className='flex items-center gap-2 text-gray-400 font-medium text-[9px] px-4 pb-2'>
-              <Lock size={12} /> 
+              <Lock size={10} /> 
               <p>
-                -SSL Secured powerd by secure payment Geteway
+                ---   SSL Secured powerd by secure payment Geteway
               </p>
             </span>
 
-            <span className='font-medium pb-2 text-[10px] text-blue-400 flex gap-3 px-2 '>
+            <span className='font-medium pb-2 text-[8px] text-blue-400 flex gap-3 px-8 '>
                   <h1>Join Us</h1>
                   <h2>FeedBack</h2>
                   <h3>Community</h3>
@@ -168,6 +106,9 @@ const GameZone = () => {
 
             </div>
           </motion.div>
+
+
+
 
           {/* REGISTRATION OPTIONS SECTION */}
           <motion.div variants={fadeUp} className="bg-slate-900/80 border border-slate-800 rounded-2xl p-6">

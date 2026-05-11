@@ -33,7 +33,7 @@ const RootPage = ({ LogPopUp = null }) => {
                 </div>
 
                 <div className='flex justify-center mt-3'>
-                  <button className='flex bg-black justify-between items-center w-80 px-5 py-2 rounded-xl cursor-pointer hover:bg-cyan-400'>
+                  <button className='flex  auth-color justify-between items-center w-80 px-5 py-2 rounded-xl cursor-pointer hover:bg-cyan-400'>
                     Login Here
                     <LogIn />
                   </button>
@@ -50,7 +50,7 @@ const RootPage = ({ LogPopUp = null }) => {
                 </div>
 
                 <div className='flex justify-center mt-3'>
-                  <button className='flex text-gray-400 bg-black hover:text-white justify-between items-center w-80 px-5 py-2 rounded-xl cursor-pointer hover:bg-gray-400'>
+                  <button className='flex text-gray-400 auth-color hover:text-white justify-between items-center w-80 px-5 py-2 rounded-xl cursor-pointer hover:bg-gray-400'>
                     Sign Up
                     <LogIn />
                   </button>
@@ -63,13 +63,13 @@ const RootPage = ({ LogPopUp = null }) => {
 
                 <div className='p-2 flex flex-col gap-5 mt-3'>
                   
-                  <button className='flex text-gray-400 bg-black justify-between items-center w-80 mx-auto px-5 py-2 rounded-xl hover:bg-gray-400 hover:text-white'>
+                  <button className='flex text-gray-400 bg-black auth-color justify-between items-center w-80 mx-auto px-5 py-2 rounded-xl hover:bg-gray-400 hover:text-white'>
                     <Facebook />
                     FACEBOOK
                     <LogIn />
                   </button>
 
-                  <button className='flex text-gray-400 bg-black justify-between items-center w-80 mx-auto px-5 py-2 rounded-xl hover:bg-gray-400 hover:text-white'>
+                  <button className='flex text-yellow-400 bg-black auth-color justify-between items-center w-80 mx-auto px-5 py-2 rounded-xl hover:bg-gray-400 hover:text-white'>
                     <Github />
                     Github
                     <LogIn />
