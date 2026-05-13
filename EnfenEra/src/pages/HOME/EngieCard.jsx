@@ -18,7 +18,7 @@ function EngieCard({
         transition={{ duration: 0.4, ease: "easeOut" }}
         className="group relative grid grid-cols-1  md:grid-cols-2 bg-[#0a0a0c] rounded-2xl overflow-hidden border border-gray-800 shadow-2xl">
         {/* Subtle background glow */}
-        <div className="absolute inset-0  bg-gradient-to-br from-blue-500/5 to-purple-500/5 pointer-events-none " />
+        <div className="absolute inset-0  bg-linear-to-br from-blue-500/5 to-purple-500/5 pointer-events-none " />
 
         {/* Left Side: Image Container */}
         <div className="relative h-44  md:h-full bg-black overflow-hidden border-b md:border-b-0 md:border-r border-gray-800">
@@ -26,7 +26,7 @@ function EngieCard({
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.5 }}
             className="h-full w-full object-cover opacity-80 group-hover:opacity-100 transition-opacity"
-            src="/defimg.png"
+            src="public/devolopres/devoloper4.jpg"
             alt="Engine Display"
           />
           {/* Tech overlay grid */}

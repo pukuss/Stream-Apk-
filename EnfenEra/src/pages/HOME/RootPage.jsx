@@ -1,5 +1,7 @@
 import { Chrome, Facebook, Github, LogIn, MousePointerClick } from 'lucide-react'
 import React, { useState } from 'react'
+import { SocialButton } from "../../Components/base/buttons/social-button"
+
 
 const RootPage = ({ LogPopUp = null }) => {
 
@@ -26,60 +28,58 @@ const RootPage = ({ LogPopUp = null }) => {
               {/* Login */}
               <div>
                 <div className='flex justify-center flex-col items-center'>
-                  <h1 className='text-2xl'>Login Here</h1>
-                  <span className='text-xs text-gray-400'>
+                  <h1 className='text-sm'>Login Here</h1>
+                  <span className='text-[5px] text-gray-400'>
                     If can't login, Sign Up below
                   </span>
                 </div>
 
                 <div className='flex justify-center mt-3'>
-                  <button className='flex  auth-color justify-between items-center w-80 px-5 py-2 rounded-xl cursor-pointer hover:bg-cyan-400'>
-                    Login Here
-                    <LogIn />
-                  </button>
+                     <SocialButton social="apple" theme="brand">
+                LogIn
+            </SocialButton>
                 </div>
               </div>
 
               {/* Signup */}
-              <div className='mt-6'>
+              <div className='mt-6 ' >
                 <div className='flex justify-center flex-col items-center'>
-                  <h1 className='text-2xl'>Sign Up</h1>
+                  <h1 className='text-sm'>Sign Up</h1>
                   <span className='text-xs text-gray-400'>
                     Register yourself
                   </span>
                 </div>
 
-                <div className='flex justify-center mt-3'>
-                  <button className='flex text-gray-400 auth-color hover:text-white justify-between items-center w-80 px-5 py-2 rounded-xl cursor-pointer hover:bg-gray-400'>
-                    Sign Up
-                    <LogIn />
-                  </button>
+                <div className='flex w-56 justify-center mt-3'>
+                   <SocialButton social="apple" theme="brand">
+                Sing Up
+            </SocialButton>
                 </div>
               </div>
+
+
+               <div className="">
+           
+           
+         
+        </div>
 
               {/* Social Signup */}
               <div className='py-5'>
                 <h1 className='text-center'>Sign Up with :</h1>
 
-                <div className='p-2 flex flex-col gap-5 mt-3'>
+                <div className='flex w-90 flex-col gap-3'>
                   
-                  <button className='flex text-gray-400 bg-black auth-color justify-between items-center w-80 mx-auto px-5 py-2 rounded-xl hover:bg-gray-400 hover:text-white'>
-                    <Facebook />
-                    FACEBOOK
-                    <LogIn />
-                  </button>
+                   <SocialButton social="google" theme="brand">
+                Sign in with Google
+            </SocialButton>
 
-                  <button className='flex text-yellow-400 bg-black auth-color justify-between items-center w-80 mx-auto px-5 py-2 rounded-xl hover:bg-gray-400 hover:text-white'>
-                    <Github />
-                    Github
-                    <LogIn />
-                  </button>
-
-                  <button className='flex text-gray-400 auth-color justify-between items-center w-80 mx-auto px-5 py-2 rounded-xl hover:bg-gray-400 hover:text-white'>
-                    <Chrome />
-                    GOOGLE
-                    <LogIn />
-                  </button>
+                  <SocialButton social="facebook" theme="brand">
+                Sign in with Facebook
+            </SocialButton>
+   <SocialButton social="apple" theme="brand">
+                Sign in with Apple
+            </SocialButton>
 
                 </div>
               </div>

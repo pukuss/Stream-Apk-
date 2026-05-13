@@ -1,12 +1,18 @@
-import React, { useState } from 'react'
+import React, { useState,useRef } from 'react'
 import FooterBackground from '../horizon/FooterBackground'
 import QuantumBackground from '../horizon/QuantumBackground'
 import AetherForgeBackground from '../horizon/AetherForgeBackground'
 import { Import, Power, PowerSquare, ShoppingBagIcon, Spool } from 'lucide-react'
 
+// temp 
+import { GenerateId } from '../../utils/idGenerator'
+ const id = GenerateId();
+ console.log(id);
 
+//if it work  testing..........................
+import { useScrollBlur } from '../../hooks/UseScrollBlur'
 
-import { AdCard,DownloadBar,RootPage,DocumentDownload } from '../../pages/HOME/index'
+import { AdCard,DownloadBar,RootPage,DocumentDownload,Devoloper_Profiles } from '../../pages/HOME/index'
 
 
 
@@ -15,7 +21,13 @@ function Home() {
   const [DocPopOpen , SetDocPopOpen] = useState(true);
 
   const LogPop = useState(false)
+  const imageRef = useRef(null);
 
+
+
+  // const {} = UseScrollBlur()
+   useScrollBlur(10, 500, imageRef);
+ 
   return (
     <>
 
@@ -26,10 +38,18 @@ function Home() {
         </div>
       </div>
       
-      <div className=' relative border h-screen'>
+      <div className=' w-full relative  h-screen'>
         {/* <QuantumBackground />  */}
-        <div className=' relative -z-10'>
-           <AetherForgeBackground />
+        <div 
+          
+          className=' w-full h-full absolute overflow-hidden'
+        >
+            <img 
+            ref={imageRef}
+          
+                className='w-full h-full object-cover  '
+                src="IMAGE/UserProfile.jpg" alt="Background Image" />
+           {/* <AetherForgeBackground /> */}
            {/* <FooterBackground/> */}
            
         </div>
@@ -37,13 +57,13 @@ function Home() {
     
 
 
-          <div className='relative top-45  max-w-350 h-20 m-auto content-center   '>
+          <div className='relative top-70  max-w-350 h-20 m-auto content-center   '>
             <span className='flex text-[12px] items-center gap-1'>Infenco <Spool size={14} /> Powerdby EnfenEra</span>
 
             <div className=' font-black text-5xl p-5'>
               Infen <span className='text-orange-400'>Era </span>
             </div>
-            <div className=' text-[12px] w-100 font-black text-gray-400'>
+            <div className=' text-sm w-100 font-medium text-[#eeab53]'>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Quo molestias nostrum cumque maiores ex est nam quisquam dolorem laudantium sapiente. Impedit tenetur fugit similique deserunt sed unde error quos nobis.
             </div>
 
@@ -59,7 +79,7 @@ function Home() {
               </div>
             </div>
 
-            <div className=' font-black text-gray-400/50 p-5  '>
+            <div className=' font-normal text-blue-400 p-5  '>
               <h1>Get unlimeted Use And Soo One</h1> 
             </div>
           </div>
@@ -76,7 +96,10 @@ function Home() {
             </div>
           </div>
         </div>
-
+        
+        <div className='max-w-350  m-auto  mt-5'>
+          <Devoloper_Profiles />
+        </div>
 
 
 {/* Download Cards ================================= */}

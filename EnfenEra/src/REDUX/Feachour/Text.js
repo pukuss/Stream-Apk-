@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 export const Text = createSlice({
-    name : "FeatuewOne",
+    name : "bane",
     initialState:{
         point : 10
     },

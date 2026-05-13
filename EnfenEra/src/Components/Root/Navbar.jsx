@@ -37,7 +37,7 @@ const Navbar = () => {
               <NavLink key={item.path} to={item.path} className="relative group px-2 py-2">
                 {({ isActive }) => (
                   <>
-                    <div className={`flex items-center gap-1 text-[10px] font-semibold transition-all duration-300 ${isActive ? 'text-cyan-400' : 'text-gray-400 group-hover:text-white'}`}>
+                    <div className={` relative flex items-center gap-1 text-[10px] font-semibold transition-all duration-300 ${isActive ? 'text-cyan-400' : 'text-gray-400 group-hover:text-white'}`}>
                       <item.icon size={13} />
                       {item.name}
                     </div>

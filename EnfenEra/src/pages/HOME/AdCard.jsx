@@ -3,10 +3,10 @@ import React from 'react'
 
 const AdCard = ({
   id = 123,
-  avater = 'public/defimg.png',
+  avater = '',
   titel = "this simulation is looding",
     sponsor  = "clowd.google.com",
-    sponsor_image = "public/defimg.png",
+    sponsor_image = "public/devolopers/devoloper2",
   download = "https://www.google.com",
   url = "fttps"
 }) => {

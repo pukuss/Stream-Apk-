@@ -12,7 +12,7 @@ const FEATURE_DATA = [
 
 function DownloadBar() {
   return (
-    <div className="min-h-screen w-full bg-[#050505] py-5 font-sans">
+    <div className="min-h-screen w-full bg-[#050505] py-5 font-sans ">
       <div className="w-full p-5 mx-auto border-white/5 bg-gray-900/20 rounded-3xl overflow-hidden backdrop-blur-md shadow-2xl">
         
         {/* Header Bar */}
