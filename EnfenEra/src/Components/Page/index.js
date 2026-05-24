@@ -5,7 +5,8 @@ import T_CreateForm from "./T_CreateForm";
 import Tournament_Profile_Page from "./Tournament_Profile_Page";
 import Engine from "./Engine";
 import Connect from "./Connect";
-import Explore from "./Explore"
+import Explore from "./Explore";
+import About from "./About";
 
 export {
     Home , 
@@ -15,5 +16,6 @@ export {
     Tournament_Profile_Page,
     Engine,
     Connect,
-    Explore
+    Explore,
+    About
 }

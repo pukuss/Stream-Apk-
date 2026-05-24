@@ -16,3 +16,7 @@
                 Aurora
               </span>
             </div>
+
+Inner Shawdow 
+//Code
+ shadow-[inset_0_-20px_30px_rgba(0,0,0,0.6)]

@@ -29,20 +29,19 @@ function DocumentDownload() {
                                     className=" bg-black/90 border border-white/10 rounded-3xl p-8 backdrop-blur-3xl">
                                     <div className="w-full">
                                         <div className="flex justify-between">
-                                            <div className="flex gap-3 text-gray-500 font-black"><File /> <span>Document</span></div>
+                                            <div className="flex gap-3 text-gray-500 font-black text-sm"><File size={20} /> <span>Document</span></div>
                                             <div
                                                 onClick={() => SetOpen(!IsOpen)}
-                                            ><X /></div>
+                                            ><X color="red"/></div>
                                         </div>
 
                                         <div>
                                             {doc.map((Element) => (
-                                                <div className="py-3" key={Element.id}>
+                                                <div className="py-3 text-sm" key={Element.id}>
                                                     <Pdf
                                                         Document={Element.DocumentName}
                                                         color={Element.color}
                                                         size={Element.size}
-
                                                     />
                                                 </div>
                                             ))}

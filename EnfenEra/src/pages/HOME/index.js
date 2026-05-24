@@ -1,7 +1,7 @@
 import AdCard from './AdCard'
-import DownloadBar from './DownloadBar'
 import RootPage from './RootPage'
 import DocumentDownload from './DocumentDownload';
-import Devoloper_Profiles from './Devoloper_Profiles';
+import HeroSection from './HeroSection';
+import MonitizeSection from './MonitizeSection';
 
-export {AdCard , DownloadBar, Devoloper_Profiles, RootPage, DocumentDownload}
+export {AdCard ,HeroSection, MonitizeSection, RootPage, DocumentDownload}

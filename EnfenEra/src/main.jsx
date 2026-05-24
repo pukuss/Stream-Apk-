@@ -12,7 +12,8 @@ import {
   Tournament_Profile_Page,
   Engine,
   Explore,
-  Connect
+  Connect,
+  About
 } from './Components/Page/index';
 
 
@@ -38,7 +39,7 @@ const router = createBrowserRouter([
         element : <Studio />
       },
       {
-        path : "/studio/request",
+        path : "/studio/sendrequest",
         element : <Trequest />
       },
       {
@@ -66,6 +67,10 @@ const router = createBrowserRouter([
       {
         path : '/connect',
         element : <Connect />
+      },
+      {
+        path : '/about',
+        element : <About />
       }
 
     ]

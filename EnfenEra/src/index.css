@@ -84,3 +84,7 @@
 .Rank-Button {
   background: linear-gradient(135deg,#7B337E 25%, #420D4B 55%, #210635 100%);
 }
+
+.hero-text {
+  background: linear-gradient(135deg,#a200ff 25%, #700483 55%, #7200c9 100%);
+}

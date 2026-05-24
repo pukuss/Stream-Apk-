@@ -1,34 +1,43 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { If } from "three/src/nodes/tsl/TSLCore.js";
 
 export const NotificationSlice = createSlice({
     name : 'Notification SEND SMS',
     initialState : {
-        Heading : "",
-        Titel : "" ,
-        Date : "" ,
+        requestdata : [],
+        currentStep : 1
+
     },
 
     reducers : {
-        setHeading : (state,action) => {
-            state.Heading = action.payload;
-            console.log(state.Heading);
+        addrequest : (state,action) => {
+            state.requestdata.push(action.payload);
+            console.log(state.requestdata);
             
         },
 
-        setTitel : (state, action) => {
-            state.Titel = action.payload;
+        next : (state,action) => {
+            if (state.currentStep < 5 ){
+                state.currentStep += 1;
+            }
+            
         },
-
-        setDate : (state,action) => {
-            state.Date = action.payload;
+        back : (state) => {
+            if(state.currentStep > 1){
+                state.currentStep -= 1;
+            }
         }
+
+
+
     }
 })
 
 export const {
-    setDate,
-    setTitel,
-    setHeading    
+    addrequest,
+    next,
+    back,
+    
 } = NotificationSlice.actions;
 
 export default NotificationSlice.reducer

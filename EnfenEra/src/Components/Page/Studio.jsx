@@ -3,7 +3,7 @@ import FooterBackground from '../horizon/FooterBackground'
 import { Bell, Check, CheckCircle2, CreativeCommons, Gamepad, Gamepad2Icon, Power } from 'lucide-react'
 
 
-import { T_createBar, T_ProfileBar } from '../../pages/STUDIO/index'
+import { Tournament_request, T_ProfileBar } from '../../pages/STUDIO/index'
 import TournamentCard from '../../pages/TOURNAMENT_DETAILS/TournamentCard'
 import NotificationPOPUP from '../../pages/STUDIO/Notification'
 
@@ -11,9 +11,13 @@ import NotificationPOPUP from '../../pages/STUDIO/Notification'
 function Studio() {
     // NOTIFICATION POP UP STORE============================= 
     const [Notification, SetNotification] = useState(false);
-
-
     const itembox = [1,2,3,4,5,6]
+
+    
+
+
+
+
     return (
         <>
                     <div className='w-full'>
@@ -72,7 +76,7 @@ function Studio() {
                     </div>
 
                     <div className='relative top-30 flex flex-col gap-3'>
-                        <T_createBar />
+                        <Tournament_request />
                         <T_ProfileBar />
                     </div>
 
