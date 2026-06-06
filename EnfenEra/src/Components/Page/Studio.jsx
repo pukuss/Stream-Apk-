@@ -1,17 +1,22 @@
 import React, { useState } from 'react'
 import FooterBackground from '../horizon/FooterBackground'
 import { Bell, Check, CheckCircle2, CreativeCommons, Gamepad, Gamepad2Icon, Power } from 'lucide-react'
+import WebLogo from '../horizon/WebLogo'
 
-
-import { Tournament_request, T_ProfileBar } from '../../pages/STUDIO/index'
+import { Tournament_request, T_ProfileBar,ConditionBox } from '../../pages/STUDIO/index'
 import TournamentCard from '../../pages/TOURNAMENT_DETAILS/TournamentCard'
 import NotificationPOPUP from '../../pages/STUDIO/Notification'
+// import Sucessfull from '../horizon/Sucessfull'
 
+import { useSelector } from 'react-redux'
+import { element } from 'three/src/nodes/tsl/TSLCore.js'
 
 function Studio() {
     // NOTIFICATION POP UP STORE============================= 
     const [Notification, SetNotification] = useState(false);
-    const itembox = [1,2,3,4,5,6]
+    // const itembox = [1,2,3,4,5,6,7,8,9];
+    const notifiactionApi = useSelector((state) => state.notification.requestdata);
+    
 
     
 
@@ -20,30 +25,33 @@ function Studio() {
 
     return (
         <>
-                    <div className='w-full'>
+                    <div className='w-full  '>
                         <FooterBackground />
                     </div>
-            <div className='h-screen w-full'>
-                <div className='relative  h-screen max-w-350  m-auto'>
+
+            <div className='h-screen w-full relative'>
+                <div className='max-w-150  absolute  left-0 z-100  rounded-2xl overflow-hidden bg-black'>
                     {/* NOTIFICATION ==================================== */}
                         {Notification && (
-                            <div className='not-md:hidden fixed top-0 z-10 w-130 h-full  bg-black/90'>
-                                <div className='flex-col gap-2 overflow-y-scroll flex max-w-200 h-full justify-center items-center  m-auto p-4'>
-                                    {itembox.map((element) => (
-                                    
-                                            <NotificationPOPUP/>
-                                    
-                                    ))}
-                                </div>
-                                
+                            <div  className='max-w-120  h-screen p-4 flex flex-col gap-3 overflow-y-auto '>
+                                {notifiactionApi.map((Element,index) => (
+                                    <div className='max-w-120' key={index}>
+                                        <NotificationPOPUP
+                                            Heading={Element.title}
+                                            Date={Element.DATE}
+                                            User={Element.name}
+                                            Titel={Element.discription}
+                                            />
+                                    </div>
+                                ))}
                             </div>
                         )}
+                </div>
 
-         
-
+                <div className='relative top-0 h-screen max-w-350  m-auto'>
                     <div className='border  border-gray-500 font-black flex relative top-25 m-5 gap-5 p-5 justify-center items-center rounded-2xl'>
                         <div className=' '>
-                            LOGO
+                            <WebLogo className ='h-30 w-30'  />
                         </div>
 
                         <div className=' w-full '>
@@ -55,6 +63,7 @@ function Studio() {
                             </div>
                         </div>
 
+                        {/* <div><ConditionBox /></div> */}
                         <div className='w-full not-md:hidden'>
                             <div className=' flex gap-5  justify-end'>
                                 {/* Notification Pop Up ======================= */}
@@ -92,6 +101,7 @@ function Studio() {
                             </button>
 
                         </div>
+                        {/* <Sucessfull /> */}
                     </div>
                 </div>
 

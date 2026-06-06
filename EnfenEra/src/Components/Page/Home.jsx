@@ -2,8 +2,8 @@ import React, { useState, useRef } from 'react'
 import FooterBackground from '../horizon/FooterBackground'
 import QuantumBackground from '../horizon/QuantumBackground'
 import AetherForgeBackground from '../horizon/AetherForgeBackground'
-import { Import, Power, PowerSquare, ShoppingBagIcon, Spool, UserCheck } from 'lucide-react'
-
+import { Import, Power, PowerSquare, ShoppingBagIcon, Spool, UserCheck } from 'lucide-react';
+import WebLogo from '../horizon/WebLogo'
 // temp 
 import { GenerateId } from '../../utils/idGenerator'
 
@@ -44,7 +44,6 @@ function Home() {
       <div className=' w-full relative  h-screen'>
         {/* <QuantumBackground />  */}
         <div
-
           className=' w-full h-full absolute overflow-hidden'>
           <img
             ref={imageRef}
@@ -53,10 +52,10 @@ function Home() {
         </div>
 
         <div className='relative top-70  max-w-350 h-20 m-auto content-center   '>
-          <span className='flex text-[8px] items-center gap-1'>Infenco Powerdby EnfenEra</span>
-
+          <span className='flex text-[8px] items-center gap-1 font-logo '>Infenco Powerdby EnfenEra</span>
+          
           <div className=' font-black text-5xl p-5 '>
-            <h1 className='bg-linear-0 from-indigo-500 to-sky-500 bg-clip-text text-transparent '>InfenEra</h1>
+            <h1 className='bg-linear-0 from-indigo-500 pacifico  to-sky-500 bg-clip-text text-transparent logo-font '>InfenEra</h1>
           </div>
 
            <div className=' font-black text-xl p-5'>
@@ -72,7 +71,7 @@ function Home() {
           <div className='flex p-5 mt-10 gap-15'>
             <div>
               <button 
-                className='border border-sky-300/50 justify-center items-center gap-1 px-4 flex bg-white text-sm text-black font-black py-1 rounded-xl ' 
+                className='border pacifico logo-font font-black border-sky-300/50 justify-center items-center gap-1 px-4 flex bg-white text-sm text-black  py-1 rounded-xl ' 
                 type="button"> <UserCheck size={20} />
                   Join Tournament
                 </button>
@@ -88,7 +87,6 @@ function Home() {
             <h1>Get Start With Us & Make Rial Credits</h1>
           </div>
         </div>
-
 
         <div className=' absolute bottom-0  w-full '>
           <div className=' max-w-350 items-center px-2 font-mono  m-auto flex gap-5  '>
@@ -110,6 +108,7 @@ function Home() {
           {/* --- Add New Component Hear  */}
           <HeroSection />
           <MonitizeSection />
+          
         </div>
 
         <div className='max-w-350 m-auto h-full bg-black '>

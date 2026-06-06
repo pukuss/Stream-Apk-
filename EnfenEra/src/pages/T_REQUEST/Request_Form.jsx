@@ -1,18 +1,20 @@
 import React, { useState } from "react";
 import {
   CheckCircle2,
+  Circle,
+  ExternalLink,
+  FocusIcon,
+  Footprints,
   ReceiptIndianRupee,
+  StepForward,
   Timer,
+  Verified,
 } from "lucide-react";
-
 import { useDispatch, useSelector } from "react-redux";
 import { addrequest, back, next } from "../../REDUX/Feachour/Notification";
-
 import { useNavigate } from "react-router-dom";
-
 // Animation
 import { motion, AnimatePresence } from "framer-motion";
-
 // Steps
 import BasicInfo from "./FormStep/BesicInfo";
 import GameInfo from "./FormStep/GameInfo";
@@ -26,29 +28,36 @@ function Request_Form() {
   // Redux
   const dispatch = useDispatch();
 
-  const select = useSelector(
-    (state) => state.notification.requestdata
-  );
+  const select = useSelector((state) => state.notification.requestdata);
 
-  const currentStep = useSelector(
-    (state) => state.notification.currentStep
-  );
+  const currentStep = useSelector((state) => state.notification.currentStep);
 
-  // Form Data
+  // Form Data5
+
   const [formData, setformData] = useState({
     name: "",
     bannerImage: null,
     title: "",
     slug: "",
     discription: "",
-    game : "",
+    game: "",
     gameMode: "",
     map: "",
     matchDate: "",
     matchTime: "",
     maxteams: "",
-    maxPlayerPerTeam: "",
+    slots: "",
     entryFee: "",
+    hostingType: "",
+    sponsor: "",
+    customRules: "",
+    platformfee: 2,
+
+    media: {
+      instagram: "",
+      whatsapp: "",
+      discord: "",
+    },
 
     head: {
       email: "",
@@ -123,37 +132,38 @@ function Request_Form() {
   };
 
   return (
-    <main className="w-full min-h-screen">
-
+    <main className="w-full  h-full ">
       {/* =============================== */}
       {/* HEADER */}
       {/* =============================== */}
+      <div
+        onClick={() => navigate("/studio")}
+        className="px-2 text-xl flex gap-5 border  max-w-35 bg-white/50 rounded-xl py-1  hover:bg-red-500 cursor-pointer mx-5  ">
+        <ExternalLink /> Exit{" "}
+      </div>
 
-      <header className="w-full p-5">
-
+      <header className="w-full p-5 sticky top-0">
         {/* Step Bar */}
         <div className="flex flex-wrap justify-center gap-4">
-
           {[1, 2, 3, 4, 5].map((step) => (
             <div
               key={step}
               className={`
                 flex items-center gap-2 px-4 py-2 rounded-xl border
-                ${currentStep >= step
-                  ? "bg-blue-600 border-blue-500"
-                  : "bg-zinc-900 border-zinc-800"
-                }
-              `}
-            >
+                ${
+                  currentStep >= step
+                    ? "bg-blue-600/50 border-blue-500"
+                    : "bg-gray-500/20 border-zinc-800"
+                }`}>
               {currentStep > step ? (
-                <CheckCircle2 size={18} />
+                <Verified size={18} color="lightgreen" />
               ) : (
-                <span className="font-bold">{step}</span>
+                <span className="font-bold">
+                  <Footprints size={15} />
+                </span>
               )}
 
-              <span className="text-sm font-medium">
-                Step {step}
-              </span>
+              <span className="text-sm font-sans">Step {step}</span>
             </div>
           ))}
         </div>
@@ -163,16 +173,11 @@ function Request_Form() {
       {/* FORM STEP SECTION */}
       {/* =============================== */}
 
-      <div className="w-full min-h-125 overflow-hidden p-4">
-
+      <div className="w-full min-h-[60vh] overflow-hidden p-4 bg-slate-950/50 mb-5 rounded-xl">
         <AnimatePresence mode="wait">
-
           {/* STEP 1 */}
           {currentStep === 1 && (
-            <motion.div
-              key="step1"
-              {...pageTransition}
-            >
+            <motion.div key="step1" {...pageTransition}>
               <BasicInfo
                 formData={formData}
                 setformData={setformData}
@@ -183,10 +188,7 @@ function Request_Form() {
 
           {/* STEP 2 */}
           {currentStep === 2 && (
-            <motion.div
-              key="step2"
-              {...pageTransition}
-            >
+            <motion.div key="step2" {...pageTransition}>
               <GameInfo
                 formData={formData}
                 setformData={setformData}
@@ -197,10 +199,7 @@ function Request_Form() {
 
           {/* STEP 3 */}
           {currentStep === 3 && (
-            <motion.div
-              key="step3"
-              {...pageTransition}
-            >
+            <motion.div key="step3" {...pageTransition}>
               <MatchInfo
                 formData={formData}
                 setformData={setformData}
@@ -211,28 +210,25 @@ function Request_Form() {
 
           {/* STEP 4 */}
           {currentStep === 4 && (
-            <motion.div
-              key="step4"
-              {...pageTransition}
-            >
+            <motion.div key="step4" {...pageTransition}>
               <Final
                 formData={formData}
+                setformData={setformData}
+                HandelForm={HandelForm}
               />
             </motion.div>
           )}
 
           {/* STEP 5 */}
           {currentStep === 5 && (
-            <motion.div
-              key="step5"
-              {...pageTransition}
-            >
+            <motion.div key="step5" {...pageTransition}>
               <PaymentInfo
                 formData={formData}
+                setformData={setformData}
+                HandelForm={HandelForm}
               />
             </motion.div>
           )}
-
         </AnimatePresence>
       </div>
 
@@ -240,35 +236,30 @@ function Request_Form() {
       {/* FOOTER BUTTONS */}
       {/* =============================== */}
 
-      <footer className="w-full p-5">
-
+      <footer className="w-full p-5 relative bottom-0 bg-slate-950 border-slate-700 border rounded-xl">
         <div className="flex justify-center gap-5">
-
           {/* BACK */}
           <button
             className="
-              px-6 py-2 rounded-xl
-              bg-zinc-800 hover:bg-zinc-700
+              px-6 py-2 rounded-xl hover:bg-blue-600 border hover:scale-x-110
               active:scale-95 transition-all
-              font-bold cursor-pointer
+              font-bold cursor-pointer border-slate-700
             "
             onClick={() => dispatch(back())}
-            disabled={currentStep === 1}
-          >
+            disabled={currentStep === 1}>
             Back
           </button>
 
           {/* NEXT */}
           <button
-            className="
-              px-6 py-2 rounded-xl
-              bg-blue-600 hover:bg-blue-500
+            className=" border border-slate-700
+              px-6 py-2 rounded-xl 
+              hover:bg-blue-600
               active:scale-95 transition-all
               font-bold cursor-pointer
             "
             onClick={() => dispatch(next())}
-            disabled={currentStep === 5}
-          >
+            disabled={currentStep === 5}>
             Next
           </button>
         </div>
@@ -281,7 +272,7 @@ function Request_Form() {
       <div
         className="
           flex flex-col
-          bg-gradient-to-r
+          bg-linear-to-r
           from-pink-600/20
           to-black
           mt-3
@@ -289,13 +280,9 @@ function Request_Form() {
           rounded-2xl
           p-4
           m-4
-        "
-      >
+        ">
         <label className="px-5 font-bold">
-
-          <h1 className="text-xl">
-            ENTRY FEES AND PAY AMOUNT
-          </h1>
+          <h1 className="text-xl">ENTRY FEES AND PAY AMOUNT</h1>
 
           <h6 className="text-[10px] text-gray-400">
             What Is The Amount To Pay And Players Payable Amount
@@ -303,18 +290,19 @@ function Request_Form() {
         </label>
 
         <button
-          onClick={()=>{
+          disabled ={!formData.entryFee}
+          type="submit"
+          onClick={() => {
             console.log(formData);
-            
+            SendNotification();
           }}
           className="
-            border py-3 rounded-xl
+            border py-3 rounded-xl disabled:bg-slate-900
             bg-blue-600 hover:bg-blue-500
             m-4 border-cyan-500/50
             font-black cursor-pointer
             active:scale-95 transition-all
-          "
-        >
+          ">
           Quick Request
         </button>
       </div>

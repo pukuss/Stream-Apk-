@@ -10,6 +10,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/pacifico": "^5.2.7",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.5.0",
     "@reduxjs/toolkit": "^2.11.2",
@@ -17,6 +19,7 @@
     "appwrite": "^23.0.0",
     "axios": "^1.15.2",
     "framer-motion": "^12.35.1",
+    "lottie-react": "^2.4.1",
     "lucide-react": "^0.577.0",
     "react": "^19.2.0",
     "react-aria-components": "^1.17.0",

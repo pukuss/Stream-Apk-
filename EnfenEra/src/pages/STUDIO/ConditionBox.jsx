@@ -1,4 +1,5 @@
 import React from 'react'
+import { CheckCircle2 , Gamepad} from 'lucide-react'
 
 function ConditionBox() {
   return (

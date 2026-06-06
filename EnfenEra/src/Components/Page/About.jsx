@@ -4,10 +4,6 @@ import QuantumBackground from '../horizon/QuantumBackground'
 import AetherForgeBackground from '../horizon/AetherForgeBackground'
 import { Import, Power, PowerSquare, ShoppingBagIcon, Spool } from 'lucide-react'
 
-// temp 
-import { GenerateId } from '../../utils/idGenerator'
-const id = GenerateId();
-console.log(id);
 
 //if it work  testing..........................
 import { useScrollBlur } from '../../hooks/UseScrollBlur'

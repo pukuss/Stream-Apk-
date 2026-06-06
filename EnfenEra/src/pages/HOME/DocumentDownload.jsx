@@ -17,7 +17,7 @@ function DocumentDownload() {
 
     return (
         <>
-            {IsOpen && (<div className="fixed top-0  block w-full h-screen bg-black/50">
+            {IsOpen && (<div className="fixed top-0  z-10 block w-full h-screen bg-black/50">
                 <div className="flex justify-center items-center w-full  h-full">
                     <div className=" w-100">
                         <AnimatePresence>

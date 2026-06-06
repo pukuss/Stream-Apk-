@@ -13,14 +13,25 @@ import {
   Engine,
   Explore,
   Connect,
-  About
+  About,
+  ProfilePage,
+
+  MainAuth_Page
 } from './Components/Page/index';
 
 
-import Root from './Layout/Root'
+import Root from './Layout/Root';
+import Dashboard from './Layout/Dashboard';
+
 import RootPage from './pages/HOME/RootPage'
 import Profile from './pages/PROFILE/Profile'
 import Trequest from './Components/Page/Admin/Trequest'
+import ProtectedRoutes from './routes/ProtectedRoutes';
+import { element } from 'three/src/nodes/tsl/TSLCore.js';
+
+
+
+//fonts 
 
 
 const router = createBrowserRouter([
@@ -39,21 +50,14 @@ const router = createBrowserRouter([
         element : <Studio />
       },
       {
-        path : "/studio/sendrequest",
-        element : <Trequest />
+       
       },
       {
         path : "/studio/t_profile",
         element : <Tournament_Profile_Page />
       },
-
-
       {
-        path : "/playzone",
-        element : <GameZone />
-      },
-      {
-        path : "?profile",
+        path : "up_profile",
         element : <Profile />
       },
       {
@@ -73,6 +77,38 @@ const router = createBrowserRouter([
         element : <About />
       }
 
+    ]
+  },
+
+  {
+    element: <Dashboard />,
+    children : [
+      {
+        path : "/Profile",
+        element : <ProfilePage />
+      },
+      {
+        path : "/userAuth",
+        element : <MainAuth_Page />
+      },
+      {
+         path : "/studio/sendrequest",
+        element : <Trequest />
+      }
+
+    ],
+  },
+
+  {
+    element : <ProtectedRoutes />,
+    children : [
+      {
+        element : <Dashboard />,
+        children : [ {
+          // ---Login /login, /Dashboard
+          
+        }]
+      }
     ]
   }
 ])

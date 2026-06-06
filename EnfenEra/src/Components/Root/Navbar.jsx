@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Home, Compass, Cpu, MessageSquare, Menu, X, Zap, Gamepad2, ChevronRight } from 'lucide-react';
+import WebLogo from '../horizon/WebLogo';
+
 
 const navItems = [
   { name: 'Home', path: '/', icon: Home },
@@ -9,13 +11,14 @@ const navItems = [
   { name: 'Engine', path: '/engine', icon: Cpu },
   { name: 'Connect', path: '/connect', icon: MessageSquare },
   { name: 'Studio', path: '/studio', icon: Cpu },
-  { name: "PlayZone", path: '/playzone', icon: Gamepad2 },
+  { name: "Profile", path: '/Profile', icon: Gamepad2 },
   { name: "About", path: '/about', icon : Cpu}
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   return (
     /* রুট কন্টেনারে relative ট্র্যাকিং সেফটি এবং isolation যুক্ত করা হয়েছে */
@@ -27,11 +30,11 @@ const Navbar = () => {
           <div className="flex items-center gap-3 group cursor-pointer">
             <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-linear-to-br from-white/5 to-white/2 border border-white/10 group-hover:border-cyan-500/40 transition-all duration-300 shadow-inner">
               <div className="absolute inset-0 bg-cyan-500/10 blur-lg rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <Zap className="relative text-cyan-400 group-hover:scale-110 group-hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.6)] transition-all duration-300" size={18} />
+              <WebLogo className="relative text-cyan-400 group-hover:scale-110 group-hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.6)] transition-all duration-300" />
             </div>
             <div className="flex flex-col">
-              <span className="text-2xl font-black  text-transparent uppercase bg-linear-to-r from-purple-600 via-indigo-400 to-indigo-500 bg-clip-text  ">
-                InFenEra
+              <span className="text-2xl font-black text-transparent bg-linear-to-r from-purple-600 via-indigo-400 to-indigo-500 bg-clip-text  ">
+                InfenEra
               </span>
               <span className="text-[9px] font-bold text-gray-500 tracking-tight mt-0.5 group-hover:text-cyan-400/60 transition-colors">STUDIOS</span>
             </div>
@@ -75,7 +78,11 @@ const Navbar = () => {
 
           {/* 🌟 রাইট সাইড বাটন প্যানেল (Sleek Glassmorphism UI) */}
           <div className="hidden md:flex items-center gap-3">
-            <button className="text-gray-400 hover:text-white px-3 py-2 rounded-xl text-xs font-semibold transition-colors duration-300">
+            <button
+              onClick={()=> {
+                navigate("/userAuth")
+              }}
+            className="text-gray-400 hover:text-white px-3 py-2 rounded-xl text-xs font-semibold transition-colors duration-300">
               Sign In
             </button>
             <button className="relative overflow-hidden bg-white text-black px-4 py-2 rounded-xl font-bold text-xs transition-all duration-300 hover:bg-cyan-400 hover:text-black hover:scale-[1.03] active:scale-[0.98] shadow-[0_4px_20px_rgba(255,255,255,0.15)] hover:shadow-[0_0_25px_rgba(34,211,238,0.4)]">

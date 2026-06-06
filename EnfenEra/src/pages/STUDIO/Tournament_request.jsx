@@ -14,7 +14,7 @@ function Tournament_request() {
 
     return (
         <div className='w-full h-full'>
-            <div className='border  mx-5 p-4 primary-back rounded-2xl border-pink-600/20'>
+            <div className='border  mx-5 p-4 bg-white/10 rounded-2xl border-pink-600/20'>
                 <div>
                     <span className='font-black flex w-full justify-between  text-amber-50'>
                         <h1 className='text-xl font-black'>Tournament Organization Plartform</h1>
@@ -28,7 +28,7 @@ function Tournament_request() {
                         to={""}
                     >
                         <button
-                            className=' flex gap-3 px-10 rounded-xl py-1.5 button-back2 font-black hover:bg-amber-100 hover:cursor-pointer m-5'
+                            className=' flex gap-3 px-10 rounded-xl py-2 border-gray-500 border   font-black hover:bg-indigo-500/20 hover:cursor-pointer m-5'
                             onClick={()=> navigate("/studio/sendrequest")}
                             type="button">
                             Request Tournament
@@ -50,7 +50,7 @@ function Tournament_request() {
                 </div>
 
                 <span className='font-medium text-[12px] text-gray-400'>
-                    Dashboard access, Get Overvew, Real Result, Better Quality , All Match Access , Support
+                    Dashboard access, Get Overvew, Real Result, Better Quality , All Match Access , Support <Link to={"/"} className='text-sky-500 underline' >Learn More ...</Link> 
                 </span>
             </div>
         </div>

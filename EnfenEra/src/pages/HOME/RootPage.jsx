@@ -12,12 +12,14 @@ const RootPage = ({ LogPopUp = null }) => {
       {/* Popup Wrapper */}
       <div className={`${IsPopUpShow ? "block" : "hidden"}`}>
 
-        <div className='h-screen w-full bg-black relative'>
+        <div className='h-screen w-full bg-black relative ' >
 
           {/* Background Image */}
           <img
             className='w-full h-full opacity-50 fixed object-cover'
             src="/IMAGE/InfencoStudio.jpg"
+            loading='eager'
+            fetchPriority='high'
             alt=""
           />
 
@@ -31,8 +33,8 @@ const RootPage = ({ LogPopUp = null }) => {
           </header>
 
           {/* Content */}
-          <div className='h-full max-w-3xl m-auto flex justify-center items-center '>
-            <div className=' p-3 z-10 font-black py-5 text-white flex flex-col gap-10 justify-center items-center w-full h-full'>
+          <div className='h-full max-w-full  m-auto flex    '>
+            <div className=' p-3 z-10  font-black py-5 text-white flex flex-col gap-10 justify-center  items-center w-full h-full'>
 
               {/* Login */}
               <div className=' flex  justify-center items-center w-full '>
