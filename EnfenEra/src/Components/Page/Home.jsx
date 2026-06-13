@@ -1,9 +1,8 @@
 import React, { useState, useRef } from 'react'
-import FooterBackground from '../horizon/FooterBackground'
-import QuantumBackground from '../horizon/QuantumBackground'
-import AetherForgeBackground from '../horizon/AetherForgeBackground'
+
 import { Import, Power, PowerSquare, ShoppingBagIcon, Spool, UserCheck } from 'lucide-react';
 import WebLogo from '../horizon/WebLogo'
+import { motion } from 'framer-motion';
 // temp 
 import { GenerateId } from '../../utils/idGenerator'
 
@@ -12,16 +11,19 @@ import { GenerateId } from '../../utils/idGenerator'
 import { useScrollBlur } from '../../hooks/UseScrollBlur'
 
 
-import { AdCard, RootPage, DocumentDownload, HeroSection, MonitizeSection } from '../../pages/HOME/index'
+import { AdCard, DocumentDownload, HeroSection, MonitizeSection } from '../../pages/HOME/index'
+import { useNavigate } from 'react-router-dom';
 
 
 
 function Home() {
 
   const [DocPopOpen, SetDocPopOpen] = useState(true);
-
   const LogPop = useState(false)
   const imageRef = useRef(null);
+
+  // NAVIGATION
+  const navigate = useNavigate()
 
   //Generate Uniqe Id
   const id = GenerateId();
@@ -33,18 +35,21 @@ function Home() {
 
   return (
     <>
+    <motion.div
+      initial= {{opacity : 0}}
+      animate = {{opacity : 1}}
+      transition={{duration :0.3}}
+    >
 
-
-      <div className=' block w-full top-0 fixed z-50'>
-        <div className=' w-full'>
-          <RootPage LogPopUp={LogPop} />
+      <div className=' block w-full top-0 fixed z-50 overflow-hidden'>
+        <div className=' w-full overflow-hidden'>
         </div>
       </div>
 
-      <div className=' w-full relative  h-screen'>
+      <div className=' w-full relative  h-screen overflow-hidden'>
         {/* <QuantumBackground />  */}
         <div
-          className=' w-full h-full absolute overflow-hidden'>
+          className=' w-full h-full absolute overflow-hidden '>
           <img
             ref={imageRef}
             className='w-full h-full object-cover  '
@@ -71,14 +76,16 @@ function Home() {
           <div className='flex p-5 mt-10 gap-15'>
             <div>
               <button 
-                className='border pacifico logo-font font-black border-sky-300/50 justify-center items-center gap-1 px-4 flex bg-white text-sm text-black  py-1 rounded-xl ' 
+                
+                className='border pacifico logo-font cursor-pointer hover:backdrop-blur-3xl font-black border-sky-300/50 justify-center items-center gap-1 px-4 flex bg-white text-sm text-black  py-2 rounded-xl ' 
                 type="button"> <UserCheck size={20} />
                   Join Tournament
                 </button>
             </div>
             <div>
               <button
-                className=' border px-5  text-white font-black text-sm rounded-xl py-1 border-gray-500'
+                onClick={()=> navigate("/register")}
+                className=' border px-5  text-white cursor-pointer font-black text-sm rounded-xl py-2 border-gray-500'
                 type="button">Register New Account</button>
             </div>
           </div>
@@ -100,10 +107,16 @@ function Home() {
         </div>
       </div>
 
+      <div className='max-w-350 m-auto h-full  text-center uppercase py-10'>
+          <h1 className='text-6xl font-black py-10'> a Tournament <span className='text-red-600'>Hosting</span> Platform</h1>
+          {/* <h2 className='font-black text-6xl text-red-700'>air space india</h2> */}
+          <h3 className='font-black text-6xl py-5'> <span className='text-blue-700'>Premium</span> <span className='text-red-600' >hydron</span> technology </h3>
+      {/* <hr /> */}
+      </div>
 
 
       {/* Download Cards ================================= */}
-      <div className='w-full  h-full bg-[#050505]'>
+      <div className='w-full  h-full bg-[#050505] overflow-hidden'>
         <div className='max-w-350 m-auto h-full mt-3'>
           {/* --- Add New Component Hear  */}
           <HeroSection />
@@ -112,7 +125,7 @@ function Home() {
         </div>
 
         <div className='max-w-350 m-auto h-full bg-black '>
-
+efrpo
         </div>
 
       </div>
@@ -121,6 +134,7 @@ function Home() {
       <div className='w-full h-full'>
         <DocumentDownload />
       </div>
+      </motion.div>
 
     </>
   )

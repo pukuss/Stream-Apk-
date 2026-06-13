@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import { motion } from "framer-motion";
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function HeroSection() {
     const tournamentCard = [
@@ -19,28 +20,28 @@ function HeroSection() {
             name: "CALL OF DUTY MOBILE",
             url: "images/logos/cod.png",
             avtar: "/images/pic/cod_background.jpg",
-            path: "",
+            path: "/gameprofile/1",
             titel: "Call Of Duty Warzone ",
         },
         {
             name: "BGMI INDIA",
             url: "images/logos/bgmi.png",
             avtar: "/images/pic/bgmi_background.webp",
-            path: "",
+            path: "/gameprofile/2",
             titel: "Call Of Duty Warzone ",
         },
         {
             name: "FREE FIRE INDIA",
             url: "images/logos/freefire.png",
             avtar: "/images/pic/freefire_background.jpg",
-            path: "",
+            path: "/gameprofile/3",
             titel: "Call Of Duty Warzone ",
         },
         {
             name: "CLASH OF CLANS",
             url: "images/logos/coc.png",
             avtar: "images/pic/coc_background.jpg",
-            path: "",
+            path: "/gameprofile/4",
             titel: "Call Of Duty Warzone ",
         },
     ];
@@ -60,15 +61,16 @@ function HeroSection() {
 
     // Watch Live Buttton state
     const [match, setMatch] = useState("");
+    const navigate = useNavigate();
 
     return (
         <>
             <div className="w-full h-full z-0">
                 <header>
-                    <div className="flex justify-between items-center px-1">
+                    <div className="flex justify-between items-center px-1 py-10 ">
                         <div>
-                            <h1 className="text-xl font-black">
-                                Improve your gaming expriance
+                            <h1 className="text-3xl font-black uppercase">
+                                Improve your <span className="text-red-600">gaming </span> expriance
                             </h1>
                             <p className="text-sm font-mono text-gray-500 ">
                                 Active Games You Can Host And Join
@@ -76,14 +78,14 @@ function HeroSection() {
                         </div>
                         <div>
                             <button
-                                className="text-sm  px-5 py-1 rounded-sm bg-gray-500/20 font-black text-gray-400 hover:text-white active:scale-95 cursor-pointer"
+                                className="text-sm  px-5 py-2 rounded-sm bg-gray-500 font-black text-whit uppercasee hover:text-white active:scale-95 cursor-pointer"
                                 type="button">
                                 Explore Matches
                             </button>
                         </div>
                     </div>
 
-                    <div className=" rounded-xl flex px-5 items-center  bg-gray-500/10  mb-3 ">
+                    <div className=" rounded-xl flex px-5 py-5 items-center border border-slate-900 bg-slate-950   mb-3 ">
                         <div>
                             {" "}
                             <img
@@ -113,14 +115,14 @@ function HeroSection() {
 
                     {/* <div><h1 className='font-bold py-2'>Start Your Tournament Hear </h1></div> */}
                     <div className="p-2">
-                        <h1 className="text-2xl font-black">
+                        <h1 className="text-2xl font-black uppercase text-center text-gray-500">
                             Popular Games '' Bing Coming Soon ...
                         </h1>
                         <p className="text-sm logo-font text-purple-500 px-2">
                             Hidron Technology
                         </p>
                     </div>
-                    <div className=" bg-gray-500/10 m-1 flex gap-2  p-2 rounded-xl">
+                    <div className="  font-black uppercase text-4xl  m-1 flex gap-2 text-center p-2 rounded-xl text-blue-700">
                         <div>Trending</div>
                         <div>Tournaments </div>
                         <div>Rank</div>
@@ -132,8 +134,10 @@ function HeroSection() {
                             return (
                                 <section
                                     key={index}
-                                    className="flex  z-0 overflow-hidden  rounded-xl gap-5  max-w-90 group bg-black hover:scale-101 transition-all duration-300 ">
-                                    <div className="flex w-full h-full flex-col p-3 bg-blend-color-burn bg-purple-950/30 gap-5">
+                                    onClick={() => navigate(element.path)}
+                                    className="flex  z-0 overflow-hidden  rounded-xl gap-5 cursor-pointer  max-w-90 group bg-black hover:scale-101 transition-all duration-300 ">
+                                    <div className="flex w-full h-full flex-col p-3 bg-blend-color-burn bg-slate-950 gap-5 relative">
+                                        <div className=' absolute bottom-0  shadow-[50px_50px_2000px_100px] shadow-orange-400'></div>
                                         <div className="flex justify-center items-center bg-pink-300/10 rounded-2xl  relative">
                                             <img
                                                 src={element.avtar}
@@ -179,11 +183,12 @@ function HeroSection() {
                             );
                         })}
                     </div>
-                    <div className=" rounded-xl flex px-5 items-center py-8 border-b  mb-3 w-full shadow-[inset_0px_10px_15px_-10px] shadow-[#ff8c00] ">
+                    <div className=" rounded-xl flex px-5 items-center py-8 border-b  mb-3 w-full relative overflow-hidden ">
+                        <div className=' absolute top-0  shadow-[0px_00px_3200px_50px] shadow-amber-500'></div>
                         <section className=" w-full ">
                             <div>
-                                <h1 className="font-black pt-2 px-2 text-xl">
-                                    Daily Trafic Of Our Website{" "}
+                                <h1 className="font-black pt-2 px-2 text-2xl uppercase">
+                                    Daily Trafic Of Our <span className="text-red-600">Website </span>{" "}
                                 </h1>
                                 <p className="font-extralight text-sm px-2">
                                     one of the trusted platform get extraodenary reword get
@@ -192,20 +197,20 @@ function HeroSection() {
                             </div>
                             <div className="w-full   gap-5  flex py-5">
                                 <div className="border-r px-8 border-gray-500">
-                                    <h1 className="text-4xl font-black">1.2K </h1>
-                                    <p className="text-sm text-gray-500 font-medium ">
+                                    <h1 className="text-4xl font-black">1.2<span className="text-red-600">K</span> </h1>
+                                    <p className="text-sm text-gray-500 font-medium text-center">
                                         Active, Daily Online
                                     </p>
                                 </div>
                                 <div className="border-r px-8 border-gray-500">
-                                    <h1 className="text-4xl font-black">1.2K </h1>
-                                    <p className="text-sm text-gray-500 font-medium ">
+                                    <h1 className="text-4xl font-black">1.2<span className="text-red-600">K</span></h1>
+                                    <p className="text-sm text-gray-500 font-medium text-center">
                                         Pepole Trust Us
                                     </p>
                                 </div>
                                 <div className="border-r px-8 border-gray-500">
-                                    <h1 className="text-4xl font-black">1.2K </h1>
-                                    <p className="text-sm text-gray-500 font-medium ">
+                                    <h1 className="text-4xl font-black">1.2<span className="text-red-600">K</span></h1>
+                                    <p className="text-sm text-gray-500 font-medium text-center ">
                                         Instent cash{" "}
                                     </p>
                                 </div>
@@ -216,13 +221,13 @@ function HeroSection() {
 
                 <section className="bg-gray-500/10 rounded-xl p-5">
                     <div className="">
-                        <h1 className="flex px-2 gap-5 font-bold ">
+                        <h1 className="flex px-2 gap-5 font-black text-red-600 text-2xl uppercase " >
                             {" "}
-                            <p className="font-black px-2 rounded-2xl text-sm flex items-center bg-white text-red-600">
+                            <p className="font-black px-3 rounded-2xl text-sm flex items-center bg-white text-red-600 ">
                                 {" "}
                                 Live
                             </p>{" "}
-                            Live Match{" "}
+                            Live <span className="text-white">Match</span>{" "}
                         </h1>
                         <div className="py-3 flex gap-3 not-md:flex-wrap items-center">
                             <p className="font-black text-gray-500/50">OPRATION</p>
@@ -258,19 +263,23 @@ function HeroSection() {
                         {/* opacity leyar */}
                         <div className="absolute  bg-black/80 z-0 w-full bg-linear-to-b to-black h-full"></div>
 
-                        <section className=" absolute top-0 flex flex-col h-full  w-full">
+                        <motion.section
+                            initial={{ opacity: 0, y: 30 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 2.5 }}
+                            className=" absolute top-0 flex flex-col h-full  w-full">
                             <div className=" py-8 w-full justify-center flex flex-col items-center">
-                                <h1 className="text-xl md:text-2xl text-white font-black">
+                                <h1 className="text-2xl md:text-3xl text-white font-black uppercase ">
                                     Join Competitive Esports Tournaments & Play With Top Gamers
                                 </h1>
-                                <p className="text-sm">
+                                <p className="text-sm font-bold text-gray-400">
                                     Expriance professional tournament managemant fast matchmaking
                                     and competivive gaming features designed for every players
                                 </p>
                             </div>
 
                             <div className="font-semibold px-5">
-                                <ul className="flex flex-col text-sm text-gray-400">
+                                <ul className="flex flex-col text-xl text-gray-400 text-center">
                                     <li>
                                         {" "}
                                         '' Play popuar battle royeland multiplayer tournaments with
@@ -295,33 +304,10 @@ function HeroSection() {
                                         '' Discover the next generation esports tournament platform
                                         for games teams and communities
                                     </li>
-                                    <li>
-                                        <button className="bg-blue-500/30 text-blue-400 m-4 px-5 py-2 rounded-sm font-extrabold cursor-pointer">
-                                            Learn more ...
-                                        </button>
-                                    </li>
+
                                 </ul>
                             </div>
-
-                            <div className="w-full py-3 flex justify-end px-5">
-                                <section className="bottom-0 text-gray-500 w-full group-hover:text-white z-10 left-0">
-                                    <div className=" px-5 font-normal italic flex flex-col py-2 text-blue-500 underline font-mono gap-1 cursor-pointer ">
-                                        <h2 className="flex items-center italic text-[10px] gap-2 hover:text-blue-600">
-                                            <CheckCircleIcon size={15} color="green" /> Follow Us On
-                                            Youtube <Youtube size={15} />
-                                        </h2>
-                                        <h1 className="flex  items-center italic  text-[10px] gap-2 hover:text-blue-600">
-                                            <CheckCircleIcon size={15} color="green" /> Follow Us On
-                                            Instagram <Instagram size={15} />
-                                        </h1>
-                                        <h3 className="flex  items-center italic  text-[10px] gap-2 hover:text-blue-600">
-                                            <CheckCircleIcon size={15} color="green" /> Follow Us On
-                                            Facebook <Facebook size={15} />
-                                        </h3>
-                                    </div>
-                                </section>
-                            </div>
-                        </section>
+                        </motion.section>
                     </div>
                 </main>
 
@@ -334,17 +320,17 @@ function HeroSection() {
                         }}>
                         <div className="absolute top-0 w-full">
                             <div className="px-3 py-5">
-                                <h1 className="text-xl font-black">How to join tournament ?</h1>
-                                <p className="text-sm font-medium text-gray-500">
+                                <h1 className="text-6xl uppercase font-black text-center">How to join tournament ?</h1>
+                                <p className="text-xl font-medium text-gray-500 text-center">
                                     Follow thr steps and join tournament and win credits and gift
                                     voucher
                                 </p>
                             </div>
 
-                            <div className="w-full">
+                            <div className="w-full flex justify-center items-center h-full ">
                                 {/* <div><h1 className='text-5xl font-black'>1</h1></div> */}
 
-                                <div className="flex  w-full gap-3 flex-wrap px-5 items-center justify-center">
+                                <div className="flex  w-full h-full gap-3 flex-wrap px-5 py-10 items-center justify-center">
                                     {stepui.map((element, index) => {
                                         return (
                                             <div
@@ -381,8 +367,8 @@ function HeroSection() {
                                 </div>
                                 <div>
                                     <div className="text-center">
-                                        <h1 className="md:text-4xl text-2xl font-black"> Garena Free Fire India </h1>
-                                        <p className="font-black md:text-2xl text-sm">Play Free Fire India Tournament</p>
+                                        <h1 className="md:text-4xl text-2xl font-black uppercase"> Garena Free Fire India </h1>
+                                        <p className="font-black md:text-2xl text-sm uppercase">Play Free Fire India Tournament</p>
 
                                     </div>
                                     <button
@@ -409,8 +395,8 @@ function HeroSection() {
                                 </div>
                                 <div>
                                     <div className="text-center">
-                                        <h1 className="md:text-4xl text-2xl font-black">Battle Ground Monile India</h1>
-                                        <p className="font-black md:text-2xl text-sm">Play BGMI Mobile India Tournament</p>
+                                        <h1 className="md:text-4xl text-2xl font-black uppercase">Battle Ground Monile India</h1>
+                                        <p className="font-black md:text-2xl text-sm uppercase">Play BGMI Mobile India Tournament</p>
 
                                     </div>
                                     <button

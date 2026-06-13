@@ -28,7 +28,7 @@ function GameInfo({
         <main>
           <form action="">
             {/* GAME SELECTION================================ */}
-            <div className='flex flex-col bg-slate-950 text-white mt-3 border border-slate-700 rounded-2xl p-2'>
+            <div className='flex flex-col bg-white text-black mt-3  border-slate-700 rounded-2xl p-2'>
               <label
                 className='px-5 font-bold '
                 htmlFor="SELECT_GAME"
@@ -39,7 +39,7 @@ function GameInfo({
 
               <select
                 onChange={HandelForm}
-                className='font-black px-4 rounded-xl m-2  bg-slate-900 py-2 outline-0'
+                className='font-black px-4 rounded-xl m-2  bg-gray-300 py-2 outline-0'
                 name="game"
                 required
                 value={formData.game}
@@ -58,7 +58,7 @@ function GameInfo({
             </div>
 
             {/* GAME MODE SOLO DUO SQURD===============================  */}
-            <div className='flex flex-col bg-slate-950 text-white mt-3 border border-slate-700 rounded-2xl p-2 '>
+            <div className='flex flex-col bg-white text-black mt-3  border-slate-700 rounded-2xl p-2 '>
               <label
                 className='px-5 font-bold '
                 htmlFor="SELECT_GAME "
@@ -69,7 +69,7 @@ function GameInfo({
 
               <select
                 onChange={HandelForm}
-                className='font-black px-4 rounded-xl m-2 bg-slate-900 py-2 outline-0'
+                className='font-black px-4 rounded-xl m-2 bg-gray-300 py-2 outline-0'
                 name="gameMode"
                 required
                 value={formData.gameMode}
@@ -79,7 +79,7 @@ function GameInfo({
                     <option
                       key={Element}
                       id='SELECT_GAME'
-                      className=' rounded-2xl bg-black font-black hover:bg-green-500'
+                      className=' rounded-2xl bg-gray-300 font-black hover:bg-green-500'
                       value={Element}>{Element}</option>
                   ))
                 }
@@ -91,7 +91,7 @@ function GameInfo({
 
             {/* Select tdm or full map gameplay========================  */}
                {/* GAME MODE SOLO DUO SQURD===============================  */}
-            <div className='flex flex-col bg-slate-950 text-white  mt-3 border border-slate-700 rounded-2xl p-2'>
+            <div className='flex flex-col bg-white text-black  mt-3  border-slate-700 rounded-2xl p-2'>
               <label
                 className='px-5 font-bold '
                 htmlFor="SELECT_GAME "
@@ -102,7 +102,7 @@ function GameInfo({
 
               <select
                 onChange={HandelForm}
-                className='font-black px-4 rounded-xl m-2  bg-slate-900 py-2 outline-0'
+                className='font-black px-4 rounded-xl m-2  bg-gray-300 py-2 outline-0'
                 name="matchType"
                 value={formData.matchType}
                 required

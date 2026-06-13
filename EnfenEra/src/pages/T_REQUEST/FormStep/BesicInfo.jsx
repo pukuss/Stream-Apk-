@@ -37,7 +37,7 @@ function BasicInfo({
 
             <div
 
-              className='flex w-full  flex-col bg-slate-950  text-white bg-conic-120 mt-3 border border-pink-700/20 rounded-sm p-2'>
+              className='flex w-full  flex-col bg-white  text-black bg-conic-120 mt-3 border border-pink-700/20 rounded-xl p-2'>
               <label
                 className='px-5 font-bold '
                 htmlFor="requestId">
@@ -58,7 +58,7 @@ function BasicInfo({
                 
                 <button
                   id='requestId'
-                  className='border font-bold gap-2 flex items-center justify-center py-0 px-3 border-white  bg-slate-900  rounded-xl'
+                  className='border font-bold gap-2 flex cursor-pointer items-center justify-center py-0 px-3 text-sm text-amber-50 border-white  bg-slate-900  rounded-xl'
                   onClick={() => {
                     const data = getUserId
                     setId(data)
@@ -74,7 +74,7 @@ function BasicInfo({
             {item.map((Element, index) => (
               <div
                 key={index}
-                className='flex flex-col bg-slate-950  text-white mt-3 border border-slate-700 rounded-2xl p-2'>
+                className='flex flex-col bg-white  text-black mt-3  border-slate-700 rounded-2xl p-2'>
                 <label
                   className='px-5 font-bold '
                   htmlFor={Element.ID}>
@@ -83,7 +83,7 @@ function BasicInfo({
                 </label>
 
                 <input
-                  className=' px-4 outline-0 bg-slate-900 font-medium  placeholder:text-gray-500 placeholder:text-[12px] m-3 p-1 h-10 rounded-xl'
+                  className=' px-4 outline-0 bg-gray-300 font-medium  placeholder:text-gray-500 placeholder:text-[12px] m-3 p-1 h-10 rounded-xl'
                   type="text"
                   value={
                     Element.ID.includes(".")

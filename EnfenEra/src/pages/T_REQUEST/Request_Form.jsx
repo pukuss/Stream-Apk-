@@ -22,6 +22,8 @@ import MatchInfo from "./FormStep/MatchInfo";
 import Final from "./FormStep/Final";
 import PaymentInfo from "./FormStep/PaymentInfo";
 
+import Sucessfull from '../../Components/horizon/Sucessfull'
+
 function Request_Form() {
   const navigate = useNavigate();
 
@@ -52,6 +54,7 @@ function Request_Form() {
     sponsor: "",
     customRules: "",
     platformfee: 2,
+    totalAmount: "",
 
     media: {
       instagram: "",
@@ -131,8 +134,48 @@ function Request_Form() {
     },
   };
 
+  // payment 
+  const [paymentstate, setPaymentstate] = useState(false);
+
   return (
-    <main className="w-full  h-full ">
+    <main className="w-full  h-full relative">
+
+      {/* payment section verifyed */}
+      {paymentstate && (
+        <section className=" relative top-100 flex rounded-2xl justify-center items-center overflow-hidden   h-full w-full  z-10">
+          <div className="border border-slate-900 px-20 py-10 md:w-1/2 w-full  fixed  rounded-2xl overflow-hidden  backdrop-blur-3xl flex flex-col justify-center">
+            <div className="absolute bottom-0 shadow-[0px_50px_200px_100px]  shadow-emerald-500" ></div>
+
+            <div className="text-sm text-center text-white  font-bold ">
+              <h1 >Payment UID : {formData.head.requestId || "none"}</h1>
+              <h1>Name : {formData.name || "none"}</h1>
+              <h2>email : {formData.head.email}</h2>
+            </div>
+
+            <div className="flex justify-center items-center w-full h-full">
+              <Sucessfull />
+            </div>
+            <div>
+
+            <div className="font-bold text-5xl text-center  ">
+              <h1> 2000 {formData.totalAmount} <span>₹ </span> </h1>
+            </div>
+
+            </div>
+            <div className="text-center">
+              <h1 className="font-bold text-xl">Payment Successfuls</h1>
+              <h1 
+                onClick={()=> navigate("/")}
+              className="w-full  py-2 mt-3 font-black rounded-2xl bg-green-500 cursor-pointer active:scale-95 hover:bg-emerald-500 ">
+                Done
+              </h1>
+            </div>
+          </div>
+        </section>
+      )}
+
+
+
       {/* =============================== */}
       {/* HEADER */}
       {/* =============================== */}
@@ -142,7 +185,7 @@ function Request_Form() {
         <ExternalLink /> Exit{" "}
       </div>
 
-      <header className="w-full p-5 sticky top-0">
+      <header className={`w-full p-5 sticky top-0 ${paymentstate ? "hidden" : ""}`}>
         {/* Step Bar */}
         <div className="flex flex-wrap justify-center gap-4">
           {[1, 2, 3, 4, 5].map((step) => (
@@ -150,10 +193,9 @@ function Request_Form() {
               key={step}
               className={`
                 flex items-center gap-2 px-4 py-2 rounded-xl border
-                ${
-                  currentStep >= step
-                    ? "bg-blue-600/50 border-blue-500"
-                    : "bg-gray-500/20 border-zinc-800"
+                ${currentStep >= step
+                  ? "bg-blue-600/50 border-blue-500"
+                  : "bg-gray-500/20 border-zinc-800"
                 }`}>
               {currentStep > step ? (
                 <Verified size={18} color="lightgreen" />
@@ -173,7 +215,7 @@ function Request_Form() {
       {/* FORM STEP SECTION */}
       {/* =============================== */}
 
-      <div className="w-full min-h-[60vh] overflow-hidden p-4 bg-slate-950/50 mb-5 rounded-xl">
+      <div className={`w-full min-h-[60vh] overflow-hidden p-4  mb-5 rounded-xl ${paymentstate ? "hidden": ""} `}>
         <AnimatePresence mode="wait">
           {/* STEP 1 */}
           {currentStep === 1 && (
@@ -236,7 +278,7 @@ function Request_Form() {
       {/* FOOTER BUTTONS */}
       {/* =============================== */}
 
-      <footer className="w-full p-5 relative bottom-0 bg-slate-950 border-slate-700 border rounded-xl">
+      <footer className={` ${paymentstate ? "hidden" : ""} w-full p-5 relative bottom-0 bg-slate-950 border-slate-700 border rounded-xl `}>
         <div className="flex justify-center gap-5">
           {/* BACK */}
           <button
@@ -270,7 +312,7 @@ function Request_Form() {
       {/* =============================== */}
 
       <div
-        className="
+        className={`${paymentstate ? "hidden" : ""}
           flex flex-col
           bg-linear-to-r
           from-pink-600/20
@@ -280,7 +322,7 @@ function Request_Form() {
           rounded-2xl
           p-4
           m-4
-        ">
+        `}>
         <label className="px-5 font-bold">
           <h1 className="text-xl">ENTRY FEES AND PAY AMOUNT</h1>
 
@@ -290,11 +332,12 @@ function Request_Form() {
         </label>
 
         <button
-          disabled ={!formData.entryFee}
+          disabled={!formData.entryFee}
           type="submit"
           onClick={() => {
             console.log(formData);
             SendNotification();
+            setPaymentstate(true);
           }}
           className="
             border py-3 rounded-xl disabled:bg-slate-900
@@ -305,6 +348,7 @@ function Request_Form() {
           ">
           Quick Request
         </button>
+
       </div>
     </main>
   );

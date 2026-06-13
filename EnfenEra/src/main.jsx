@@ -15,19 +15,22 @@ import {
   Connect,
   About,
   ProfilePage,
-
-  MainAuth_Page
+  OtpPage,
+  MainAuth_Page,
+  GameProfilePage,
 } from './Components/Page/index';
 
 
 import Root from './Layout/Root';
 import Dashboard from './Layout/Dashboard';
 
-import RootPage from './pages/HOME/RootPage'
+// import RootPage from './pages/HOME/RootPage'
+
 import Profile from './pages/PROFILE/Profile'
 import Trequest from './Components/Page/Admin/Trequest'
 import ProtectedRoutes from './routes/ProtectedRoutes';
-import { element } from 'three/src/nodes/tsl/TSLCore.js';
+import LoginPage from './Components/Page/authUi/LoginPage';
+import AsidDashboard from './Layout/AsidDashboard';
 
 
 
@@ -50,7 +53,7 @@ const router = createBrowserRouter([
         element : <Studio />
       },
       {
-       
+        
       },
       {
         path : "/studio/t_profile",
@@ -84,26 +87,43 @@ const router = createBrowserRouter([
     element: <Dashboard />,
     children : [
       {
-        path : "/Profile",
-        element : <ProfilePage />
-      },
-      {
-        path : "/userAuth",
+        path : "/register",
         element : <MainAuth_Page />
       },
       {
-         path : "/studio/sendrequest",
+        path : "/gameprofile/:id",
+        element : <GameProfilePage />
+      },
+      {
+        path : "/studio/sendrequest",
         element : <Trequest />
+      },
+      {
+        path : "/singin",
+        element : <LoginPage />
+      },
+      {
+        path : "/singin/otp-verify",
+        element : <OtpPage />
       }
 
     ],
+  },
+  {
+    element : <AsidDashboard /> ,
+    children : [
+      {
+        path : "/Profile",
+        element : <ProfilePage />
+      }
+    ]
   },
 
   {
     element : <ProtectedRoutes />,
     children : [
       {
-        element : <Dashboard />,
+        element : <AsidDashboard />,
         children : [ {
           // ---Login /login, /Dashboard
           

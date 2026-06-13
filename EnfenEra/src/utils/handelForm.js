@@ -1,4 +1,4 @@
-export function HandelForm(e) {
+export function HandelForm(e, setdata) {
     const { name, value } = e.target;
 
     if (name.includes(".")) {
@@ -9,7 +9,7 @@ export function HandelForm(e) {
     }
 
     else {
-        setDETA((prev) => ({
+        setdata((prev) => ({
             ...prev, [name]: value
         }))
     }

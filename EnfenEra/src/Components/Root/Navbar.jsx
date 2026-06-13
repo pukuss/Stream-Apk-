@@ -22,7 +22,7 @@ const Navbar = () => {
 
   return (
     /* রুট কন্টেনারে relative ট্র্যাকিং সেফটি এবং isolation যুক্ত করা হয়েছে */
-    <div className="fixed top-5 left-0 w-full px-4 sm:px-8 z-50 isolation-isolate select-none">
+    <div className="fixed top-5 left-0 w-full px-4 sm:px-8 z-50 isolation-isolate select-none ">
       <nav className="max-w-7xl mx-auto bg-black/50 backdrop-blur-md border border-white/5 rounded-2xl px-4 sm:px-5 py-2.5 shadow-[0_20px_50px_rgba(0,0,0,0.9)] transition-all duration-500 hover:border-cyan-500/20 group/nav">
         <div className="flex justify-between items-center">
           
@@ -80,7 +80,7 @@ const Navbar = () => {
           <div className="hidden md:flex items-center gap-3">
             <button
               onClick={()=> {
-                navigate("/userAuth")
+                navigate("/register")
               }}
             className="text-gray-400 hover:text-white px-3 py-2 rounded-xl text-xs font-semibold transition-colors duration-300">
               Sign In
@@ -109,7 +109,6 @@ const Navbar = () => {
           </button>
         </div>
       </nav>
-
       {/* 🌟 মোবাইল রেসপন্সিভ ড্রপডাউন মেনু (গ্লাস ইফেক্ট বৃদ্ধি করা হয়েছে) */}
       <AnimatePresence>
         {isOpen && (
@@ -118,7 +117,7 @@ const Navbar = () => {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: -8 }}
             transition={{ type: "spring", stiffness: 400, damping: 30 }}
-            className="absolute top-20 left-4 right-4 bg-black/80 border border-white/10 rounded-2xl p-3 backdrop-blur-3xl md:hidden z-40 shadow-[0_30px_60px_rgba(0,0,0,0.8)]"
+            className="absolute  top-20 left-4 right-4 bg-black/80 border border-white/10 rounded-2xl p-3 backdrop-blur-3xl md:hidden z-40 shadow-[0_30px_60px_rgba(0,0,0,0.8)]"
           >
             <div className="flex flex-col gap-1">
               {navItems.map((item) => {
@@ -144,7 +143,9 @@ const Navbar = () => {
               <div className="border-t border-white/5 my-2 mx-2" />
               
               <div className="grid grid-cols-2 gap-2 p-1">
-                <button className="bg-white/5 text-white py-2.5 rounded-xl font-bold text-xs border border-white/10 hover:bg-white/10 transition-colors active:scale-98">
+                <button 
+                  onClick={()=> navigate("/register")}
+                className="bg-white/5 text-white py-2.5 rounded-xl font-bold text-xs border border-white/10 hover:bg-white/10 transition-colors active:scale-98">
                   Sign In
                 </button>
                 <button className="bg-cyan-500 text-black py-2.5 rounded-xl font-black text-xs hover:bg-cyan-400 transition-colors shadow-[0_4px_15px_rgba(6,182,212,0.3)] active:scale-98">

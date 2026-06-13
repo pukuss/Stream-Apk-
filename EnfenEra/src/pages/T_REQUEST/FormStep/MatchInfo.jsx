@@ -65,7 +65,7 @@ function MatchInfo({
       <div className='w-full h-full'>
         <main>
           {/* TIME INPUT================================ */}
-          <div className='flex border border-slate-700 flex-col bg-slate-950 text-white mt-3  rounded-xl p-2 py-5'>
+          <div className='flex  border-slate-700 flex-col bg-white text-black mt-3  rounded-xl p-2 py-5'>
             <label
               className='px-5  font-bold '
               htmlFor="DATE">
@@ -102,7 +102,7 @@ function MatchInfo({
           </div>
 
           <div>
-            <div className='flex flex-col bg-slate-950 border-slate-700  text-white  mt-3 border  rounded-2xl p-2'>
+            <div className='flex flex-col bg-white   text-black  mt-3 py-5  rounded-2xl p-2'>
               <label
                 className='px-5 font-bold '
                 htmlFor="SELECT_GAME "
@@ -113,7 +113,7 @@ function MatchInfo({
 
               <select
                 onChange={HandelForm}
-                className='font-black px-4 rounded-xl m-2 bg-slate-900  text-gray-500 py-2 outline-0'
+                className='font-black px-4 rounded-xl m-2 bg-gray-300  text-gray-500 py-2 outline-0'
                 name="map"
                 value={formData.map}
                 id="map" >
@@ -133,7 +133,7 @@ function MatchInfo({
             </div>
           </div>
 
-          <div className='flex flex-col bg-slate-950 py-5 mt-3   rounded-2xl p-2'>
+          <div className='flex flex-col bg-white text-black py-5 mt-3   rounded-2xl p-2'>
             <label
               className='px-5  font-bold flex justify-between items-center '
               htmlFor="DATE">

@@ -26,7 +26,7 @@ function DocumentDownload() {
                                     initial={{ opacity: 0, y: -20 }}
                                     animate={{ opacity: 1, y: 0 }}
                                     exit={{ opacity: 0, y: -20 }}
-                                    className=" bg-black/90 border border-white/10 rounded-3xl p-8 backdrop-blur-3xl">
+                                    className="  border border-white/10 rounded-3xl p-8 backdrop-blur-3xl">
                                     <div className="w-full">
                                         <div className="flex justify-between">
                                             <div className="flex gap-3 text-gray-500 font-black text-sm"><File size={20} /> <span>Document</span></div>

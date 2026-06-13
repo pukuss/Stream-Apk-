@@ -8,6 +8,12 @@ import Connect from "./Connect";
 import Explore from "./Explore";
 import About from "./About";
 import ProfilePage from "./Admin/ProfilePage";
+import GameProfilePage from "./GameProfilePage";
+
+import Products from "./Products";
+import Trequest from "./Admin/Trequest";
+import LoginPage from "./authUi/LoginPage";
+import OtpPage from "./authUi/auth/OtpPage";
 
 // auth page 
 import MainAuth_Page from "./authUi/MainAuth_Page";
@@ -21,6 +27,10 @@ export {
     Connect,
     Explore,
     About,
-
-    MainAuth_Page
+    MainAuth_Page,
+    Products,
+    Trequest,
+    LoginPage,
+    OtpPage,
+    GameProfilePage
 }

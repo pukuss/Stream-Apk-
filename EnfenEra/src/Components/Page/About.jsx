@@ -1,14 +1,12 @@
 import React, { useState, useRef } from 'react'
-import FooterBackground from '../horizon/FooterBackground'
-import QuantumBackground from '../horizon/QuantumBackground'
-import AetherForgeBackground from '../horizon/AetherForgeBackground'
+
 import { Import, Power, PowerSquare, ShoppingBagIcon, Spool } from 'lucide-react'
 
 
 //if it work  testing..........................
 import { useScrollBlur } from '../../hooks/UseScrollBlur'
 
-import { AdCard, RootPage, DocumentDownload } from '../../pages/HOME/index'
+import { AdCard,  DocumentDownload } from '../../pages/HOME/index'
 import Devoloper_Profiles from '../../pages/ABOUT/Devoloper_Profiles'
 
 

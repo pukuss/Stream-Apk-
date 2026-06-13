@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import FooterBackground from '../horizon/FooterBackground'
+// import FooterBackground from '../horizon/FooterBackground'
 import { Bell, Check, CheckCircle2, CreativeCommons, Gamepad, Gamepad2Icon, Power } from 'lucide-react'
 import WebLogo from '../horizon/WebLogo'
 
@@ -9,7 +9,6 @@ import NotificationPOPUP from '../../pages/STUDIO/Notification'
 // import Sucessfull from '../horizon/Sucessfull'
 
 import { useSelector } from 'react-redux'
-import { element } from 'three/src/nodes/tsl/TSLCore.js'
 
 function Studio() {
     // NOTIFICATION POP UP STORE============================= 
@@ -26,7 +25,7 @@ function Studio() {
     return (
         <>
                     <div className='w-full  '>
-                        <FooterBackground />
+                        {/* <FooterBackground /> */}
                     </div>
 
             <div className='h-screen w-full relative'>
