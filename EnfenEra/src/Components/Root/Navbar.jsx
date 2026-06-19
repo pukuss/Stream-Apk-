@@ -33,7 +33,7 @@ const Navbar = () => {
               <WebLogo className="relative text-cyan-400 group-hover:scale-110 group-hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.6)] transition-all duration-300" />
             </div>
             <div className="flex flex-col">
-              <span className="text-2xl font-black text-transparent bg-linear-to-r from-purple-600 via-indigo-400 to-indigo-500 bg-clip-text  ">
+              <span className="text-2xl font-black bg-clip-text text-transparent w-fit bg-linear-to-r from-pink-700  via-orange-500 to-yellow-400  ">
                 InfenEra
               </span>
               <span className="text-[9px] font-bold text-gray-500 tracking-tight mt-0.5 group-hover:text-cyan-400/60 transition-colors">STUDIOS</span>

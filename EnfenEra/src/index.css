@@ -1,5 +1,6 @@
 @import "tailwindcss";
 @import "@fontsource/pacifico";
+@import '@fontsource-variable/inter/wght.css';
 
 
 .logo-font {

@@ -1,6 +1,7 @@
 import AdCard from './AdCard'
-import DocumentDownload from './DocumentDownload';
 import HeroSection from './HeroSection';
 import MonitizeSection from './MonitizeSection';
+import DocumentDownload from './DocumentDownload';;
+import Cvcomp from './Cvcomp';
 
-export {AdCard ,HeroSection, MonitizeSection, DocumentDownload}
+export {Cvcomp,AdCard ,HeroSection, MonitizeSection,DocumentDownload}

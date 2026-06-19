@@ -54,8 +54,10 @@ function ProfileNavigation() {
         { name: "Watch Live", path: "/", icon: ListVideo },
         { name: "NEWS", path: "/", icon: Newspaper },
         { name: "Notification", path: "/", icon: BellDot },
+    ]
 
-
+    const Product = [
+        
     ]
 
 

@@ -11,10 +11,10 @@ import { GenerateId } from '../../utils/idGenerator'
 import { useScrollBlur } from '../../hooks/UseScrollBlur'
 
 
-import { AdCard, DocumentDownload, HeroSection, MonitizeSection } from '../../pages/HOME/index'
+import { AdCard, DocumentDownload, HeroSection, MonitizeSection,Cvcomp } from '../../pages/HOME/index'
 import { useNavigate } from 'react-router-dom';
 
-
+// root color : bg-clip-text text-transparent w-fit bg-linear-to-r from-pink-700  via-orange-500 to-yellow-400 
 
 function Home() {
 
@@ -60,12 +60,12 @@ function Home() {
           <span className='flex text-[8px] items-center gap-1 font-logo '>Infenco Powerdby EnfenEra</span>
           
           <div className=' font-black text-5xl p-5 '>
-            <h1 className='bg-linear-0 from-indigo-500 pacifico  to-sky-500 bg-clip-text text-transparent logo-font '>InfenEra</h1>
+            <h1 className='bg-clip-text text-transparent w-fit bg-linear-to-r from-pink-700  via-orange-500 to-yellow-400 logo-font '>InfenEra</h1>
           </div>
 
            <div className=' font-black text-xl p-5'>
             <span>Compete,Win, Become a  </span>
-            <span className='text-orange-400'>Champion </span>
+            <span className='bg-clip-text text-transparent w-fit bg-linear-to-r from-pink-700  via-orange-500 to-yellow-400'>Champion </span>
           </div>
 
           <div className=' text-sm w-100 font-medium text-white'>
@@ -85,7 +85,7 @@ function Home() {
             <div>
               <button
                 onClick={()=> navigate("/register")}
-                className=' border px-5  text-white cursor-pointer font-black text-sm rounded-xl py-2 border-gray-500'
+                className=' border px-5 cursor-pointer font-bold text-sm rounded-xl py-2 border-gray-500 bg-clip-text text-transparent w-fit bg-linear-to-r from-pink-700  via-orange-500 to-yellow-400'
                 type="button">Register New Account</button>
             </div>
           </div>
@@ -107,10 +107,10 @@ function Home() {
         </div>
       </div>
 
-      <div className='max-w-350 m-auto h-full  text-center uppercase py-10'>
-          <h1 className='text-6xl font-black py-10'> a Tournament <span className='text-red-600'>Hosting</span> Platform</h1>
-          {/* <h2 className='font-black text-6xl text-red-700'>air space india</h2> */}
-          <h3 className='font-black text-6xl py-5'> <span className='text-blue-700'>Premium</span> <span className='text-red-600' >hydron</span> technology </h3>
+      <div className='max-w-350 m-auto h-full  text-center uppercase pt-10'>
+          <h1 className='text-4xl font-black bg-clip-text text-transparent w-fit bg-linear-to-r from-pink-700  via-orange-500 to-yellow-400 '> a Tournament <span className='text-red-600'>Hosting</span> Platform</h1>
+          {/* <h2 className='font-black text-3xl text-red-700'>air space india</h2> */}
+          <h3 className='font-semibold text-3xl py-5'> <span className='text-blue-700 '>Premium</span> <span className='text-red-600 logo-font lowercase' >hydron</span> technology </h3>
       {/* <hr /> */}
       </div>
 
@@ -119,9 +119,10 @@ function Home() {
       <div className='w-full  h-full bg-[#050505] overflow-hidden'>
         <div className='max-w-350 m-auto h-full mt-3'>
           {/* --- Add New Component Hear  */}
+          
           <HeroSection />
           <MonitizeSection />
-          
+          <Cvcomp />
         </div>
 
         <div className='max-w-350 m-auto h-full bg-black '>

@@ -15,6 +15,7 @@ function Studio() {
     const [Notification, SetNotification] = useState(false);
     // const itembox = [1,2,3,4,5,6,7,8,9];
     const notifiactionApi = useSelector((state) => state.notification.requestdata);
+    // console.log(notifiactionApi);
     
 
     
@@ -36,10 +37,7 @@ function Studio() {
                                 {notifiactionApi.map((Element,index) => (
                                     <div className='max-w-120' key={index}>
                                         <NotificationPOPUP
-                                            Heading={Element.title}
-                                            Date={Element.DATE}
-                                            User={Element.name}
-                                            Titel={Element.discription}
+                                            props = {Element}
                                             />
                                     </div>
                                 ))}
@@ -55,7 +53,7 @@ function Studio() {
 
                         <div className=' w-full '>
                             <div className=''>
-                                <div className='text-2xl  bg-linear-to-r from-teal-400 via-indigo-400 to-violet-400 bg-clip-text text-transparent'>INFENERA STUDIO</div>
+                                <div className='text-2xl bg-clip-text text-transparent w-fit bg-linear-to-r from-pink-700  via-orange-500 to-yellow-400'>INFENERA STUDIO</div>
                                 <div>
                                     <span className='font-medium text-gray-500 text-[10px]'>Powerd By InfenEra 2.0 Engine</span>
                                 </div>
