@@ -34,41 +34,50 @@ import {FcPlus} from "react"
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import {Cvcomp} from './index'
+import { staticImage } from "../../constants/cloud.Image";
 
 function HeroSection() {
     const tournamentCard = [
         {
             name: "CALL OF DUTY MOBILE",
-            url: "images/logos/cod.png",
-            avtar: "/images/pic/cod_background.jpg",
+            url: staticImage.logos.cod_logo,
+            avtar: staticImage.cod_banner,
             path: "/gameprofile/1",
             titel: "Call Of Duty Warzone ",
             wining : "UpTo 5000₹"
         },
         {
             name: "BGMI INDIA",
-            url: "images/logos/bgmi.png",
-            avtar: "/images/pic/bgmi_background.webp",
+            url: staticImage.logos.bgmi_logo,
+            avtar: staticImage.bgmi_banner,
             path: "/gameprofile/2",
             titel: "Call Of Duty Warzone ",
             wining : "UpTo 5000₹"
         },
         {
             name: "FREE FIRE INDIA",
-            url: "images/logos/freefire.png",
-            avtar: "/images/pic/freefire_background.jpg",
+            url: staticImage.logos.freefire_logo,
+            avtar: staticImage.freefire_banner,
             path: "/gameprofile/3",
             titel: "Call Of Duty Warzone ",
             wining : "UpTo 5000₹"
         },
         {
             name: "CLASH OF CLANS",
-            url: "images/logos/coc.png",
-            avtar: "images/pic/coc_background.jpg",
+            url: staticImage.logos.coc_logo,
+            avtar: staticImage.coc_banner,
             path: "/gameprofile/4",
             titel: "Call Of Duty Warzone ",
             wining : "UpTo 5000₹"
         },
+         {
+            name: "MINECRAFT",
+            url: staticImage.logos.minecraft_logo,
+            avtar: staticImage.minecraft_banner,
+            path: "/gameprofile/5",
+            titel: "Call Of Duty Warzone ",
+            wining : "UpTo 5000₹"
+        }
     ];
 
     //Steps Ui

@@ -3,9 +3,11 @@ import React, { useState, useRef } from 'react'
 import { Import, Power, PowerSquare, ShoppingBagIcon, Spool, UserCheck } from 'lucide-react';
 import WebLogo from '../horizon/WebLogo'
 import { motion } from 'framer-motion';
+
 // temp 
 import { GenerateId } from '../../utils/idGenerator'
-
+// Cloud Image Folder
+import { staticImage } from '../../constants/cloud.Image';
 
 //if it work  testing..........................
 import { useScrollBlur } from '../../hooks/UseScrollBlur'
@@ -53,7 +55,7 @@ function Home() {
           <img
             ref={imageRef}
             className='w-full h-full object-cover  '
-            src="/images/pic/hero_background.png" alt="Background Image" />
+            src={staticImage.hero_banner} alt="Background Image" />
         </div>
 
         <div className='relative top-70  max-w-350 h-20 m-auto content-center   '>
