@@ -40,8 +40,7 @@ const FOOTER_DATA = {
     { label: "LinkedIn", href: "https://linkedin.com", isExternal: true },
     { label: "Facebook", href: "https://facebook.com", isExternal: true },
     { label: "Discord", href: "https://discord.com", isExternal: true, icon: MessageCircle },
-    { label: "Instagram", href: "https://instagram.com", isExternal: true },
-    { label: "TikTok", href: "https://tiktok.com", isExternal: true },
+    { label: "Instagram", href: "https://www.instagram.com/prashantaa_0/", isExternal: true },
   ],
 };
 

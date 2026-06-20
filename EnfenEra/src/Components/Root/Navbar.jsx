@@ -3,6 +3,7 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Home, Compass, Cpu, MessageSquare, Menu, X, Zap, Gamepad2, ChevronRight } from 'lucide-react';
 import WebLogo from '../horizon/WebLogo';
+import {useSelector} from 'react-redux'
 
 
 const navItems = [
@@ -19,6 +20,8 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const location = useLocation();
   const navigate = useNavigate();
+
+  const user = useSelector((state) => state.auth.user);
 
   return (
     /* রুট কন্টেনারে relative ট্র্যাকিং সেফটি এবং isolation যুক্ত করা হয়েছে */
@@ -85,6 +88,11 @@ const Navbar = () => {
             className="text-gray-400 hover:text-white px-3 py-2 rounded-xl text-xs font-semibold transition-colors duration-300">
               Sign In
             </button>
+            
+            {user && (
+              <div>profile</div>
+            )}
+
             <button className="relative overflow-hidden bg-white text-black px-4 py-2 rounded-xl font-bold text-xs transition-all duration-300 hover:bg-cyan-400 hover:text-black hover:scale-[1.03] active:scale-[0.98] shadow-[0_4px_20px_rgba(255,255,255,0.15)] hover:shadow-[0_0_25px_rgba(34,211,238,0.4)]">
               Launch App
             </button>

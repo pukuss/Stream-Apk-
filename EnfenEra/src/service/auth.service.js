@@ -1,5 +1,5 @@
 import { appwriteConfig } from "../appwrite/config/appwrite.config";
-import { Client, Account, TablesDB, Storage, ID } from 'appwrite'
+import { Client, Account, TablesDB, Storage, ID, Role } from 'appwrite'
 
 export class AuthService {
     client = new Client();
@@ -14,16 +14,26 @@ export class AuthService {
 
     async signUp({ email, password, name, }) {
         try {
-            const user = await this.account.create(ID.unique(), email, password, name);
+            const user = await this.account.create(ID.unique(), email, password, name, );
             if (user) {
                 return this.login({ email, password });
                 console.log("sucessfully log in");
-
             }
+            return {
+                success : true,
+                user,
+            }
+
         }
         catch (error) {
             console.error("signup error : ", error);
             throw error;
+
+            return {
+                success : false,
+                message: error.message,
+                code : error.code
+            };
         }
     }
 

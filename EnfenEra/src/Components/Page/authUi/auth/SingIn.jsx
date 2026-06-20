@@ -1,17 +1,35 @@
 import { Eye, EyeClosed, EyeIcon, Mail, User2 } from 'lucide-react'
-import React, { useState } from 'react'
+import React, { useState, } from 'react'
 import { SocialButton } from "../../../../Components/base/buttons/social-button"
 import { Navigate, useNavigate } from 'react-router-dom'
 import authService from '../../../../service/auth.service'
+import {useDispatch, useSelector} from 'react-redux'
+import toast from 'react-hot-toast'
+
+import Looging from '../../../horizon/Looding'
+import { setAuth } from '../../../../REDUX/Feachour/AuthSlice'
+
+
+
 
 function SingIn() {
     const navigate = useNavigate();
-    const [looding , setlooding] = useState(false);
+    const dispatch = useDispatch()
+
+    const [islooding , setlooding] = useState(false);
     const [showPasswd, setshowPasswd] = useState(false);
+    const [isError, setError] = useState("")
+
+    const userTest = useSelector((state) => state.auth.user);
+    
+
+
+
+
     const [formData, setFormData] = useState({
         email: "",
         password: "",
-        name: ""
+        name: "",
     })
 
     function handleChange(e) {
@@ -23,22 +41,32 @@ function SingIn() {
         }));
     }
 
-
-    // handelsubmit
+    // handelsubmit & authentication
     async function handelSubmit(e) {
         e.preventDefault();
+        setlooding(true);
 
         try {
             const res = await authService.signUp(formData);
-            console.log(res);
-            setlooding(true);
-        } catch (error) {
+            const sassion = await authService.getCurrentUser();
+
+            dispatch(setAuth({user : sassion, profile : null}))
+            console.log(userTest);
+            
+            if(sassion) {
+                toast.success('loogin')
+                navigate("/")
+            }
+        } 
+        catch (error) {
             console.log( "Singin Ui Error => " , error);
-        }   finally {
+            setError(error.message)
+
+        }   
+        finally {
             setlooding(false);
         }
         
-
     }
 
 
@@ -54,9 +82,13 @@ function SingIn() {
                             {/* <h1>InfenEra</h1> */}
                             <h1 className='bg-linear-0 from-indigo-500 pacifico  to-sky-500 bg-clip-text text-transparent logo-font '>InfenEra</h1>
                             <div>Register
+
+
                                 {/* L O O D I N G STATE =============  */}
-                            <div className='text-[12px] font-mono text-green-500 '>{looding && (
-                                <h1> Looging<span className=' animate-ping'>...</span></h1>
+                            <div className=''>{islooding && (
+                                <div className=' w-full h-full flex justify-center items-center bg-black/50 absolute top-0 left-0 z-10'>
+                                    <Looging />
+                                </div>
                             )}</div>
                             </div>
                             
@@ -72,7 +104,7 @@ function SingIn() {
                                 <div className='flex gap-4 border p-2 border-slate-900 rounded-2xl px-5'>
                                     <label className='flex items-center text-gray-500 gap-2' htmlFor="Email"><Mail /> email</label>
                                     <input
-                                        className='outline-0 '
+                                        className='outline-0 cursor-pointer'
                                         required
                                         onChange={handleChange}
                                         name='email'
@@ -83,7 +115,7 @@ function SingIn() {
                                 <div className='flex gap-4 border border-slate-900 p-2 rounded-2xl px-5'>
                                     <label className='flex gap-2 text-gray-500' htmlFor="passwd"> <User2 /> password</label>
                                     <input
-                                        className='outline-0'
+                                        className='outline-0 cursor-pointer'
                                         required
                                         id='passwd'
                                         onChange={handleChange}
@@ -99,18 +131,22 @@ function SingIn() {
                                 <div className='flex gap-4 border border-slate-900 p-2 rounded-2xl px-5'>
                                     <label className='flex gap-2 text-gray-500' htmlFor="name"> <User2 /> Username</label>
                                     <input
-                                        className='outline-0'
+                                        className='outline-0 cursor-pointer'
                                         required
                                         name='name'
                                         id='name'
                                         onChange={handleChange}
                                         type="text" />
                                 </div>
+                                
+                                {isError && (
+                                    <p className='text-[10px] font-medium text-red-600 text-center'>{isError}</p>
+                                )}
 
                                 <button
                                     className='border px-2 py-2 border-slate-800 hover:bg-slate-900  cursor-pointer rounded-2xl'
                                     type='submit'
-                                >Log in</button>
+                                >Register</button>
                             </form>
 
                             <h1 className='text-sm font-black text-indigo-600 p-3'>Or</h1>
@@ -139,7 +175,7 @@ function SingIn() {
                                 <h1>Already Registers ,
                                     <span
                                         onClick={() => navigate("/singin")}
-                                        className='text-sky-500 font-bold hover:underline cursor-pointer'>Sing In</span></h1>
+                                        className='text-sky-500 font-bold hover:underline cursor-pointer'>Sign in </span></h1>
 
                             </div>
                         </footer>

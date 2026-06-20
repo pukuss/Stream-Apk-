@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import {motion} from 'framer-motion'
 import Sucessfull from '../../horizon/Sucessfull'
 
-import { HandelForm } from '../../../utils/handelForm';
+// import { HandelForm } from '../../../utils/handelForm';
 
 function LoginPage({ props }) {
     const [logData, setLogData] = useState({
@@ -22,8 +22,10 @@ function LoginPage({ props }) {
         )) 
     }
 
+    const [islooding, setLooding] = useState(true);
     const [showPasswd, setshowPasswd] = useState(false);
     const [pop, setpop] = useState(false)
+    const [error , setError] = useState(true)
     
 
 
@@ -104,6 +106,9 @@ function LoginPage({ props }) {
                                                 onClick={() => setshowPasswd((prev) => !prev)}
                                             >{showPasswd ? <EyeIcon /> : <EyeClosed />}</button>
                                         </div>
+
+                                        {/* E R R O R   Code  */}
+                                        {}
 
                                         <button
                                             disabled={!logData.email}
