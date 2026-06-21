@@ -6,12 +6,27 @@ import { useNavigate } from 'react-router-dom';
 import {motion} from 'framer-motion'
 import Sucessfull from '../../horizon/Sucessfull'
 
+import Looging from '../../horizon/Looding';
+
+
+
+
+// auth
+import authService from '../../../service/auth.service';
+import { useDispatch } from 'react-redux';
+import { setAuth } from '../../../REDUX/Feachour/AuthSlice';
+
+
 // import { HandelForm } from '../../../utils/handelForm';
 
 function LoginPage({ props }) {
+    const dispatch = useDispatch()
+    const navigate = useNavigate();
+
+
     const [logData, setLogData] = useState({
         email : "",
-        passwd : "",
+        password : "",
     })  
 
     function handeform (e) {
@@ -21,15 +36,39 @@ function LoginPage({ props }) {
             {...prev, [name] : value}
         )) 
     }
+        // W O R K H E A R    B U G  
+    async function handelSubmit(e) {
+        e.preventDefault();
+        setLooding(true);
 
-    const [islooding, setLooding] = useState(true);
+        try {
+            const res = await authService.login(logData);
+            const session = await authService.getCurrentUser();
+                dispatch(setAuth({user : session.user, profile : session.profile}))
+                // console.log("session => ",session );
+                console.log("LogIn Sucessfull");
+
+                navigate("/profile", {replace : true})
+        } 
+        catch (error) {
+            console.log("Login Error =>" , error);
+            
+        }
+        finally{
+            setLooding(false);
+        }
+    }
+
+
+
+    const [islooding, setLooding] = useState(false);
     const [showPasswd, setshowPasswd] = useState(false);
-    const [pop, setpop] = useState(false)
+    const [pop, setpop] = useState()
     const [error , setError] = useState(true)
     
 
 
-    const navigate = useNavigate();
+    
     return (
         <>
             <div className='w-full h-screen flex  justify-center items-center bg-slate-950 relative'>
@@ -65,10 +104,18 @@ function LoginPage({ props }) {
                 </div>
                 <div>
                     <div className={` ${pop ? "hidden": "" }w-full h-full `}>
-                        <main className='flex h-full w-full  justify-center not-md:flex-col gap-5 items-center md:p-10 p-5'>
+                        <main className='flex h-full w-full  justify-center not-md:flex-col gap-5 items-center md:p-10 p-5 '>
+                            
+
                             <section className='md:px-20 px-10 overflow-hidden border border-slate-900 p-4 rounded-2xl bg-slate-950 relative'>
                                 <div className=' absolute bottom-0  shadow-[50px_50px_2000px_100px] shadow-indigo-500'></div>
                                 <div className=' absolute bottom-0  shadow-[50px_50px_2000px_100px] shadow-pink-700 animate-pulse duration-500'></div>
+                                {islooding&& (
+                                <div className='absolute top-0 left-0 w-full h-full flex justify-center items-center z-10 bg-black/70'>
+                                    <Looging />
+                                </div>
+                            )}
+
 
                                 <header className='w-full flex justify-between text-xl font-black'>
                                     {/* <h1>InfenEra</h1> */}
@@ -78,10 +125,10 @@ function LoginPage({ props }) {
 
                                 <main className='flex justify-center items-center flex-col p-2'>
                                     <form 
-                                        onSubmit={(e)=> 
-                                        { return e.preventDefault() }}
-
+                                        onSubmit={handelSubmit}
                                         action="" className='text-sm font-bold flex flex-col gap-5 mt-4'>
+
+
                                         {/* email id ==========  */}
                                         <div className='flex gap-4 border p-2 border-slate-900 rounded-2xl px-5'>
                                             <label className='flex items-center text-gray-500 gap-2' htmlFor="Email"><Mail /> email</label>
@@ -93,32 +140,40 @@ function LoginPage({ props }) {
                                                 name='email'
                                                 type="email" />
                                         </div>
+
                                         {/* password ============ */}
                                         <div className='flex gap-4 border border-slate-900 p-2 rounded-2xl px-5'>
                                             <label className='flex gap-2 text-gray-500' htmlFor="passwd"> <User2 /> password</label>
                                             <input
                                                 className='outline-0'
+                                                name='password'
+                                                onChange={handeform}
                                                 required
                                                 id='passwd'
                                                 type={showPasswd? "text" : "password"} />
                                             <button
                                                 className='cursor-pointer'
+                                                type='button'
                                                 onClick={() => setshowPasswd((prev) => !prev)}
                                             >{showPasswd ? <EyeIcon /> : <EyeClosed />}</button>
                                         </div>
 
                                         {/* E R R O R   Code  */}
-                                        {}
 
                                         <button
                                             disabled={!logData.email}
                                             onClick={() => {
-                                                setpop((prev)=> !prev)
+                                                // setpop((prev)=> !prev)
                                             }}
                                             className='border px-2 py-2 border-slate-800 hover:bg-slate-900  cursor-pointer rounded-2xl'
                                             type='submit'
-                                        >Log in</button>
+                                        >Sign In </button>
                                     </form>
+                                    <button
+                                    onClick={()=> authService.logout()}
+                                    >
+                                        logout
+                                    </button>
 
                                     <h1 className='text-sm font-black text-indigo-600 p-3'>Or</h1>
                                 </main>

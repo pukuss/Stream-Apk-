@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react'
 
 import { Import, Power, PowerSquare, ShoppingBagIcon, Spool } from 'lucide-react'
+import { staticImage } from '../../constants/cloud.Image'
 
 
 //if it work  testing..........................
@@ -34,7 +35,7 @@ function About() {
                         ref={imageRef}
 
                         className='w-full h-full object-cover  '
-                        src="IMAGE/UserProfile.jpg" alt="Background Image" />
+                        src={staticImage.admin_banner} alt="Background Image" />
                     {/* <AetherForgeBackground /> */}
                     {/* <FooterBackground/> */}
 

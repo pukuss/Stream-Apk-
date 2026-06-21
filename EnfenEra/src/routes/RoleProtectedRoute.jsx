@@ -9,10 +9,18 @@ function RoleProtectedRoute({ children, allowedRoles }) {
     if (!user) return <Navigate to="/login" replace />;
 
     if (!allowedRoles.includes(profile?.role)) {
-        return <Navigate to="/" replace />;
+        return <Navigate to="studio" replace />;
     }
 
     return children;
 }
 
 export default RoleProtectedRoute;
+
+// {
+//     path: "/dashboard",
+//     element: (
+//       <RoleProtectedRoute allowedRoles={["user", "admin", "host"]}>
+//         <UserDashboard />
+//       </RoleProtectedRoute>
+// ),

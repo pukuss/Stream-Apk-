@@ -1,27 +1,52 @@
 import { appwriteConfig } from "../appwrite/config/appwrite.config";
-import { Client, Account, TablesDB, Storage, ID, Role } from 'appwrite'
+import { Client, Account, TablesDB, Storage, ID, Role, Databases, Permission } from 'appwrite'
 
 export class AuthService {
     client = new Client();
     account;
+    database;
 
     constructor() {
         this.client
             .setEndpoint(appwriteConfig.ENDPOINT)
             .setProject(appwriteConfig.PROJECT_ID)
         this.account = new Account(this.client);
+        this.database = new Databases(this.client);
     }
 
+    //sign up
     async signUp({ email, password, name, }) {
         try {
-            const user = await this.account.create(ID.unique(), email, password, name, );
-            if (user) {
-                return this.login({ email, password });
-                console.log("sucessfully log in");
-            }
+            const user = await this.account.create(ID.unique(), email, password, name,);
+            const session = await this.account.createEmailPasswordSession({ email, password });
+
+            const profile = await this.database.createDocument(
+                appwriteConfig.DATABASE_ID, appwriteConfig.tabels_id.USER_PROFILE_DATA, user.$id,
+                {
+                    userId: user.$id,
+                    name: user.name,
+                    email: user.email,
+                    role: "user",
+                    isVerified: false,
+                    status: "active"
+                },
+                [
+                    Permission.read(Role.user(user.$id)),
+                    Permission.update(Role.user(user.$id)),
+                    Permission.delete(Role.user(user.$id)),
+                    // Permission.create(Role.user(user.$id))
+                ]
+            )
+
+            console.log("profile Data Show => ", profile);
+            console.log("Sassion create =>", session);
+
+
             return {
-                success : true,
+                profile,
+                success: true,
                 user,
+                session
             }
 
         }
@@ -30,17 +55,21 @@ export class AuthService {
             throw error;
 
             return {
-                success : false,
+                success: false,
                 message: error.message,
-                code : error.code
+                code: error.code
             };
         }
     }
 
+
+    //Logiin
     async login({ email, password }) {
         try {
             return await this.account.createEmailPasswordSession({ email, password });
+            
         }
+
 
         catch (error) {
             throw error;
@@ -48,6 +77,7 @@ export class AuthService {
         }
     }
 
+    //LogOut
     async logout() {
         try {
             await this.account.deleteSession({
@@ -56,31 +86,48 @@ export class AuthService {
 
             return true;
         } catch (error) {
-            console.error("logout error:", error);
+            console.error("logout service error => :", error);
             throw error;
         }
     }
 
     async getCurrentUser() {
         try {
-            return await this.account.get();
-        } catch (error) {
-            return null;
+            const user = await this.account.get();
+            const profile = await this.database.getDocument({
+                databaseId: appwriteConfig.DATABASE_ID,
+                collectionId: appwriteConfig.tabels_id.USER_PROFILE_DATA,
+                documentId: user.$id,
+            }
+            );
+
+            return {
+                profile,
+                user
+            }
+        }
+        catch (error) {
+            return console.log("getCurrentuser service Error =>", error);
+            ;
+        }
+        finally {
+            console.log("Please Re Try");
+
         }
     }
 
-     async Password_Recovery({email,secret_Url}){
+    async Password_Recovery({ email, secret_Url }) {
         try {
-            return await this.account.createRecovery(email,secret_Url)
+            return await this.account.createRecovery(email, secret_Url)
         } catch (error) {
             throw error
-            console.error("password recovery error :" , error)
+            console.error("password recovery error :", error)
         }
     }
 
-    async Update_Password({UserId , secret , passwd}) {
+    async Update_Password({ UserId, secret, passwd }) {
         try {
-            return this.account.updateRecovery(UserId,secret,passwd)
+            return this.account.updateRecovery(UserId, secret, passwd)
         } catch (error) {
             throw error
         }

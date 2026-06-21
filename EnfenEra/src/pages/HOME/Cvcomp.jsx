@@ -1,10 +1,11 @@
 import React, { useState } from 'react'
 import { Info,BadgeInfo,Code2,FileCode2, PhoneCallIcon, MailPlus, Projector, DotIcon, School2, } from 'lucide-react'
-
+import {staticImage} from '../../constants/cloud.Image'
 
 
 function Cvcomp() {
     const [isproject, setproject] = useState(true);
+
     
 
     const projectname = [
@@ -31,7 +32,7 @@ function Cvcomp() {
 
 
                         <div className="flex flex-row not-md:flex-wrap md:gap-30 gap-10   ">
-                            <div className="h-70 w-50 overflow-hidden rounded-2xl  "><img src="/devolopres/devoloper1.jpg" alt="" /></div>
+                            <div className="h-70 w-50 overflow-hidden rounded-2xl  "><img className='object-cover object-center h-full ' src={staticImage.admin_banner} alt="" /></div>
                             <div>
                                 <div className="flex flex-col gap-1">
                                     <h1 className="font-semibold text-xl flex gap-3 text-gray-400 items-center"><BadgeInfo size={18} color="yellow" /> PRASHANTA MONDAL</h1>

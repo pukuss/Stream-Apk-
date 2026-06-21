@@ -9,6 +9,7 @@ import {
     Verified,
 } from "lucide-react";
 import React from "react";
+import { staticImage } from "../../constants/cloud.Image";
 
 const Devolopers = [
     {
@@ -44,7 +45,7 @@ const Devolopers = [
     },
     {
         UID: "PRM-MP1I818X-XN01",
-        avater: "/devolopres/devoloper2.jpg",
+        avater: staticImage.admin_banner,
         username: "Prashanta Mondal",
         cvt: ["Pythomn", "APi", "Stack", "Micro Service's"],
         bio: "Jalabee Babe Jababee Baby",

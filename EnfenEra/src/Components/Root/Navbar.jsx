@@ -1,23 +1,27 @@
 import React, { useState } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Home, Compass, Cpu, MessageSquare, Menu, X, Zap, Gamepad2, ChevronRight } from 'lucide-react';
+import { Home, Compass, Cpu, MessageSquare, Menu, X, Zap, Gamepad2, ChevronRight, Sparkle, Panda, User2, Info, XCircle, } from 'lucide-react';
 import WebLogo from '../horizon/WebLogo';
-import {useSelector} from 'react-redux'
+import { useSelector } from 'react-redux'
+
 
 
 const navItems = [
   { name: 'Home', path: '/', icon: Home },
   { name: 'Explore', path: '/explore', icon: Compass },
-  { name: 'Engine', path: '/engine', icon: Cpu },
+  { name: 'Engine', path: '/engine', icon: Sparkle },
   { name: 'Connect', path: '/connect', icon: MessageSquare },
-  { name: 'Studio', path: '/studio', icon: Cpu },
-  { name: "Profile", path: '/Profile', icon: Gamepad2 },
-  { name: "About", path: '/about', icon : Cpu}
+  { name: 'Studio', path: '/studio', icon: Panda },
+  { name: "Profile", path: '/Profile', icon: User2 },
+  { name: "About", path: '/about', icon: Info }
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [logbar,setlogbar] = useState(true);
+
+
   const location = useLocation();
   const navigate = useNavigate();
 
@@ -28,7 +32,7 @@ const Navbar = () => {
     <div className="fixed top-5 left-0 w-full px-4 sm:px-8 z-50 isolation-isolate select-none ">
       <nav className="max-w-7xl mx-auto bg-black/50 backdrop-blur-md border border-white/5 rounded-2xl px-4 sm:px-5 py-2.5 shadow-[0_20px_50px_rgba(0,0,0,0.9)] transition-all duration-500 hover:border-cyan-500/20 group/nav">
         <div className="flex justify-between items-center">
-          
+
           {/* 🌟 ব্র্যান্ড লোগো (Cyberpunk Glow Upgrade) */}
           <div className="flex items-center gap-3 group cursor-pointer">
             <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-linear-to-br from-white/5 to-white/2 border border-white/10 group-hover:border-cyan-500/40 transition-all duration-300 shadow-inner">
@@ -48,26 +52,26 @@ const Navbar = () => {
           <div className="hidden md:flex relative items-center bg-white/3 border border-white/5 rounded-xl p-1 gap-1">
             {navItems.map((item) => {
               const isActive = location.pathname === item.path;
-              
+
               return (
-                <NavLink 
-                  key={item.path} 
-                  to={item.path} 
-                  
+                <NavLink
+                  key={item.path}
+                  to={item.path}
+
                   className="relative block h-full rounded-lg"
                 >
                   <div className="relative px-4 py-2 flex items-center gap-2 text-xs font-semibold transition-all duration-300 z-10 rounded-lg">
-                    <item.icon 
-                      size={14} 
-                      className={`transition-transform duration-300 ${isActive ? 'text-cyan-400 scale-110' : 'text-gray-400 group-hover/nav:text-gray-300'}`} 
+                    <item.icon
+                      size={14}
+                      className={`transition-transform duration-300 ${isActive ? 'text-cyan-400 scale-110' : 'text-gray-400 group-hover/nav:text-gray-300'}`}
                     />
                     <span className={`transition-colors duration-300 ${isActive ? 'text-white' : 'text-gray-400 hover:text-white'}`}>
                       {item.name}
                     </span>
-                    
+
                     {/* ব্যাকগ্রাউন্ড মেটেরিয়াল ক্যাপসুল অ্যানিমেশন */}
                     {isActive && (
-                      <motion.div 
+                      <motion.div
                         layoutId="nav-active-pill"
                         className="absolute inset-0 bg-linear-to-b from-white/8 to-white/2 rounded-lg -z-10 border border-white/10 shadow-[0_2px_10px_rgba(0,0,0,0.5)]"
                         transition={{ type: "spring", stiffness: 380, damping: 30 }}
@@ -80,27 +84,73 @@ const Navbar = () => {
           </div>
 
           {/* 🌟 রাইট সাইড বাটন প্যানেল (Sleek Glassmorphism UI) */}
-          <div className="hidden md:flex items-center gap-3">
-            <button
-              onClick={()=> {
-                navigate("/register")
-              }}
-            className="text-gray-400 hover:text-white px-3 py-2 rounded-xl text-xs font-semibold transition-colors duration-300">
-              Sign In
-            </button>
-            
+          <div className="hidden md:flex items-center gap-3 relative ">
+            {/* {logbar&& (
+              <div className='absolute top-12 border group-hover:w-35  group '>
+                <div className='opacity-0 '>
+                  <
+                </div>
+              </div>
+            )} */}
+
+
             {user && (
-              <div>profile</div>
+            <div className="group relative inline-block">
+  <button
+    type="button"
+    className="rounded-2xl border border-white/10 p-2 text-white transition hover:bg-white/10"
+  >
+    <User2 size={22} />
+  </button>
+
+  <div
+    className="
+      invisible absolute left-0 top-8 z-50 w-52 pt-2
+      opacity-0 transition-all duration-200
+      group-hover:visible group-hover:opacity-100
+    "
+  >
+    <div
+      className="
+        rounded-xl border border-white/10 bg-slate-950 p-2 text-white shadow-xl
+      "
+    >
+      <div className="cursor-pointer rounded-lg px-3 py-2 hover:bg-white/10">
+        Profile
+      </div>
+
+      <div className="cursor-pointer rounded-lg px-3 py-2 hover:bg-white/10">
+        Settings
+      </div>
+
+      <div className="cursor-pointer rounded-lg px-3 py-2 text-red-400 hover:bg-red-500/10">
+        Logout
+      </div>
+    </div>
+  </div>
+</div>
             )}
 
-            <button className="relative overflow-hidden bg-white text-black px-4 py-2 rounded-xl font-bold text-xs transition-all duration-300 hover:bg-cyan-400 hover:text-black hover:scale-[1.03] active:scale-[0.98] shadow-[0_4px_20px_rgba(255,255,255,0.15)] hover:shadow-[0_0_25px_rgba(34,211,238,0.4)]">
-              Launch App
-            </button>
+
+            {!user ? (
+              <button
+                onClick={() => navigate("/register")}
+                className="relative overflow-hidden bg-white text-black px-4 py-2 rounded-xl font-bold text-xs transition-all duration-300 hover:bg-cyan-400 hover:text-black hover:scale-[1.03] active:scale-[0.98] shadow-[0_4px_20px_rgba(255,255,255,0.15)] hover:shadow-[0_0_25px_rgba(34,211,238,0.4)]">
+                Get Started
+              </button>
+            ) : (
+              <button
+                onClick={() => navigate("/profile")}
+                className="relative overflow-hidden bg-white text-black px-4 py-2 rounded-xl font-bold text-xs transition-all duration-300 hover:bg-cyan-400 hover:text-black hover:scale-[1.03] active:scale-[0.98] shadow-[0_4px_20px_rgba(255,255,255,0.15)] hover:shadow-[0_0_25px_rgba(34,211,238,0.4)]">
+                View Profile
+              </button>
+            )}
+
           </div>
 
           {/* মোবাইল মেনু বাটন */}
-          <button 
-            onClick={() => setIsOpen(!isOpen)} 
+          <button
+            onClick={() => setIsOpen(!isOpen)}
             className="md:hidden flex items-center justify-center w-10 h-10 rounded-xl bg-white/5 border border-white/10 text-white hover:bg-white/10 active:scale-95 transition-all focus:outline-none"
           >
             <AnimatePresence mode="wait">
@@ -120,7 +170,7 @@ const Navbar = () => {
       {/* 🌟 মোবাইল রেসপন্সিভ ড্রপডাউন মেনু (গ্লাস ইফেক্ট বৃদ্ধি করা হয়েছে) */}
       <AnimatePresence>
         {isOpen && (
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, scale: 0.96, y: -8 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.96, y: -8 }}
@@ -131,29 +181,28 @@ const Navbar = () => {
               {navItems.map((item) => {
                 const isActive = location.pathname === item.path;
                 return (
-                  <NavLink 
-                    key={item.path} 
-                    to={item.path} 
-                    onClick={() => setIsOpen(false)} 
-                    className={`group text-xs font-semibold flex items-center justify-between py-3 px-4 rounded-xl transition-all ${
-                      isActive ? 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 shadow-inner' : 'text-gray-400 hover:bg-white/5 hover:text-white'
-                    }`}
+                  <NavLink
+                    key={item.path}
+                    to={item.path}
+                    onClick={() => setIsOpen(false)}
+                    className={`group text-xs font-semibold flex items-center justify-between py-3 px-4 rounded-xl transition-all ${isActive ? 'bg-cyan-500/10 text-cyan-400 border border-cyan-500/20 shadow-inner' : 'text-gray-400 hover:bg-white/5 hover:text-white'
+                      }`}
                   >
                     <div className="flex items-center gap-3">
-                      <item.icon size={15} className={isActive ? 'text-cyan-400' : 'text-gray-400 group-hover:text-white'} /> 
+                      <item.icon size={15} className={isActive ? 'text-cyan-400' : 'text-gray-400 group-hover:text-white'} />
                       {item.name}
                     </div>
                     <ChevronRight size={14} className={`opacity-0 -translate-x-2 transition-all duration-300 ${isActive ? 'opacity-100 translate-x-0 text-cyan-400' : 'group-hover:opacity-40 group-hover:translate-x-0'}`} />
                   </NavLink>
                 );
               })}
-              
+
               <div className="border-t border-white/5 my-2 mx-2" />
-              
+
               <div className="grid grid-cols-2 gap-2 p-1">
-                <button 
-                  onClick={()=> navigate("/register")}
-                className="bg-white/5 text-white py-2.5 rounded-xl font-bold text-xs border border-white/10 hover:bg-white/10 transition-colors active:scale-98">
+                <button
+                  onClick={() => navigate("/register")}
+                  className="bg-white/5 text-white py-2.5 rounded-xl font-bold text-xs border border-white/10 hover:bg-white/10 transition-colors active:scale-98">
                   Sign In
                 </button>
                 <button className="bg-cyan-500 text-black py-2.5 rounded-xl font-black text-xs hover:bg-cyan-400 transition-colors shadow-[0_4px_15px_rgba(6,182,212,0.3)] active:scale-98">

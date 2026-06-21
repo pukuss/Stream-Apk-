@@ -33,6 +33,7 @@ import LoginPage from './Components/Page/authUi/LoginPage';
 import AsidDashboard from './Layout/AsidDashboard';
 import { Toaster } from 'react-hot-toast';
 import AuthProvider from './provider/AuthProvider';
+import RoleProtectedRoute from './routes/RoleProtectedRoute';
 
 
 
@@ -132,6 +133,13 @@ const router = createBrowserRouter([
         }]
       }
     ]
+  },
+  {
+    element : <RoleProtectedRoute />,
+    children : [{
+      element : <AsidDashboard /> ,
+      
+    }]
   }
 ])
 

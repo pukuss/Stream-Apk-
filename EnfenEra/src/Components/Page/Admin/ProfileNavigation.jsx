@@ -25,11 +25,45 @@ import {
 import React, { useState } from "react";
 import { NavLink, useLocation, useNavigate } from "react-router-dom";
 import { motion } from "framer-motion";
+import authService from "../../../service/auth.service";
+import Looging from "../../horizon/Looding";
+import { clearAuth } from "../../../REDUX/Feachour/AuthSlice";
+// REDUX DATA 
+import {useSelector,useDispatch} from 'react-redux'
+
 
 
 function ProfileNavigation() {
     const navigate = useNavigate();
     const location = useLocation();
+    const dispatch = useDispatch();
+
+    const [loading,setLooding] = useState(false);
+
+    const user = useSelector((state)=> state.auth.profile)
+    console.log(user);
+
+
+    // LogOut Funtion 
+    async function handelLogOut(log) {
+            setLooding(true);
+
+        try {
+            await authService.logout();
+            dispatch(clearAuth());
+            navigate("/",{replace : true})
+            console.log("Log Out Successfily");
+
+
+        } catch (error) {
+            // console.log("ClearAuth Funtion Error => ", error);
+            
+        }
+        finally {
+            setLooding(false)
+        }
+    };
+    
 
 
 
@@ -212,12 +246,14 @@ function ProfileNavigation() {
                         </div>
                         <div className="flex flex-col">
                             <h1 className="flex gap-3 items-center">
-                                My Account{" "}
+                                {user?.name}
                                 <span>
                                     <Verified fill="" color="blue" size={15} />
                                 </span>
                             </h1>
-                            <p className="text-gray-500">My Workspace</p>
+                            <p className="text-gray-500">
+                                {user?.email}
+                            </p>
                         </div>
                         <div
                             onClick={() => setWorkspace((prev) => !prev)}
@@ -241,12 +277,12 @@ function ProfileNavigation() {
                                         </div>
                                         <div className="flex flex-col">
                                             <h1 className="flex gap-3 items-center">
-                                                My Account{" "}
+                                                {user?.name}
                                                 <span>
                                                     <Verified fill="" color="blue" size={15} />
                                                 </span>
                                             </h1>
-                                            <p className="text-gray-500 text-[10px] ">prashantaa007@gmail.com</p>
+                                            <p className="text-gray-500 text-[10px] ">{user.email}</p>
                                         </div>
                                         <div
                                             onClick={() => setWorkspace((prev) => !prev)}
@@ -278,9 +314,12 @@ function ProfileNavigation() {
                                     })}
                                 </div>
                                 
-                                <div className=" border-t-2 border-slate-800 flex gap-3 items-center px-5 py-1.5 font-bold text-sm cursor-pointer " >
+                                <div
+                                
+                                    onClick={handelLogOut} 
+                                    className=" border-t-2 border-slate-800 flex gap-3 items-center px-5 py-1.5 font-bold text-sm cursor-pointer " >
                                     <span><LogOut size={20} /></span>
-                                    <h1>LogOut</h1>
+                                    <h1 className="flex justify-center items-center ">LogOut {loading&& (<Looging />)} </h1> 
                                 </div>
                             </div>
                         )}

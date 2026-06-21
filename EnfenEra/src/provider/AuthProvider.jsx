@@ -13,12 +13,12 @@ function AuthProvider({ children }) {
                 dispatch(setLooding(true));
 
                 const user = await authService.getCurrentUser();
+                console.log(user);
                 
                 
 
                 if (user) {
-                    dispatch(setAuth({ user, profile: null }));
-                   
+                    dispatch(setAuth({ user : user.user, profile: user.profile }));
                     
                 } else {
                     dispatch(clearAuth());
@@ -27,12 +27,14 @@ function AuthProvider({ children }) {
                 dispatch(clearAuth());
             } finally {
                 dispatch(setLooding(false));
-                console.log(data);
             }
         }
 
         checkUser();
     }, [dispatch]);
+    // log data of redux user 
+    // console.log(data);
+    
 
     return children;
 }

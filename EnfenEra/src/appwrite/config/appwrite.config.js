@@ -6,6 +6,7 @@ export const appwriteConfig = {
     tabels_id: {
         TOURNAMENT_REQUEST: import.meta.env.VITE_APPWRITE_TOURNAMENT_REQUEST_TABLE,
         NOTIFICATION: import.meta.env.VITE_APPWRITE_NOTIFICATION_TABLE,
+        USER_PROFILE_DATA: import.meta.env.VITE_USER_PROFILE_DATA_TABLE
     },
 
     buckets: {
