@@ -14,7 +14,7 @@ function ProtectedRoutes() {
   return user ? (
     <Outlet />
   ) : (
-    <Navigate to="/register" replace />
+    <Navigate to="/singin" replace />
   );
 }
 

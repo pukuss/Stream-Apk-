@@ -1,5 +1,5 @@
 import React from 'react'
-import { Calendar1, Clock10Icon, ConeIcon, Gamepad2, MessageCircleCheck, Plus, ReceiptIndianRupee, Timer, Watch } from 'lucide-react'
+import { Calendar1, Clock10Icon, ConeIcon, Gamepad2, MapIcon, MessageCircleCheck, Plus, ReceiptIndianRupee, Timer, Watch } from 'lucide-react'
 // import { HandelForm } from '../../../utils/handelForm'
 
 function MatchInfo({
@@ -65,7 +65,7 @@ function MatchInfo({
       <div className='w-full h-full'>
         <main>
           {/* TIME INPUT================================ */}
-          <div className='flex  border-slate-700 flex-col bg-white text-black mt-3  rounded-xl p-2 py-5'>
+          <div className='flex  border-blue-600 border flex-col bg-linear-to-bl from-gray-950 to-slate-900 text-white mt-3  rounded-xl p-2 py-5'>
             <label
               className='px-5  font-bold '
               htmlFor="DATE">
@@ -101,19 +101,20 @@ function MatchInfo({
             </div>
           </div>
 
+          {/* SELECT MAP ====================================== */}
           <div>
-            <div className='flex flex-col bg-white   text-black  mt-3 py-5  rounded-2xl p-2'>
+            <div className='flex flex-col border border-blue-600 bg-linear-to-bl from-gray-950 to-slate-900   text-white  mt-3 py-5  rounded-2xl p-2'>
               <label
                 className='px-5 font-bold '
                 htmlFor="SELECT_GAME "
               >
-                <h1>Select Map </h1>
+                <h1 className='flex items-center gap-5'><MapIcon size={25} color='gray' /> Select Map </h1>
                 <h6 className='text-[10px] text-gray-400 space-x-0'> What is the mode of your Tournament /solo/</h6>
               </label>
 
               <select
                 onChange={HandelForm}
-                className='font-black px-4 rounded-xl m-2 bg-gray-300  text-gray-500 py-2 outline-0'
+                className='font-black px-4 rounded-xl m-2 bg-gray-300  text-gray-600 py-2 outline-0'
                 name="map"
                 value={formData.map}
                 id="map" >
@@ -133,7 +134,7 @@ function MatchInfo({
             </div>
           </div>
 
-          <div className='flex flex-col bg-white text-black py-5 mt-3   rounded-2xl p-2'>
+          <div className='flex flex-col bg-linear-to-bl from-gray-950 to-slate-900 text-white py-5 mt-3   rounded-2xl p-2'>
             <label
               className='px-5  font-bold flex justify-between items-center '
               htmlFor="DATE">

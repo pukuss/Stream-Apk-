@@ -28,6 +28,7 @@ import { motion } from "framer-motion";
 import authService from "../../../service/auth.service";
 import Looging from "../../horizon/Looding";
 import { clearAuth } from "../../../REDUX/Feachour/AuthSlice";
+import {staticImage} from '../../../constants/cloud.Image'
 // REDUX DATA 
 import {useSelector,useDispatch} from 'react-redux'
 
@@ -41,7 +42,7 @@ function ProfileNavigation() {
     const [loading,setLooding] = useState(false);
 
     const user = useSelector((state)=> state.auth.profile)
-    console.log(user);
+    // console.log(user);
 
 
     // LogOut Funtion 
@@ -240,9 +241,9 @@ function ProfileNavigation() {
 
                 {/* account */}
                 <footer className="  absolute bg-slate-950 bottom-0 w-full">
-                    <div className="p-2 flex gap-5 text-[12px] font-bold px-3 items-center h-full">
-                        <div className="h-10 w-10 overflow-hidden rounded-full  border-3 border-pink-500 ">
-                            <img className=" w-20" src="/devolopres/devoloper1.jpg" alt="" />
+                    <div className="p-2 flex gap-2 text-[12px] font-bold  items-center h-full">
+                        <div className="h-10 w-10 overflow-hidden rounded-full  border-1 border-pink-500 ">
+                            <img className=" w-full h-full" src={staticImage.admin_banner} alt="" />
                         </div>
                         <div className="flex flex-col">
                             <h1 className="flex gap-3 items-center">
@@ -273,7 +274,7 @@ function ProfileNavigation() {
                                 <div className="border-b-2 border-slate-800">
                                     <div className="p-2 flex gap-5 text-[12px] font-bold px-3 items-center h-full">
                                         <div className="h-10 w-10 overflow-hidden rounded-full  border border-slate-800 ">
-                                            <img className=" w-20" src="/devolopres/devoloper1.jpg" alt="" />
+                                            <img className=" w-full h-full" src={staticImage.admin_banner} alt="" />
                                         </div>
                                         <div className="flex flex-col">
                                             <h1 className="flex gap-3 items-center">

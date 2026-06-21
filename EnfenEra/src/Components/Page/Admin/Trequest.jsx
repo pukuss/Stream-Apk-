@@ -1,11 +1,12 @@
-import React from 'react'
-// import T_InputBox from '../../../pages/T_REQUEST/Request_Form'
 import Request_Form from '../../../pages/T_REQUEST/Request_Form'
+
+
+
 
 function Trequest() {
   return (
     <>
-    <div className='fixed z-0 bg-[url("/IMAGE/blackshed.jpg")]   bg-cover bg-center h-full w-full '></div>
+    <div className='fixed z-0 bg-[url("https://res.cloudinary.com/dndurawxp/image/upload/v1782063956/TournamentBackround_obl0a8.webp")]   bg-cover bg-center h-full w-full '></div>
     <div className='min-h-screen '>
       <header></header>
 

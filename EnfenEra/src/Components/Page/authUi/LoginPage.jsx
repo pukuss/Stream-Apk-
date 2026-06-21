@@ -169,11 +169,11 @@ function LoginPage({ props }) {
                                             type='submit'
                                         >Sign In </button>
                                     </form>
-                                    <button
+                                    {/* <button
                                     onClick={()=> authService.logout()}
                                     >
                                         logout
-                                    </button>
+                                    </button> */}
 
                                     <h1 className='text-sm font-black text-indigo-600 p-3'>Or</h1>
                                 </main>

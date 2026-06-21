@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 // import { HandelForm } from '../../../utils/handelForm'
 import { GenerateId } from '../../../utils/idGenerator'
-import { CloudAlert, RussianRuble } from 'lucide-react';
+import { CloudAlert, Mail, MessageCircleReply, RefreshCcw, RefreshCcwDot, RussianRuble, Ticket, Trophy, User2 } from 'lucide-react';
 
 function BasicInfo({
   formData,
@@ -11,10 +11,10 @@ function BasicInfo({
 
   // VALUE OF THE REPETABLE INPUT BOX ELEMENTS 
   const item = [
-    { name: "Host Name", ID: "name", Titel: "Choose a name worthy of the tournament", Discription: "Name Of The  USER?ADMIN Create Tournament ", Placeholder: "Useraname / Host Name  " },
-    { name: "Title", ID: "title", Titel: "A title name of your arena ", Discription: "Name Of The  USER?ADMIN Create Tournament ", Placeholder: "Titel " },
-    { name: "Discription", ID: "discription", Titel: " Enter Anything About Your Idera And more ...", Discription: "Name Of The  USER?ADMIN Create Tournament ", Placeholder: "Discription" },
-    { name: "EMAIL / CONTACT ", ID: "head.email", Titel: "Email Id To Inform You And Conformation ", Discription: "Name Of The  USER?ADMIN Create Tournament ", Placeholder: "email" },
+    { icon :User2 , name: "Host Name", ID: "name", Titel: "Choose a name worthy of the tournament", Discription: "Name Of The  USER?ADMIN Create Tournament ", Placeholder: "Useraname / Host Name  " },
+    { icon :Trophy , name: "Title", ID: "title", Titel: "A title name of your arena ", Discription: "Name Of The  USER?ADMIN Create Tournament ", Placeholder: "Titel " },
+    {icon : MessageCircleReply,  name: "Discription", ID: "discription", Titel: " Enter Anything About Your Idera And more ...", Discription: "Name Of The  USER?ADMIN Create Tournament ", Placeholder: "Discription" },
+    { icon : Mail, name: "EMAIL / CONTACT ", ID: "head.email", Titel: "Email Id To Inform You And Conformation ", Discription: "Name Of The  USER?ADMIN Create Tournament ", Placeholder: "email" },
   ]
   const getUserId = GenerateId();
   const [id, setId] = useState("");
@@ -34,10 +34,9 @@ function BasicInfo({
         <main>
           <form
             action="" className='w-full '>
-
+              {/* request id  */}
             <div
-
-              className='flex w-full  flex-col bg-white  text-black bg-conic-120 mt-3 border border-pink-700/20 rounded-xl p-2'>
+              className='flex w-full  flex-col bg-linear-to-bl from-gray-950 to-slate-900  text-white  mt-3 border border-blue-600 rounded-xl p-2'>
               <label
                 className='px-5 font-bold '
                 htmlFor="requestId">
@@ -47,7 +46,7 @@ function BasicInfo({
               {/* <h1>{select,discop}</h1> */}
               <div className='w-full flex gap-2  '>
                 <input
-                  className='border w-full   px-4  font-medium text-purple-400 placeholder:text-white placeholder:text-[12px] m-3 p-1 h-10 rounded-xl'
+                  className='border w-full   px-4  font-semibold text-blue-600  placeholder:text-white placeholder:text-[12px] m-3 p-1 h-10 rounded-xl'
                   type="text"
                   value={formData.head.requestId}
                   readOnly
@@ -55,10 +54,10 @@ function BasicInfo({
                   name="head.requestId"
                   onChange={HandelForm}
                   id="requestId" />
-                
+
                 <button
                   id='requestId'
-                  className='border font-bold gap-2 flex cursor-pointer items-center justify-center py-0 px-3 text-sm text-amber-50 border-white  bg-slate-900  rounded-xl'
+                  className='border font-bold gap-2 flex cursor-pointer items-center justify-center   px-3 text-sm text-amber-50 border-blue-600  bg-slate-900  rounded-xl'
                   onClick={() => {
                     const data = getUserId
                     setId(data)
@@ -66,7 +65,7 @@ function BasicInfo({
                       ...prev, head: { ...prev.head, requestId: data }
                     }))
                   }}
-                ><CloudAlert /> RUN</button>
+                ><RefreshCcw size={20} /> RUN</button>
               </div>
             </div>
 
@@ -74,16 +73,16 @@ function BasicInfo({
             {item.map((Element, index) => (
               <div
                 key={index}
-                className='flex flex-col bg-white  text-black mt-3  border-slate-700 rounded-2xl p-2'>
+                className='flex flex-col bg-linear-to-bl from-gray-950 to-slate-900  text-white mt-3 border border-blue-600 rounded-2xl p-2 py-4 '>
                 <label
                   className='px-5 font-bold '
                   htmlFor={Element.ID}>
-                  <h1>{Element.name}</h1>
-                  <h6 className='text-[10px] text-gray-500 space-x-0'> {Element.Titel}</h6>
+                  <h1 className='flex gap-5 items-center'><Element.icon color='gray' size={18}/> {Element.name}</h1>
+                  <h6 className='text-[10px] text-gray-500 space-x-0'>  {Element.Titel}</h6>
                 </label>
 
                 <input
-                  className=' px-4 outline-0 bg-gray-300 font-medium  placeholder:text-gray-500 placeholder:text-[12px] m-3 p-1 h-10 rounded-xl'
+                  className=' px-4 outline-0 bg-gray-300 font-medium text-black  placeholder:text-gray-500 placeholder:text-[12px] m-3 p-1 h-10 rounded-xl'
                   type="text"
                   value={
                     Element.ID.includes(".")
