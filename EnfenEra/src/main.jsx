@@ -34,6 +34,7 @@ import AsidDashboard from './Layout/AsidDashboard';
 import { Toaster } from 'react-hot-toast';
 import AuthProvider from './provider/AuthProvider';
 import RoleProtectedRoute from './routes/RoleProtectedRoute';
+import GuestRoute from './routes/GuestRoute';
 
 
 
@@ -89,26 +90,15 @@ const router = createBrowserRouter([
   {
     element: <Dashboard />,
     children: [
+    
       {
-        path: "/register",
-        element: <MainAuth_Page />
-      },
-      {
-        path: "/gameprofile/:id",
+        path: "/gameprofile/:slug",
         element: <GameProfilePage />
       },
+      
       {
-        path: "/studio/sendrequest",
-        element: <Trequest />
       },
-      {
-        path: "/singin",
-        element: <LoginPage />
-      },
-      {
-        path: "/singin/otp-verify",
-        element: <OtpPage />
-      }
+      
 
     ],
   },
@@ -117,28 +107,54 @@ const router = createBrowserRouter([
     children: [
       {
         
-      }
+      },
+    ]
+  },
+  { 
+    // Access who can't Sign in 
+    element : <GuestRoute />,
+    children : [
+      {
+        path: "/singin",
+        element: <LoginPage />
+      },
+      {
+        path: "/singin/otp-verify",
+        element: <OtpPage />
+      },
+      {
+        path: "/register",
+        element: <MainAuth_Page />
+      },
+
     ]
   },
 
   {
+    // acess Who can Sign in 
     element: <ProtectedRoutes />,
     children: [
       {
+        path: "/studio/sendrequest",
+        element: <Trequest />
+      },
+      {
         element: <AsidDashboard />,
-        children: [{
+        children: [
+          {
           // ---Login /login, /Dashboard
           path: "/Profile",
-        element: <ProfilePage />
-        }]
+          element: <ProfilePage />
+        },
+      ]
       }
     ]
   },
   {
-    element : <RoleProtectedRoute />,
-    children : [{
-      element : <AsidDashboard /> ,
-      
+    element: <RoleProtectedRoute />,
+    children: [{
+      element: <AsidDashboard />,
+
     }]
   }
 ])

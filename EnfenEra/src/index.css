@@ -1,48 +1,47 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&family=Orbitron:wght@500;600;700;800&display=swap");
 @import "tailwindcss";
 @import "@fontsource/pacifico";
-@import '@fontsource-variable/inter/wght.css';
+@import "@fontsource-variable/inter/wght.css";
 
-
-.logo-font {
-  font-family: 'Pacifico', cursive;
-  font-weight: 700;
-}
-
-:root {
-            font-family: "Inter", sans-serif;
-              /* font-family: 'Pacifico', cursive; */
-     /* Vibrant color scheme */
-            --primary-gradient: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            --accent-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
-            --danger-gradient: linear-gradient(135deg, #ff0844 0%, #ffb199 100%);
-            --warning-gradient: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
-            
-
-            --app-bg: #000000b7;
-            --card-bg: rgba(30, 41, 59, 0.85);
-            --card-bg-solid: #1e293b;
-            --header-bg: rgba(15, 23, 42, 0.95);
-            --chat-bg: #0f172a;
-            --message-out-bg: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
-            --message-in-bg: rgba(30, 41, 59, 0.85);
-            --input-bg: rgba(30, 41, 59, 0.7);
-            --border-color: rgba(255, 255, 255, 0.1);
-            --icon-color: #f8fafc;
-            --text-primary: #f1f5f9;
-            --text-secondary: #94a3b8;
-            --text-tertiary: #64748b;
-            --shadow-color: rgba(0, 0, 0, 0.3);
-            --overlay-bg: rgba(15, 23, 42, 0.9);
-
-            --success-color: #10b981;
-            --error-color: #ef4444;
 
 
 
-            --button-bg: linear-gradient(135deg, #00d0ff 0%, #00ccf9 100%);
+:root {
+  --font-body: "Inter", sans-serif;
+  --font-heading: "Rajdhani", sans-serif;
+  --font-tech: "Orbitron", sans-serif;
 
-            /* font-family: system-ui, Avenir, Helvetica, Arial, sans-serif; */
+  font-family: "Inter", sans-serif;
+  /* font-family: 'Pacifico', cursive; */
+  /* Vibrant color scheme */
+  --primary-gradient: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+  --accent-gradient: linear-gradient(135deg, #43e97b 0%, #38f9d7 100%);
+  --danger-gradient: linear-gradient(135deg, #ff0844 0%, #ffb199 100%);
+  --warning-gradient: linear-gradient(135deg, #f6d365 0%, #fda085 100%);
+
+  --app-bg: #000000b7;
+  --card-bg: rgba(30, 41, 59, 0.85);
+  --card-bg-solid: #1e293b;
+  --header-bg: rgba(15, 23, 42, 0.95);
+  --chat-bg: #0f172a;
+  --message-out-bg: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+  --message-in-bg: rgba(30, 41, 59, 0.85);
+  --input-bg: rgba(30, 41, 59, 0.7);
+  --border-color: rgba(255, 255, 255, 0.1);
+  --icon-color: #f8fafc;
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-tertiary: #64748b;
+  --shadow-color: rgba(0, 0, 0, 0.3);
+  --overlay-bg: rgba(15, 23, 42, 0.9);
+
+  --success-color: #10b981;
+  --error-color: #ef4444;
+
+  --button-bg: linear-gradient(135deg, #00d0ff 0%, #00ccf9 100%);
+
+  /* font-family: system-ui, Avenir, Helvetica, Arial, sans-serif; */
   line-height: 1.5;
   font-weight: 400;
 
@@ -60,34 +59,60 @@
   linear-gradient(135deg, #00d0ff 0%, #00ccf9 100%);
 }; */
 
-.button-back{
-  background: linear-gradient(135deg, #010528 0%, #004B8E 100%);
+.button-back {
+  background: linear-gradient(135deg, #010528 0%, #004b8e 100%);
 }
-.button-back2{
+
+.button-back2 {
   background: linear-gradient(135deg, #00d0ff 0%, #5f0fe9 100%);
 }
+
 .primary-back {
   background: linear-gradient(135deg, #065054 0%, #010528 100%);
 }
 
 .Log-back {
-  background: linear-gradient(135deg, # 0%, #03fbffaf 100%);
+  background: linear-gradient(135deg, #0%, #03fbffaf 100%);
 }
 
 .auth-color {
-  background: linear-gradient(135deg,#3bb5d08b 25%, #6004ffa4 55%, #b914f0 100%);
+  background: linear-gradient(135deg,
+      #3bb5d08b 25%,
+      #6004ffa4 55%,
+      #b914f0 100%);
 }
 
 .Settings-Button {
-  background: linear-gradient(135deg,#26658C 25%, #023859 55%, #011C40 100%);
+  background: linear-gradient(135deg, #26658c 25%, #023859 55%, #011c40 100%);
 }
+
 .Rank-Button {
-  background: linear-gradient(135deg,#7B337E 25%, #420D4B 55%, #210635 100%);
+  background: linear-gradient(135deg, #7b337e 25%, #420d4b 55%, #210635 100%);
 }
 
 .hero-text {
-  background: linear-gradient(135deg,#a200ff 25%, #700483 55%, #7200c9 100%);
+  background: linear-gradient(135deg, #a200ff 25%, #700483 55%, #7200c9 100%);
 }
-.nav-bg{
+
+.nav-bg {
   background-color: #000010;
+}
+
+
+
+
+.logo-font {
+  font-family: "Pacifico", cursive;
+  font-weight: 700;
+}
+body {
+  font-family: var(--font-body);
+}
+
+.font-heading {
+  font-family: var(--font-heading);
+}
+
+.font-tech {
+  font-family: var(--font-tech);
 }

@@ -15,6 +15,8 @@ import { useScrollBlur } from '../../hooks/UseScrollBlur'
 
 import { AdCard, DocumentDownload, HeroSection, MonitizeSection,Cvcomp } from '../../pages/HOME/index'
 import { useNavigate } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import Loading from '../horizon/Looding'
 
 // root color : bg-clip-text text-transparent w-fit bg-linear-to-r from-pink-700  via-orange-500 to-yellow-400 
 
@@ -32,6 +34,11 @@ function Home() {
   console.log(id);
 
 
+
+  const  reduxLoading = useSelector((state) => state.auth.looding);
+  console.log(reduxLoading);
+  
+
   // const {} = UseScrollBlur()
   useScrollBlur(10, 500, imageRef);
 
@@ -42,13 +49,17 @@ function Home() {
       animate = {{opacity : 1}}
       transition={{duration :0.3}}
     >
-
-      <div className=' block w-full top-0 fixed z-50 overflow-hidden'>
-        <div className=' w-full overflow-hidden'>
-        </div>
-      </div>
+      {reduxLoading && (
+          <div className=' w-full h-full bg-neutral-950 fixed flex items-center justify-center  top-0 left-0 z-100 '>
+            <div><Loading /></div>
+          </div>
+        )}
+      
 
       <div className=' w-full relative  h-screen overflow-hidden'>
+        
+
+
         {/* <QuantumBackground />  */}
         <div
           className=' w-full h-full absolute overflow-hidden '>

@@ -42,7 +42,7 @@ function HeroSection() {
             name: "CALL OF DUTY MOBILE",
             url: staticImage.logos.cod_logo,
             avtar: staticImage.cod_banner,
-            path: "/gameprofile/1",
+            path: "/gameprofile/call-of-duty-mobile",
             titel: "Call Of Duty Warzone ",
             wining : "UpTo 5000₹"
         },
@@ -50,7 +50,7 @@ function HeroSection() {
             name: "BGMI INDIA",
             url: staticImage.logos.bgmi_logo,
             avtar: staticImage.bgmi_banner,
-            path: "/gameprofile/2",
+            path: "/gameprofile/bgmi",
             titel: "Call Of Duty Warzone ",
             wining : "UpTo 5000₹"
         },
@@ -58,7 +58,7 @@ function HeroSection() {
             name: "FREE FIRE INDIA",
             url: staticImage.logos.freefire_logo,
             avtar: staticImage.freefire_banner,
-            path: "/gameprofile/3",
+            path: "/gameprofile/free-fire",
             titel: "Call Of Duty Warzone ",
             wining : "UpTo 5000₹"
         },
@@ -66,7 +66,7 @@ function HeroSection() {
             name: "CLASH OF CLANS",
             url: staticImage.logos.coc_logo,
             avtar: staticImage.coc_banner,
-            path: "/gameprofile/4",
+            path: "/gameprofile/clash-of-clans",
             titel: "Call Of Duty Warzone ",
             wining : "UpTo 5000₹"
         },
@@ -74,7 +74,7 @@ function HeroSection() {
             name: "MINECRAFT",
             url: staticImage.logos.minecraft_logo,
             avtar: staticImage.minecraft_banner,
-            path: "/gameprofile/5",
+            path: "/gameprofile/minecraft",
             titel: "Call Of Duty Warzone ",
             wining : "UpTo 5000₹"
         }
