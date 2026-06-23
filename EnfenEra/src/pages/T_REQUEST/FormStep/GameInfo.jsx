@@ -1,19 +1,16 @@
-import { Gamepad2, LucideGamepadDirectional, SearchAlert, Type } from 'lucide-react';
+import { Gamepad2, LucideGamepadDirectional, SearchAlert, SearchAlertIcon, SearchCheck, Type } from 'lucide-react';
 import React from 'react'
 // import { HandelForm } from '../../../utils/handelForm'
 
 
 function GameInfo({
-  formData,
-  setformData,
-  HandelForm
+  register
 }) {
 
 
-  const gametype = [ " Select Game ","FREE FIRE INDIA", "BGMI INDIA", "CALL OF DUTY", "CLASH OF CLANS"];
-  const gameMode = ["select","Solo", "Duo", "Squad"]
-  // const map = ["map"]
-  const matchType = [ "select","Team Deathmatch","Domination","Assault","classic"]
+  const gametype = ["FREE FIRE INDIA", "BGMI INDIA", "CALL OF DUTY", "CLASH OF CLANS"];
+  const gameMode = ["Solo", "Duo", "Squad"]
+  const matchType = ["Team Deathmatch","Domination","Assault","classic"]
 
 
 
@@ -26,8 +23,11 @@ function GameInfo({
   return (
     <>
       <div className='w-full h-full'>
+        <header className='px-5 font-bold rounded-xl bg-slate-950 py-5'>
+          <h1 className='text-2xl font-heading flex gap-4 items-center'><SearchCheck /> Select the game you want to host  </h1>
+          <p className='text-sm text-gray-500 '> Fill Basic Details & Go Ahed Then We Verify And </p>
+        </header>
         <main>
-          {/* <form action=""> */}
             {/* GAME SELECTION================================ */}
             <div className='flex flex-col bg-linear-to-bl from-gray-950 to-slate-900 text-white mt-3  border-blue-600 border rounded-2xl p-2 py-4'>
               <label
@@ -39,12 +39,12 @@ function GameInfo({
               </label>
 
               <select
-                onChange={HandelForm}
                 className='font-black px-4 rounded-xl m-2  bg-gray-600 py-2 outline-0'
                 name="game"
                 required
-                value={formData.game}
+                {...register("game")}
                 id="game" >
+                  <option value="">select</option>
                 {
                   gametype.map((Element) => (
                     <option
@@ -69,12 +69,11 @@ function GameInfo({
               </label>
 
               <select
-                onChange={HandelForm}
                 className='font-black px-4 rounded-xl m-2 bg-gray-600 py-2 outline-0'
-                name="gameMode"
                 required
-                value={formData.gameMode}
+                {...register("gameMode")}
                 id="gameMode" >
+                  <option value="">select</option>
                 {
                   gameMode.map((Element) => (
                     <option
@@ -98,12 +97,11 @@ function GameInfo({
               </label>
 
               <select
-                onChange={HandelForm}
                 className='font-black px-4 rounded-xl m-2  bg-gray-600 py-2 outline-0'
-                name="matchType"
-                value={formData.matchType}
+                {...register("matchType")}
                 required
                 id="matchType" >
+                  <option value="">select</option>
                 {
                   matchType.map((Element) => (
                     <option

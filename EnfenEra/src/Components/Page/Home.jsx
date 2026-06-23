@@ -73,7 +73,7 @@ function Home() {
           <span className='flex text-[8px] items-center gap-1 font-logo '>Infenco Powerdby EnfenEra</span>
           
           <div className=' font-black text-5xl p-5 '>
-            <h1 className='bg-clip-text text-transparent w-fit bg-linear-to-r from-pink-700  via-orange-500 to-yellow-400 logo-font '>InfenEra</h1>
+            <h1 className='bg-clip-text text-transparent w-fit bg-linear-to-r from-pink-700  via-orange-500 to-yellow-400 logo-font '>InfenArena</h1>
           </div>
 
            <div className=' font-black text-xl p-5'>

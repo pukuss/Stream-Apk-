@@ -1,19 +1,21 @@
 import React from 'react'
 import { Calendar1, Clock10Icon, ConeIcon, Gamepad2, MapIcon, MessageCircleCheck, Plus, ReceiptIndianRupee, Timer, Watch } from 'lucide-react'
 // import { HandelForm } from '../../../utils/handelForm'
+import {staticImage} from '../../../constants/cloud.Image'
+import { useState } from 'react';
 
 function MatchInfo({
-  HandelForm,
-  formData,
-  setformData
+  register,
+  watch
 }) {
 
   function gameimg(image) {
     const gameImages = {
-      "FREE FIRE INDIA": "/images/logos/freefire.png",
-      "BGMI INDIA": "/images/logos/bgmi.png",
-      "CALL OF DUTY": "/images/logos/cod.png",
-      "CLASH OF CLANS": "/images/logos/coc.png",
+      "FREE FIRE INDIA": staticImage.logos.freefire_logo ,
+      "BGMI INDIA": staticImage.logos.bgmi_logo,
+      "CALL OF DUTY": staticImage.logos.cod_logo,
+      "CLASH OF CLANS": staticImage.logos.coc_logo,
+      "MINECRAFT" : staticImage.logos.minecraft_logo
     };
     return gameImages[image]
   }
@@ -21,34 +23,31 @@ function MatchInfo({
   //  console.log(gameimg(formData.game));
 
 
-  // const map = ["map"]
+  const map = ["map"]
   const gameMaps = {
-    freefire: ["Bermuda", "Bermuda Remastered", "Purgatory", "Kalahari", "Alpine", "NeXTerra", "NeXTerra 2.0", "Solara"],
-    bgmi: ["Erangle", "Miramar", "Sanhok", "Vikendi", "Livik", "Nusa", "Karakin", "Rondo", "Deston"],
-    codm: ["Nuketown", "Crash", "Crossfire", "Firing Range", "Raid", "Shipment", "Standoff", "Hijacked", "Terminal", "Rust", "Summit", "Scrapyard", "Express", "Takeoff", "Highrise"],
-    coc: ["Home Village", "Builder Base", "Clan Capital"]
+    freefire: ["select", "Bermuda", "Bermuda Remastered", "Purgatory", "Kalahari", "Alpine", "NeXTerra", "NeXTerra 2.0", "Solara"],
+    bgmi: ["select", "Erangle", "Miramar", "Sanhok", "Vikendi", "Livik", "Nusa", "Karakin", "Rondo", "Deston"],
+    codm: ["select", "Nuketown", "Crash", "Crossfire", "Firing Range", "Raid", "Shipment", "Standoff", "Hijacked", "Terminal", "Rust", "Summit", "Scrapyard", "Express", "Takeoff", "Highrise"],
+    coc: ["select", "Home Village", "Builder Base", "Clan Capital"]
   }
-  // its not are Official name 
-  // const gameModes = {
-  //   freefire : ["Clash Squad Rush","Fast 4v4 Arena","Booyah Blitz","Quick Clash","Squad Rush Mode","Rapid Fire Room","Mini Battle Royel","Headshot Arena","Short Survival","Firestorm clash"],
-  //   bgmi : ["TDM Blitz", "Arena Rush 4v4","Quick Erangel Fight","Sanhok Speed Battle","Mini Classic Room","Squad Clash Mode","Fast Loot War","Close Loot War","Survival Sprint","Elite TDM Cup"],
-  //   codm : ["5v5 Rapid fire","hardpoint Rush","domination Blitz","Quick TDM Match","Kill Confirmed Fast","Arena Strike","Sniper Quick Room","Gunfight 2v2","Fast Respawn War","Elite Combat Zone"],
-  //   coc : ["Quick War Clash","mini Clan Battle","Fast Friendly War","Rush Raid Mode","Short Clan War","1v1 Challenge Room","Blitz War Session "]
-  // }
 
- 
-  function gameoptions(formData, map) {
+
+  const selectGame = watch("game");
+  const selectImage = watch("bannerImage[0]")
+   const [preview, setPreview] = useState(null);
+
+  function gameoptions(map) {
     const finalData = [];
-    if (formData.game === "FREE FIRE INDIA") {
+    if (selectGame === "FREE FIRE INDIA") {
       finalData.push(map.freefire)
     }
-    else if (formData.game === "BGMI INDIA") {
+    else if (selectGame === "BGMI INDIA") {
       finalData.push(map.bgmi)
     }
-    else if (formData.game === "CALL OF DUTY") {
+    else if (selectGame === "CALL OF DUTY") {
       finalData.push(map.codm)
     }
-    else if (formData.game === "CLASH OF CLANS") {
+    else if (selectGame === "CLASH OF CLANS") {
       finalData.push(map.coc)
     }
     else {
@@ -63,6 +62,11 @@ function MatchInfo({
   return (
     <>
       <div className='w-full h-full'>
+        <header className='px-5 font-bold rounded-xl bg-slate-950 py-5'>
+          <h1 className='text-2xl font-heading flex gap-4 items-center'>Hii fii the basic details and send request </h1>
+          <p className='text-sm text-gray-500 '> Fill Basic Details & Go Ahed Then We Verify And Host Tournament</p>
+        </header>
+
         <main>
           {/* TIME INPUT================================ */}
           <div className='flex  border-blue-600 border flex-col bg-linear-to-bl from-gray-950 to-slate-900 text-white mt-3  rounded-xl p-2 py-5'>
@@ -80,9 +84,7 @@ function MatchInfo({
                   type="date"
                   required
                   placeholder="matchDate"
-                  name="matchDate"
-                  value={formData.matchDate}
-                  onChange={HandelForm}
+                  {...register("matchDate")}
                   id="matchDate" />
               </div>
 
@@ -92,10 +94,8 @@ function MatchInfo({
                   className=' px-4  font-medium text-gray-500 outline-0  placeholder:text-gray-500 placeholder:text-[12px]  h-10 '
                   type="time"
                   placeholder="matchTime"
-                  name="matchTime"
                   required
-                  value={formData.matchTime}
-                  onChange={HandelForm}
+                  {...register("matchTime")}
                   id="matchTime" />
               </div>
             </div>
@@ -113,13 +113,10 @@ function MatchInfo({
               </label>
 
               <select
-                onChange={HandelForm}
                 className='font-black px-4 rounded-xl m-2 bg-gray-300  text-gray-600 py-2 outline-0'
-                name="map"
-                value={formData.map}
+                {...register("map")}
                 id="map" >
-                {gameoptions(formData, gameMaps).map((hamper) =>
-
+                {gameoptions(gameMaps).map((hamper) =>
                   hamper.map((Element) => (
                     <option
                       key={Element}
@@ -134,6 +131,7 @@ function MatchInfo({
             </div>
           </div>
 
+
           <div className='flex flex-col bg-linear-to-bl from-gray-950 to-slate-900 text-white py-5 mt-3   rounded-2xl p-2'>
             <label
               className='px-5  font-bold flex justify-between items-center '
@@ -143,74 +141,65 @@ function MatchInfo({
                 <h6 className='text-[10px] text-gray-400 space-x-0'> What is the prefered  time you shoud announce</h6>
               </div>
               <div >
-                <img src={gameimg(formData.game)} alt="" className='w-30 ' />
+                <img src={gameimg(selectGame)} alt="" className='w-30 ' />
               </div>
             </label>
 
 
-            <h1 className='px-5 font-bold pt-5 flex gap-3 text-xl text-green-400'>Hosting Mode <MessageCircleCheck /> </h1>
-            <div className='px-3  '>
-              <section className='flex py-5 justify-around items-center font-bold'>
-                <label htmlFor="host-managed" className='flex items-center gap-3  px-3 py-1.5 rounded-xl bg-slate-900 text-white active:bg-slate-700 '>
-                  <input type="radio" value="host-managed" name="hostingType" id="host-managed" onChange={HandelForm} />
-                  Host Managed
-                </label>
-                <label htmlFor="platform-assisted" className='flex items-center gap-3  px-3 py-1.5 rounded-xl bg-slate-900 text-white active:bg-slate-700 '>
-                  <input type="radio" value="platform-assisted" name="hostingType" id="platform-assisted" onChange={HandelForm} />
-                  Platform Assisted
-                </label>
-                <label htmlFor="open-hosting" className='flex items-center gap-3  px-3 py-1.5 rounded-xl bg-slate-900 text-white active:bg-slate-700 '>
-                  <input type="radio" value="open-hosting" name="hostingType" id="open-hosting" onChange={HandelForm} />
-                  Open Hosting
-                </label>
-              </section>
-
-              <div className='md:text-sm text-[12px] border-green-400 rounded-2xl bg-green-400/20   border p-3 font-extralight '>
-                <h1 className='flex gap-3 '>  <span className='text-green-400 underline font-semibold'>○ Host Managed</span>
-                  Host creates the tournament, invites players, and earns a hosting reward.</h1>
-
-                <h1 className='flex gap-3 '> <span className='text-green-400 underline font-semibold'> ○ Platform Assisted</span>
-                  InfenEra helps find players and manage participation for a small commission.</h1>
-
-                <h1 className='flex gap-3 '>  <span className='text-green-400 underline font-semibold'>○ Open Hosting</span>
-                  No commission. Full control and full prize distribution.</h1>
-              </div>
-            </div>
+          
 
             <label className='px-4 font-bold text-sm pt-2 ' htmlFor="slots"> Total Slots(Player) sTo Join Match* </label>
             <input
               className='border border-rose-600/50 px-4  font-medium text-cyan-100 placeholder:text-gray-500 placeholder:text-[12px] m-3 p-1 h-10 rounded-xl'
               type="number"
+              {...register("slots")}
               required
-              placeholder="Tdm 8, FF , 50, cod 100, bgmi 100, coc 12"
+              placeholder="Select Your team Size"
               name="slots"
               maxLength={3}
               max={3}
-              onChange={HandelForm}
               id="slots" />
 
             <label className='px-4 text-sm font-bold' htmlFor="sponsor">Sponsor* </label>
             <input
               className='border border-rose-600/50 px-4  font-medium text-cyan-100 placeholder:text-gray-500 placeholder:text-[12px] m-3 p-1 h-10 rounded-xl'
               type="text"
+              {...register("sponsor")}
               placeholder="sponsor"
-              name="sponsor"
               required
-              onChange={HandelForm}
               id="sponsor" />
 
 
 
             <div className='w-full h-full flex items-center gap-2'>
               {/* -------------Hidden Update Soon  */}
-              <div className='border hidden h-30 w-30'>{formData.bannerImage ?
-                (<img className='bg-black object-cover ' src={formData.bannerImage} alt="" />) : (<h1>No Signal</h1>)}</div>
+              <div className='border hidden h-30 w-30'>{ selectImage?
+                (<img className='bg-black object-cover ' src={selectGame} alt="" />) : (<h1>No Signal</h1>)}</div>
               {/* src={URL.createObjectURL(formData.bannerImage)} */}
 
               <div className='w-full h-full border flex justify-center items-center  rounded-xl border-dashed '>
                 <label htmlFor="bannerImage" className=' h-full py-5 w-full flex justify-center '> <Plus /> </label>
-                <input type="file" accept='image/*' name="bannerImage" id="bannerImage" className='hidden' onChange={HandelForm} />
+                <input type="file" accept='image/*' name="bannerImage" id="bannerImage" className='hidden' 
+                     {...register("bannerImage", {
+          required: "Banner image is required",
+          onChange: (e) => {
+            const file = e.target.files[0];
+
+            if (file) {
+              setPreview(URL.createObjectURL(file));
+            }
+          },
+        })}s
+                />
+                  {preview && (
+        <img
+          src={preview}
+          alt="Banner Preview"
+          className="w-full h-40 object-cover rounded-xl mt-3"
+        />
+      )}
               </div>
+
             </div>
 
 

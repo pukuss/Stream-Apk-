@@ -43,17 +43,18 @@ function GameProfilePage() {
 
 
         <div className='h-full w-full pb-10   relative'>
-          <header className='flex gap-5  w-full px-5 py-5'>
-            <div
+          <header className='flex gap-5 items-center w-full px-5 py-5'>
+            <div 
               onClick={() => navigate('/')}
-              className={``}
+              className={`flex items-center`}
             ><ArrowLeft /></div>
 
-            <div className='flex flex-col justify-center '>
-              <span className='font-heading font-bold text-xl text-white flex'> <span className='text-purple-600 gap-5 flex'><ShoppingBag color='white' /> H</span>ost Product</span>
+            <div className='flex flex-col items-center justify-center '>
+              <span className='font-heading items-center justify-center  font-bold text-xl text-white flex'> <span className='text-purple-600 gap-5 flex'><ShoppingBag color='white' /> H</span>ost Product</span>
               <p className='px-11 font-tech  text-[12px]'>{product.currentStatus} </p>
             </div>
           </header>
+          
 
 
           {/* B O X  */}
@@ -133,7 +134,7 @@ function GameProfilePage() {
           </div>
           {/* HISTRY  */}
           <div className='py-5'>
-            <h1 className='text-2xl text-taupe-500 font-bold  font-heading font-bold '>{product.history.heading}</h1>
+            <h1 className='text-2xl text-taupe-500   font-heading font-bold '>{product.history.heading}</h1>
             <h2 className='font-light text-[13px] pb-5 px-5 text-gray-600 '>{product.history.shortHistory}</h2>
             <h3>{product.history.timeline.map((element,idx) => (
               <h4 className='flex flex-col'>
@@ -146,20 +147,22 @@ function GameProfilePage() {
 
           {/* GAMEPLAY  */}
           <div>
-            <h1>{product.gameplay.heading}</h1>
-            <h1>{product.gameplay.description}</h1>
-            <h3>{product.gameplay.features.map((e,idx) => (
-              <h1 key={idx} className=''>{e}</h1>
+            <h1 className='text-2xl text-taupe-500 font-heading font-bold '>{product.gameplay.heading}</h1>
+            <h1 className='font-heading text-sm'>{product.gameplay.description}</h1>
+            <h3 className='py-5 px-5'>{product.gameplay.features.map((e,idx) => (
+              <h1  key={idx} className='text-xl font-heading font-semibold text-gray-500 '>{e}</h1>
             ))}</h3>
             
-            <h1>Popularmap's</h1>
-            <h1>
-              {product.popularMaps }
+            <h1 className='text-2xl font-tech text-taupe-500 '> Popularmap's</h1>
+            <h1 className='font-heading flex gap-3  font-bold text-xl flex-wrap py-3 text-gray-400 '>
+              {product.popularMaps.map((ele,idx)=> (
+                <h1>{ele} </h1>
+              ))}
             </h1>
           </div>
 
           <div>
-            <h1>{product.whyPopular.heading}</h1>
+            <h1 className='text-2xl font-bold  text-taupe-500 font-heading'>{product.whyPopular.heading}</h1>
             <h2>{product.whyPopular.points.map((ele,idx) => (<h1>{ele}</h1>))}</h2>
           </div>
         </main>

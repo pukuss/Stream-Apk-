@@ -18,6 +18,11 @@ import {
   OtpPage,
   MainAuth_Page,
   GameProfilePage,
+  SuperAdminPage,
+
+  UserOverviewPage,
+  UserMyteamPage,
+
 } from './Components/Page/index';
 
 
@@ -90,30 +95,18 @@ const router = createBrowserRouter([
   {
     element: <Dashboard />,
     children: [
-    
+
       {
         path: "/gameprofile/:slug",
         element: <GameProfilePage />
       },
-      
-      {
-      },
-      
 
     ],
   },
   {
-    element: <AsidDashboard />,
-    children: [
-      {
-        
-      },
-    ]
-  },
-  { 
     // Access who can't Sign in 
-    element : <GuestRoute />,
-    children : [
+    element: <GuestRoute />,
+    children: [
       {
         path: "/singin",
         element: <LoginPage />
@@ -142,21 +135,42 @@ const router = createBrowserRouter([
         element: <AsidDashboard />,
         children: [
           {
-          // ---Login /login, /Dashboard
-          path: "/Profile",
-          element: <ProfilePage />
-        },
-      ]
-      }
+            // ---Login /login, /Dashboard
+            path: "/profile",
+            element: <ProfilePage />
+          },
+          {
+            path : "/profile/overview",
+            element : <UserOverviewPage />
+          },
+          {
+            path : "/profile/myteam",
+            element : <UserMyteamPage />
+          }
+
+        ]
+      },
     ]
   },
   {
-    element: <RoleProtectedRoute />,
-    children: [{
-      element: <AsidDashboard />,
-
-    }]
-  }
+  element: <ProtectedRoutes />,
+  children: [
+    {
+      element: <RoleProtectedRoute allowedRoles={["admin"]} />,
+      children: [
+        {
+          element: <AsidDashboard />,
+          children: [
+            {
+              path: "/dashboard",
+              element: <SuperAdminPage />,
+            },
+          ],
+        },
+      ],
+    },
+  ],
+}
 ])
 
 

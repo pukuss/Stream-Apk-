@@ -17,6 +17,14 @@ import OtpPage from "./authUi/auth/OtpPage";
 
 // auth page 
 import MainAuth_Page from "./authUi/MainAuth_Page";
+
+// User Panel 
+import UserOverviewPage from "./Admin/UserOverviewPage";
+import UserMyteamPage from "./Admin/UserMyteamPage";
+
+
+// Super Admin
+import SuperAdminPage from "./supperAdmin/SuperAdminPage";
 export {
     Home , 
     Studio , 
@@ -32,5 +40,10 @@ export {
     Trequest,
     LoginPage,
     OtpPage,
-    GameProfilePage
+    GameProfilePage,
+    SuperAdminPage,
+    
+
+    UserOverviewPage,
+    UserMyteamPage,
 }

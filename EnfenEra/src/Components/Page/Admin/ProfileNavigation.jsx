@@ -7,6 +7,7 @@ import {
     ListVideo,
     LogOut,
     LucideVerified,
+    MenuIcon,
     MoveLeft,
     Newspaper,
     PhoneCall,
@@ -18,6 +19,8 @@ import {
     SkipBack,
     StepBack,
     User2,
+    UserCog2,
+    Users2,
     Verified,
     Wallet2,
     X,
@@ -28,9 +31,9 @@ import { motion } from "framer-motion";
 import authService from "../../../service/auth.service";
 import Looging from "../../horizon/Looding";
 import { clearAuth } from "../../../REDUX/Feachour/AuthSlice";
-import {staticImage} from '../../../constants/cloud.Image'
+import { staticImage } from '../../../constants/cloud.Image'
 // REDUX DATA 
-import {useSelector,useDispatch} from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 
 
 
@@ -39,40 +42,44 @@ function ProfileNavigation() {
     const location = useLocation();
     const dispatch = useDispatch();
 
-    const [loading,setLooding] = useState(false);
+    const [loading, setLooding] = useState(false);
 
-    const user = useSelector((state)=> state.auth.profile)
+    const user = useSelector((state) => state.auth.profile)
     // console.log(user);
 
 
     // LogOut Funtion 
     async function handelLogOut(log) {
-            setLooding(true);
+        setLooding(true);
 
         try {
             await authService.logout();
             dispatch(clearAuth());
-            navigate("/",{replace : true})
+            navigate("/", { replace: true })
             console.log("Log Out Successfily");
 
 
         } catch (error) {
             // console.log("ClearAuth Funtion Error => ", error);
-            
+
         }
         finally {
             setLooding(false)
         }
     };
-    
+
+
+
 
 
 
 
     const acccenter = [
-        { name: "Profile", path: "/", icon: User2 },
-        { name: "Settings", path: "/", icon: Settings2 },
-        { name: "KYC & Updates", path: "/", icon: Settings2 },
+        { name: "Create Team", path: "/", icon: User2 },
+        { name: "Join Request", path: "/", icon: Settings2 },
+        { name: "Schedule", path: "/", icon: Settings2 },
+        { name: "Records", path: "/", icon: Settings2 },
+
     ];
 
     const teamsettingitem = [
@@ -92,7 +99,7 @@ function ProfileNavigation() {
     ]
 
     const Product = [
-        
+
     ]
 
 
@@ -102,10 +109,16 @@ function ProfileNavigation() {
     const [accountCenter, setaccountCenter] = useState(false);
     const [workspace, setWorkspace] = useState(false);
     const [teamsettings, setTeamsettings] = useState(false);
+    const [openMenu, setOpenMenu] = useState(false);
 
     return (
         <>
-            <div className="w-full h-screen nav-bg relative flex flex-col gap-1">
+            <div
+                // onClick={() => setWorkspace(false)}
+                className={`${openMenu ? "" : "hidden"} w-full h-screen nav-bg relative flex flex-col gap-1 min-w-66.25 z-0 `}>
+                <div className=" absolute shadow-[0px_0px_300px_70px] -z-20 shadow-fuchsia-600/80 " ></div>
+
+
                 <div className=" w-full flex items-center justify-between">
                     <div
                         onClick={() => navigate("/")}
@@ -116,21 +129,63 @@ function ProfileNavigation() {
                         <h2>Back</h2>
                     </div>
 
-                    <div className="flex items-center gap-2 font-semibold text-gray-500 hover:text-white cursor-pointer text-sm px-5">
-                        <PhoneCall size={15} />
-                        <h1>Support ?</h1>
+                    <div className="flex  items-center gap-2 font-semibold text-gray-500 hover:text-white cursor-pointer text-sm px-5">
+                        {/* <PhoneCall size={15} /> */}
+                        <h1
+                        onClick={()=> setOpenMenu(false)}
+                        className=""><MenuIcon /></h1>
                     </div>
                 </div>
+                <hr className=" bg-gray-700/50 " />
+
+
+                <div className="">
+                    <section className="  font-semibold text-sm">
+                        <NavLink
+                            to="/Profile/overview"
+                            className={({ isActive }) => `flex py-1.5 px-5 hover:bg-gray-500/20  cursor-pointer gap-3 items-center   ${isActive ? " bg-white/10" : " text-gray-500"}`}>
+                            <span>
+                                <Wallet2 size={15} />
+                            </span>
+                            <h1>Overview</h1>
+                        </NavLink>
+                    </section>
+
+                    <section className="font-semibold text-sm">
+                        <NavLink
+                            to="/Profile/myteam"
+                            className={({ isActive }) => `flex gap-3 items-center hover:bg-gray-500/20 py-1.5 px-5 ${isActive ? " bg-white/10" : "text-gray-500"}`}>
+                            <span>
+                                <Users2 size={15} />
+                            </span>
+                            <h1>My Team</h1>
+                        </NavLink>
+                    </section>
+
+                    <section className="  font-semibold text-sm">
+                        <NavLink
+                            to="/Profile/myteam"
+                            className={({ isActive }) => `flex gap-3 items-center hover:bg-gray-500/20 py-1.5 px-5 ${isActive ? " bg-white/10" : "text-gray-500"}`}>
+                            <span>
+                                <Users2 size={15} />
+                            </span>
+                            <h1>My Tournaments</h1>
+                        </NavLink>
+                    </section>
+                </div>
+
+
+
                 <header className="font-semibold text-sm hover:text-white hover:bg-slate-950 px-5 cursor-pointer border border-slate-900">
                     <div
                         onClick={() => setaccountCenter((prev) => !prev)}
                         className="flex items-center justify-between ">
                         <h1
-                            className={`flex items-center gap-3 py-1.5 hover:text-white text-gray-400 ${accountCenter ? "text-white" : ""}`}>
+                            className={`flex  items-center gap-3 py-1.5 font-heading text-[15px] hover:text-white text-gray-400 ${accountCenter ? "text-white" : ""}`}>
                             <span>
                                 <User2 size={15} />
-                            </span>{" "}
-                            Account Center
+                            </span>
+                            Match Center
                         </h1>
                         <span>
                             {accountCenter ? (
@@ -270,7 +325,7 @@ function ProfileNavigation() {
                     <div className="relative">
                         {workspace && (
 
-                            <div className=" absolute bottom-5  py-2 rounded-xl nav-bg border border-slate-800  w-full left-60   ">
+                            <div className=" absolute bottom-5  py-2 rounded-xl nav-bg border border-slate-800  w-full left-60  z-100 ">
                                 <div className="border-b-2 border-slate-800">
                                     <div className="p-2 flex gap-5 text-[12px] font-bold px-3 items-center h-full">
                                         <div className="h-10 w-10 overflow-hidden rounded-full  border border-slate-800 ">
@@ -298,7 +353,7 @@ function ProfileNavigation() {
                                 </div>
 
                                 <div className="flex px-5 gap-3 border-b-2 border-slate-800 font-semibold text-sm py-2 cursor-pointer hover:bg-slate-900 ">
-                                    <span><PresentationIcon  /></span>
+                                    <span><PresentationIcon /></span>
                                     <h1>Premium</h1>
                                 </div>
 
@@ -314,19 +369,30 @@ function ProfileNavigation() {
                                         )
                                     })}
                                 </div>
-                                
+
                                 <div
-                                
-                                    onClick={handelLogOut} 
+
+                                    onClick={handelLogOut}
                                     className=" border-t-2 border-slate-800 flex gap-3 items-center px-5 py-1.5 font-bold text-sm cursor-pointer " >
                                     <span><LogOut size={20} /></span>
-                                    <h1 className="flex justify-center items-center ">LogOut {loading&& (<Looging />)} </h1> 
+                                    <h1 className="flex justify-center items-center ">LogOut {loading && (<Looging />)} </h1>
                                 </div>
                             </div>
                         )}
                     </div>
                 </footer>
             </div>
+
+            {!openMenu&&
+                
+            <div className="w-14 ">
+                <header className="w-full justify-center flex items-center py-2 ">
+                    <div
+                    onClick={() => setOpenMenu((prev) => !prev)}
+                    ><MenuIcon size={30} /></div>
+                </header>
+            </div>
+            }
         </>
     );
 }

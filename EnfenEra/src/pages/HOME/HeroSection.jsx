@@ -141,16 +141,16 @@ function HeroSection() {
                                         </div>
 
                                         <div className=" text-[12px] flex flex-col text-white flex-1 gap-3 p-3">
-                                            <h1 className="font-black text-xl flex items-center">
+                                            <h1 className="font-heading font-bold  text-2xl flex items-center">
                                                 {" "}
                                                 {element.name}
                                             </h1>
-                                            <p className=" ">
+                                            <p className="text-sm font-body  text-gray-500 ">
                                                 Lorem ipsum dolor sit amet consectetur adipisicing elit.
                                                 Quisquam hic eos inventore impedit, sed autem
                                                 dignissimos architecto facere tempore labore{" "}
                                             </p>
-                                            <h1 className="font-bold ">Win : <span className="text-green-500 font-black">{element.wining}</span></h1>
+                                            <h1 className="font-tech font-semibold ">Win : <span className="text-green-500 font-black">{element.wining}</span></h1>
 
 
                                             <div className="flex gap-3 justify-between font-medium">
