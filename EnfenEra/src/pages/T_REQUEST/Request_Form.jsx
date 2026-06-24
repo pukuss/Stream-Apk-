@@ -13,6 +13,10 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { addrequest, back, next } from "../../REDUX/Feachour/Notification";
 import { useNavigate } from "react-router-dom";
+// import { userService } from "../../service/user.service";
+import userService from "../../service/user.service";
+
+
 // Animation
 import { motion, AnimatePresence } from "framer-motion";
 // Steps
@@ -51,68 +55,39 @@ function Request_Form() {
     matchTime: "",
     maxteams: "",
     slots: "",
-    entryFee: "",
-    hostingType: "",
+    // entryFee: "",
+    // hostingType: "",
     sponsor: "",
     customRules: "",
-    platformfee: 2,
-    totalAmount: "",
+    // platformfee: 2,
+    // totalAmount: "",
 
-    media: {
       instagram: "",
       whatsapp: "",
       discord: "",
-    },
 
-    head: {
-      email: "",
       requestId: "",
+      email: "",
       status: "",
-      userId: "",
       username: "",
-      createsAt: "",
-      updateAt: "",
-    },
+
+      hostingFee: "",
+      gstAmount: "",
+      totalAmount: "",
+      entryFee: "",
+      hostingType: "",
+      platformFee: ""
   }
 
   const { register, handleSubmit, setValue, watch } = useForm({ defaultValues: DefualsUserData })
 
-  const total = watch("payment.totalAmount");
-  const UID = watch("head.requestId");
+  const total = watch("totalAmount");
+  const UID = watch("requestId");
   const PName = watch("name");
-  const gmail = watch("head.email")
+  const gmail = watch("email")
 
 
 
-  // Form Data5
-  
-
-  // Reusable Input Handler
-  function HandelForm(e) {
-    const { name, value } = e.target;
-
-    // Nested Input
-    if (name.includes(".")) {
-      const [parent, child] = name.split(".");
-
-      setformData((prev) => ({
-        ...prev,
-
-        [parent]: {
-          ...prev[parent],
-          [child]: value,
-        },
-      }));
-    }
-
-    // Normal Input
-    else {
-      setformData((prev) => ({
-        ...prev,
-        [name]: value,
-      }));
-    }
-  }
 
   // Send Request
   function SendNotification(data) {
@@ -150,11 +125,24 @@ function Request_Form() {
 
   // payment 
   const [paymentstate, setPaymentstate] = useState(false);
-  function onDone(data) {
-    console.log("form data", data);
+  async function onDone(data) {
+    
+    try {
+      const res = await userService.createRequest(data);
+      // reset(DefaultHostRequestData);
+      console.log("request send");
+      console.log("form data", data);
     SendNotification(data);
     setPaymentstate(true);
+      
+    }
+    catch (error) {
+      console.log("Error on request Form => " , error);
+      console.log(error.message || "some went wrong");
+    }
+    
   }
+
 
 
   return (

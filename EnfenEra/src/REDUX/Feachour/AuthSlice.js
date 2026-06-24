@@ -6,12 +6,14 @@ export const AuthSlice = createSlice({
         user : null,
         profile : null,
         looding : true,
+        wallet : null
     },
 
     reducers:{
         setAuth : (state,action) => {
             state.user = action.payload.user;
             state.profile = action.payload.profile;
+            state.wallet = action.payload.wallet
         },
         clearAuth : (state,action) => {
             state.user = null;

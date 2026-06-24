@@ -1,140 +1,263 @@
-import { BookOpenCheck, ChevronDown, ChevronUp, Delete, Droplet, EllipsisVertical, Info, Link, LogOut, MoveDown, PenBox, Printer } from 'lucide-react'
-import React, { useState } from 'react'
+import React, { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import {
+  CalendarDays,
+  ChevronDown,
+  EllipsisVertical,
+  Gamepad2,
+  Info,
+  PenLine,
+  Printer,
+  Trash2,
+  Users,
+  IndianRupee,
+  MapPin,
+  ShieldAlert,
+  ExternalLink,
+} from "lucide-react";
 
-function Notification({
-  props
-}) {
+function statusStyle(status = "") {
+  const s = status.toLowerCase();
 
-  const [spand, setSpand] = useState(false);
-  const [iselips, setElips] = useState(false)
-  console.log(props, "hii");
+  if (s === "approved" || s === "live") {
+    return "bg-cyan-400/10 text-cyan-300 border-cyan-400/20";
+  }
 
+  if (s === "rejected" || s === "cancelled") {
+    return "bg-red-500/10 text-red-300 border-red-500/20";
+  }
 
-  return (
-    <>
-      <div aria-readonly className='bg-linear-to-bl  from-slate-950 to-slate-800 border border-slate-900  group   min-w-80 h-full  rounded-xl  p-1.5 relative'>
-        {iselips && (
-          <div className=' px-2 py-3 absolute right-3 top-10 bg-slate-950 z-10 rounded-sm text-sm flex flex-col gap-1.5 border border-slate-900 font-semibold'>
-            <div className='items-center  flex gap-2 hover:bg-slate-900 w-full cursor-pointer px-10 py-1 transition border-slate-900 '>
-              <Delete size={18} /> Delete</div>
-            <div className='flex items-center gap-2 hover:bg-slate-900 w-full cursor-pointer px-10 py-1 transition border-slate-900 '>
-              <Printer size={18} /> Print</div>
-            <div className='flex items-center gap-2 hover:bg-slate-900 w-full cursor-pointer px-10 py-1 transition border-slate-900 '>
-              <Info size={18} /> About</div>
-            <div className='flex items-center gap-2 hover:bg-slate-900 w-full cursor-pointer px-10 py-1 transition border-slate-900 '>
-              <PenBox size={18} /> Riport</div>
-          </div>
-        )}
-        {/* <h1 className='px-'>User</h1> */}
-        <div className=' p-2 flex justify-between items-center px-2 '>
-          <h1 className='text-xl flex w-full items-start  justify-between flex-col font-black'>
-            <span className='text-white/50 text-sm font-bold '>Notification</span>
-            <div className='flex items-center gap-3'>
-              <span className='text-[10px] font-bold text-gray-400 '  >{props.name}</span>
-              <span className='text-[14px] font-bold text-green-400 '>{props.game}</span>
-            </div>
-          </h1>
-
-
-          {/* THREE DOT ICON DELETE INFO RIPORT ========================== */}
-          <div className='flex justify-center items-center  gap-5'>
-            <h1
-              onClick={() => setElips((prev) => !prev)}
-              className='text-white text-sm font-bold hover:bg-gray-800 p-2 rounded-2xl cursor-pointer active:scale-110 active:animate-ping active:border border-slate-900 '><EllipsisVertical size={16} /></h1>
-            {/* <div className=' animate-ping bg-red-600 h-3 w-3 rounded-full'></div> */}
-          </div>
-        </div>
-
-        {/* Titel input  */}
-        <div className='px-5 flex justify-between items-center'>
-          <div className=''>
-            <h1 className='text-xl font-semibold overflow-hidden'>{props.title}</h1>
-            <h1 className='text-sm text-gray-400'>{props.discription}</h1>
-          </div>
-
-          <div className='flex gap-1.5 text-sm font-semibold '>
-            {/* status  */}
-            <h1>{props.head.status}</h1>
-            <h2>{props.totalAmount}</h2>
-          </div>
-
-          <div className='flex gap-2  font-medium pl-5'>
-            <button
-              className=' border cursor-pointer flex justify-between items-center gap-2 border-purple-700 font-semibold text-purple-600  px-2 p-0 text-sm rounded-xl'
-              onClick={() => setSpand((prev) => !prev)}
-            >
-              Spand <span>{spand ? (<ChevronUp size={15} color='white' />) : (<ChevronDown size={15} color='gray' />)}</span>
-            </button>
-
-            <button className='border cursor-pointer flex text-sm font-semibold border-red-600 text-red-500  justify-between items-center gap-2  px-2 p-0 rounded-xl'>
-              Open <LogOut size={15} />
-            </button>
-          </div>
-        </div>
-
-        <div className=' overflow-hidden  text-[12px] py-1'>
-          {spand && (
-            <div className=''>
-              <div className='px-3 rounded-2xl py-4 bg-slate-950 w-full h-full'>
-                <div className='border text-center font-bold text-sm py-2 my-3  bg-slate-900 rounded-2xl border-gray-800'>
-                  {props.game}
-                </div>
-                {/* Request Id  */}
-                <h1 className='font-semibold  text-gray-500 flex '>Request UID : <span className='text-white font-medium'>{props.head.requestId}</span></h1>
-                {/* EMAIL ID  */}
-                <h2 className='text-gray-500 mb-2 flex '>Email id : <span>{props.head.email}</span></h2>
-                <h2 className='text-gray-500 mb-2 flex '>Name: <span className='uppercase'>{props.name}</span></h2>
-
-                <hr />
-                <div className='pt-4'>
-                  <h3 className='uppercase font-semibold  text-gray-500'>Hosting : <span className='text-green-500'>{props.hostingType}</span></h3>
-                  <h4 className='text-gray-500 font-bold'>Entry Fee : <span className='text-red-600'>{props.entryFee} ₹ INRS</span></h4>
-                </div>
-
-                <div className='bg-slate-900/50 text-sm font-bold text-gray-400 py-2 my-3 rounded-sm w-full px-2'>
-                  <h1 className='text-[10px] font-bold text-gray-500 uppercase'>Game Info ---</h1>
-                  <h3>map : <span>{props.map}</span></h3>
-                  <h4>game mode : <span>{props.gameMode}</span></h4>
-                  <h5>match type : <span>{props.matchType}</span></h5>
-                  <h6> Slots : <span>{props.slots}</span></h6>
-                </div>
-
-
-                <div className='text-[15px]  font-semibold'>
-                  <h1 className='font-bold text-blue-600 text-[12px] underline py-1'>Time Info/Details</h1>
-                  <div className='text-[13px] font-mono'>
-                    <h1>Request date : <span>{props.matchDate}</span></h1>
-                    <h2>Match time : <span>{props.matchTime}</span></h2>
-                  </div>
-
-                  <div className=''>
-                    <h1 className='text-[13px text-gray-500 ]'>Sponsor : <span>{props.sponsor}</span></h1>
-                    <h2 className='flex flex-col border px-2 py-2 rounded-xl bg-slate-900/50 border-slate-900'> <span className='text-sm text-gray-500'>Rules* </span>
-                      <span className='text-[12px]'>{props.customRules}</span>
-                    </h2>
-                  </div>
-
-                </div>
-
-                <div>
-
-                  <h3></h3>
-                </div>
-
-                <div>
-                  {/* head item  */}
-                  <h1>CreateAt : <span>{ }</span></h1>
-                </div>
-
-
-              </div>
-
-            </div>
-          )}
-        </div>
-      </div>
-    </>
-  )
+  return "bg-amber-400/10 text-amber-300 border-amber-400/20";
 }
 
-export default Notification
+function money(value) {
+  if (!value) return "₹0";
+  return String(value).includes("₹") ? value : `₹${value}`;
+}
+
+function MiniStat({ icon, label, value }) {
+  return (
+    <div className="rounded-2xl border border-white/10 bg-white/[0.04] p-3">
+      <div className="mb-1 flex items-center gap-1.5 text-[11px] font-semibold text-slate-400">
+        {icon}
+        {label}
+      </div>
+      <p className="truncate text-sm font-black text-white">{value || "—"}</p>
+    </div>
+  );
+}
+
+function DetailRow({ label, value }) {
+  return (
+    <div className="flex items-center justify-between gap-4 border-b border-white/5 py-2 last:border-0">
+      <span className="text-xs font-medium text-slate-500">{label}</span>
+      <span className="max-w-[190px] truncate text-right text-xs font-bold text-slate-200">
+        {value || "—"}
+      </span>
+    </div>
+  );
+}
+
+function Notification({ data }) {
+  const [open, setOpen] = useState(false);
+  const [menu, setMenu] = useState(false);
+
+  const description =
+    data?.description || data?.discription || "No description added";
+
+  const status = data?.status || "pending";
+
+  return (
+    <article className="relative w-full max-w-md overflow-hidden rounded-[26px] border border-white/10 bg-[#08111f] text-white shadow-[0_24px_80px_rgba(0,0,0,0.45)]">
+      {/* premium glow */}
+      <div className="pointer-events-none absolute -right-20 -top-20 h-52 w-52 rounded-full bg-cyan-400/20 blur-3xl" />
+      <div className="pointer-events-none absolute -bottom-24 -left-24 h-56 w-56 rounded-full bg-blue-600/20 blur-3xl" />
+
+      {/* top line */}
+      <div className="h-[3px] bg-gradient-to-r from-cyan-400 via-blue-500 to-indigo-500" />
+
+      <div className="relative p-4">
+        {/* Header */}
+        <div className="flex items-start justify-between gap-3">
+          <div className="min-w-0">
+            <div className="mb-2 flex items-center gap-2">
+              <span className="rounded-full border border-white/10 bg-white/[0.05] px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-slate-300">
+                Prime Lobby
+              </span>
+
+              <span
+                className={`rounded-full border px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.14em] ${statusStyle(
+                  status
+                )}`}
+              >
+                {status}
+              </span>
+            </div>
+
+            <h3 className="truncate text-lg font-black tracking-tight text-white">
+              {data?.title || "Untitled Tournament"}
+            </h3>
+
+            <div className="mt-1 flex items-center gap-2 text-xs text-slate-400">
+              <span className="truncate font-semibold">
+                {data?.name || data?.username || "Unknown Host"}
+              </span>
+              <span className="h-1 w-1 rounded-full bg-slate-600" />
+              <span className="flex items-center gap-1 font-bold text-cyan-300">
+                <Gamepad2 size={13} />
+                {data?.game || "Game"}
+              </span>
+            </div>
+          </div>
+
+          {/* Menu */}
+          <div className="relative shrink-0">
+            <button
+              type="button"
+              onClick={() => setMenu((prev) => !prev)}
+              className="grid h-9 w-9 place-items-center rounded-2xl border border-white/10 bg-white/[0.05] text-slate-300 transition hover:bg-white/10 hover:text-white active:scale-95"
+            >
+              <EllipsisVertical size={17} />
+            </button>
+
+            <AnimatePresence>
+              {menu && (
+                <motion.div
+                  initial={{ opacity: 0, y: -8, scale: 0.96 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, y: -8, scale: 0.96 }}
+                  transition={{ duration: 0.15 }}
+                  className="absolute right-0 top-11 z-30 w-44 overflow-hidden rounded-2xl border border-white/10 bg-[#07101d]/95 shadow-2xl backdrop-blur-xl"
+                >
+                  <button className="flex w-full items-center gap-2 px-3 py-2.5 text-sm font-semibold text-red-300 hover:bg-red-500/10">
+                    <Trash2 size={14} />
+                    Delete
+                  </button>
+
+                  <button className="flex w-full items-center gap-2 px-3 py-2.5 text-sm font-semibold text-slate-300 hover:bg-white/5">
+                    <Printer size={14} />
+                    Print
+                  </button>
+
+                  <button className="flex w-full items-center gap-2 px-3 py-2.5 text-sm font-semibold text-slate-300 hover:bg-white/5">
+                    <Info size={14} />
+                    Info
+                  </button>
+
+                  <button className="flex w-full items-center gap-2 px-3 py-2.5 text-sm font-semibold text-slate-300 hover:bg-white/5">
+                    <PenLine size={14} />
+                    Edit
+                  </button>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </div>
+
+        {/* Description */}
+        <p className="mt-3 line-clamp-2 text-sm leading-5 text-slate-400">
+          {description}
+        </p>
+
+        {/* Stats */}
+        <div className="mt-4 grid grid-cols-3 gap-2">
+          <MiniStat
+            icon={<IndianRupee size={13} />}
+            label="Entry"
+            value={money(data?.entryFee)}
+          />
+
+          <MiniStat
+            icon={<Users size={13} />}
+            label="Slots"
+            value={data?.slots || 0}
+          />
+
+          <MiniStat
+            icon={<IndianRupee size={13} />}
+            label="Total"
+            value={money(data?.totalAmount)}
+          />
+        </div>
+
+        {/* Date row */}
+        <div className="mt-4 flex items-center justify-between rounded-2xl border border-white/10 bg-black/20 px-3 py-2.5">
+          <div className="flex min-w-0 items-center gap-2 text-xs text-slate-400">
+            <CalendarDays size={14} className="text-cyan-300" />
+            <span className="truncate">
+              {data?.matchDate || "No date"} • {data?.matchTime || "No time"}
+            </span>
+          </div>
+
+          <button
+            type="button"
+            onClick={() => setOpen((prev) => !prev)}
+            className="ml-2 flex items-center gap-1 rounded-xl px-2 py-1 text-xs font-black text-cyan-300 transition hover:bg-cyan-400/10"
+          >
+            Details
+            <motion.span animate={{ rotate: open ? 180 : 0 }}>
+              <ChevronDown size={14} />
+            </motion.span>
+          </button>
+        </div>
+
+        {/* Expanded Details */}
+        <AnimatePresence initial={false}>
+          {open && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.22 }}
+              className="overflow-hidden"
+            >
+              <div className="mt-4 rounded-3xl border border-white/10 bg-white/[0.04] p-4">
+                <div className="mb-3 flex items-center justify-between">
+                  <h4 className="text-xs font-black uppercase tracking-[0.2em] text-slate-400">
+                    Match Details
+                  </h4>
+
+                  <span className="rounded-full bg-cyan-400/10 px-2 py-1 text-[10px] font-black text-cyan-300">
+                    #{data?.requestId?.slice?.(0, 6) || "ID"}
+                  </span>
+                </div>
+
+                <div className="space-y-1">
+                  <DetailRow label="Request ID" value={data?.requestId} />
+                  <DetailRow label="Email" value={data?.email} />
+                  <DetailRow label="Map" value={data?.map} />
+                  <DetailRow label="Mode" value={data?.gameMode} />
+                  <DetailRow label="Match Type" value={data?.matchType} />
+                  <DetailRow label="Hosting" value={data?.hostingType} />
+                  <DetailRow label="Sponsor" value={data?.sponsor || "Unsponsored"} />
+                  <DetailRow label="GST" value={money(data?.gstAmount)} />
+                </div>
+
+                <div className="mt-4 rounded-2xl border border-amber-400/15 bg-amber-400/[0.06] p-3">
+                  <div className="mb-1.5 flex items-center gap-2 text-amber-300">
+                    <ShieldAlert size={14} />
+                    <p className="text-xs font-black">Custom Rules</p>
+                  </div>
+
+                  <p className="text-xs leading-5 text-slate-300">
+                    {data?.customRules || "No custom rules added."}
+                  </p>
+                </div>
+
+                <button
+                  type="button"
+                  className="mt-4 flex w-full items-center justify-center gap-2 rounded-2xl bg-cyan-400 px-4 py-2.5 text-sm font-black text-[#06111f] transition hover:bg-cyan-300 active:scale-[0.98]"
+                >
+                  Open Tournament
+                  <ExternalLink size={15} />
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+    </article>
+  );
+}
+
+export default Notification;

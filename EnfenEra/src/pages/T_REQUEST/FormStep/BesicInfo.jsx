@@ -13,7 +13,7 @@ function BasicInfo({
     { icon :User2 , name: "Host Name", ID: "name", Titel: "Choose a name worthy of the tournament", Discription: "Name Of The  USER?ADMIN Create Tournament ", Placeholder: "Useraname / Host Name  " },
     { icon :Trophy , name: "Title", ID: "title", Titel: "A title name of your arena ", Discription: "Name Of The  USER?ADMIN Create Tournament ", Placeholder: "Titel " },
     {icon : MessageCircleReply,  name: "Discription", ID: "discription", Titel: " Enter Anything About Your Idera And more ...", Discription: "Name Of The  USER?ADMIN Create Tournament ", Placeholder: "Discription" },
-    { icon : Mail, name: "EMAIL / CONTACT ", ID: "head.email", Titel: "Email Id To Inform You And Conformation ", Discription: "Name Of The  USER?ADMIN Create Tournament ", Placeholder: "email" },
+    { icon : Mail, name: "EMAIL / CONTACT ", ID: "email", Titel: "Email Id To Inform You And Conformation ", Discription: "Name Of The  USER?ADMIN Create Tournament ", Placeholder: "email" },
   ];
 
   
@@ -48,7 +48,7 @@ function BasicInfo({
                 <input
                   className='border w-full   px-4  font-semibold text-blue-600  placeholder:text-white placeholder:text-[12px] m-3 p-1 h-10 rounded-xl'
                   type="text"
-                  {...register("head.requestId")}
+                  {...register("requestId")}
                   readOnly
                   placeholder="Generate Id"
                   id="requestId" />
@@ -59,7 +59,7 @@ function BasicInfo({
                   className='border font-bold gap-2 flex cursor-pointer items-center justify-center   px-3 text-sm text-amber-50 border-blue-600  bg-slate-900  rounded-xl'
                   onClick={() => {
                     const data = getUserId
-                    setValue("head.requestId",data)
+                    setValue("requestId",data)
                     
                   }}
                 ><RefreshCcw size={20} /> RUN</button>

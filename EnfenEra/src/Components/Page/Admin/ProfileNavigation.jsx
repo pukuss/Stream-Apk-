@@ -3,6 +3,7 @@ import {
     ChevronDown,
     ChevronUp,
     CreditCard,
+    DatabaseSearch,
     HeadphoneOff,
     ListVideo,
     LogOut,
@@ -34,6 +35,7 @@ import { clearAuth } from "../../../REDUX/Feachour/AuthSlice";
 import { staticImage } from '../../../constants/cloud.Image'
 // REDUX DATA 
 import { useSelector, useDispatch } from 'react-redux'
+import VerifiedBadge from "../../common/Verified";
 
 
 
@@ -122,30 +124,30 @@ function ProfileNavigation() {
                 <div className=" w-full flex items-center justify-between">
                     <div
                         onClick={() => navigate("/")}
-                        className=" flex font-bold w-fit px-5 py-2 text-gray-500 hover:text-red-600 gap-3 cursor-pointer">
+                        className=" flex font-bold w-fit px-5 py-2 font-heading items-center   text-gray-500 hover:text-red-600 gap-3 cursor-pointer">
                         <h1>
-                            <MoveLeft />
+                            <MoveLeft size={15}/>
                         </h1>
-                        <h2>Back</h2>
+                        <h2 className="">Exit</h2>
                     </div>
 
-                    <div className="flex  items-center gap-2 font-semibold text-gray-500 hover:text-white cursor-pointer text-sm px-5">
+                    <div className="flex  items-center gap-2 font-semibold text-gray-500 bg-gray-500/20 hover:text-white cursor-pointer text-sm p-1.5 rounded-xl">
                         {/* <PhoneCall size={15} /> */}
                         <h1
                         onClick={()=> setOpenMenu(false)}
                         className=""><MenuIcon /></h1>
                     </div>
                 </div>
-                <hr className=" bg-gray-700/50 " />
+                {/* <hr className=" bg-gray-700/50 " /> */}
 
 
-                <div className="">
+                <div className="border-t border-purple-950/50">
                     <section className="  font-semibold text-sm">
                         <NavLink
                             to="/Profile/overview"
                             className={({ isActive }) => `flex py-1.5 px-5 hover:bg-gray-500/20  cursor-pointer gap-3 items-center   ${isActive ? " bg-white/10" : " text-gray-500"}`}>
                             <span>
-                                <Wallet2 size={15} />
+                                <DatabaseSearch size={15} />
                             </span>
                             <h1>Overview</h1>
                         </NavLink>
@@ -295,16 +297,16 @@ function ProfileNavigation() {
                 </main>
 
                 {/* account */}
-                <footer className="  absolute bg-slate-950 bottom-0 w-full">
+                <footer className="  absolute bg-white/20 rounded-xl bottom-0 w-full">
                     <div className="p-2 flex gap-2 text-[12px] font-bold  items-center h-full">
                         <div className="h-10 w-10 overflow-hidden rounded-full  border-1 border-pink-500 ">
                             <img className=" w-full h-full" src={staticImage.admin_banner} alt="" />
                         </div>
                         <div className="flex flex-col">
-                            <h1 className="flex gap-3 items-center">
+                            <h1 className="flex gap-1 items-center">
                                 {user?.name}
                                 <span>
-                                    <Verified fill="" color="blue" size={15} />
+                                   {user?.isVerified&& (<VerifiedBadge size={10} />) }
                                 </span>
                             </h1>
                             <p className="text-gray-500">
@@ -385,8 +387,8 @@ function ProfileNavigation() {
 
             {!openMenu&&
                 
-            <div className="w-14 ">
-                <header className="w-full justify-center flex items-center py-2 ">
+            <div className="w-12 bg-gray-950 h-full  ">
+                <header className="w-full justify-center p-2 flex items-center  bg-gray-700/20 rounded-xl  ">
                     <div
                     onClick={() => setOpenMenu((prev) => !prev)}
                     ><MenuIcon size={30} /></div>

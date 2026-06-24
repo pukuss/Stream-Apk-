@@ -100,7 +100,7 @@ function UserOverviewPage() {
     return (
         <div className="min-h-screen w-full bg-slate-950 text-white p-4 md:p-6 sticky top-0">
             {/* Top Hero Section */}
-            <div className="relative overflow-hidden rounded-3xl border border-slate-800 bg-gradient-to-br from-slate-900 via-slate-950 to-black p-6 md:p-8 shadow-2xl">
+            <div className="relative overflow-hidden rounded-3xl border border-slate-800 bg-linear-to-br from-slate-900 via-slate-950 to-black p-6 md:p-8 shadow-2xl">
                 <div className="absolute -top-24 -right-24 h-72 w-72 rounded-full bg-blue-600/20 blur-3xl" />
                 <div className="absolute -bottom-24 -left-24 h-72 w-72 rounded-full bg-purple-600/20 blur-3xl" />
 
@@ -132,7 +132,7 @@ function UserOverviewPage() {
 
                             <div>
                                 <p className="text-sm text-slate-400">Current Rank</p>
-                                <h2 className="text-2xl font-black">Elite Player</h2>
+                                <h2 className="text-2xl font-black">{profile?.rank} Player</h2>
                                 <p className="text-xs text-emerald-400">Verified Account</p>
                             </div>
                         </div>

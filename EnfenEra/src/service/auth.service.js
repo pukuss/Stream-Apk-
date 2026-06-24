@@ -20,6 +20,8 @@ export class AuthService {
             const user = await this.account.create(ID.unique(), email, password, name,);
             const session = await this.account.createEmailPasswordSession({ email, password });
 
+
+
             const profile = await this.database.createDocument(
                 appwriteConfig.DATABASE_ID, appwriteConfig.tabels_id.USER_PROFILE_DATA, user.$id,
                 {
@@ -27,6 +29,7 @@ export class AuthService {
                     name: user.name,
                     email: user.email,
                     role: "user",
+                    rank: "Bronze",
                     isVerified: false,
                     status: "active"
                 },
@@ -111,7 +114,7 @@ export class AuthService {
             ;
         }
         finally {
-            console.log("Please Re Try");
+            console.log("Sucessful Auto Login");
 
         }
     }
@@ -132,6 +135,20 @@ export class AuthService {
             throw error
         }
     }
+
+    // async Wallet() {
+    //     const user = this.account.get();
+    //     const uid = (await user).$id;
+
+    //     try {
+    //         const wallet = await this.database.getDocument()
+    //     } 
+    //     catch (error) {
+            
+    //     }
+
+
+    // }
 }
 
 const authService = new AuthService();

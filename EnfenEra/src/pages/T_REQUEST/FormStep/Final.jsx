@@ -34,7 +34,7 @@ function Final({
                 <label className="flex gap-2 bg-slate-950 py-3 px-4 rounded-3xl text-amber-50" htmlFor=""> <Link2 /> Instagram *</label>
                 <input
                   placeholder="@instagram_user"
-                  name="media.instagram"
+                  name="instagram"
                   {...register("media.instagram")}
                   type="text"  className="  border-b py-2 rounded-sm w-2/4 outline-0   px-3 " />
               </div>
@@ -43,14 +43,14 @@ function Final({
                 <label className="flex gap-2 bg-slate-950 py-3 px-4 rounded-3xl text-amber-50" htmlFor=""> <Link2 /> Whatsapp Community *</label>
                 <input 
                   placeholder="+91 0123456789"
-                  {...register("media.whatsapp")}
+                  {...register("whatsapp")}
                   type="text"  className="  border-b py-2 rounded-sm w-2/4 outline-0   px-3 " />
               </div>
               <div  className="flex items-center gap-2  bg-slate-900 px-3 py-2   rounded-4xl  border border-gray-500 ">
                 <label className="flex gap-2 bg-slate-950 py-3 px-4 rounded-3xl text-amber-50" htmlFor=""> <Link2 /> Discord Server *s</label>
                 <input 
                 placeholder="Discord Server "
-                {...register("media.discord")}
+                {...register("discord")}
                 type="text"  className=" border-b  py-2 rounded-sm w-2/4  outline-0   px-3 " />
               </div>
             </div>
