@@ -17,6 +17,7 @@ import {
     Medal,
 } from "lucide-react";
 import { useDispatch,useSelector } from "react-redux";
+import VerifyedBadge from '../../common/Verified'
 
 
 
@@ -133,7 +134,9 @@ function UserOverviewPage() {
                             <div>
                                 <p className="text-sm text-slate-400">Current Rank</p>
                                 <h2 className="text-2xl font-black">{profile?.rank} Player</h2>
-                                <p className="text-xs text-emerald-400">Verified Account</p>
+                                <p className="text-xs text-red-600">
+                                    {profile?.isVerified? ( <div className="text-emerald-400 flex gap-2 items-center">{profile.name} Verified <VerifyedBadge size={12} /></div>) : "user not Verified"}
+                                </p>
                             </div>
                         </div>
                     </div>
@@ -149,7 +152,7 @@ function UserOverviewPage() {
                     >
                         <div className="flex items-center justify-between">
                             <div
-                                className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${item.color} shadow-lg`}
+                                className={`flex h-12 w-12 items-center justify-center rounded-2xl bg-linear-to-br ${item.color} shadow-lg`}
                             >
                                 {item.icon}
                             </div>

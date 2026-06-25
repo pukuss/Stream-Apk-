@@ -86,6 +86,7 @@ export class AuthService {
             await this.account.deleteSession({
                 sessionId: "current",
             });
+            
 
             return true;
         } catch (error) {

@@ -45,7 +45,7 @@ function LoginPage({ props }) {
             const res = await authService.login(logData);
             const session = await authService.getCurrentUser();
                 dispatch(setAuth({user : session.user, profile : session.profile}))
-                // console.log("session => ",session );
+                console.log("session => ",session );
                 console.log("LogIn Sucessfull");
 
                 navigate("/profile", {replace : true})
