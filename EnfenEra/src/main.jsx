@@ -3,7 +3,12 @@ import { createRoot } from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import { store } from './REDUX/store';
-import { Provider } from 'react-redux'
+import { Provider } from 'react-redux';
+
+// Layout
+import Root from './Layout/Root';
+import AsidDashboard from './Layout/AsidDashboard';
+import Dashboard from './Layout/Dashboard';
 
 import {
   Home,
@@ -26,16 +31,11 @@ import {
 } from './Components/Page/index';
 
 
-import Root from './Layout/Root';
-import Dashboard from './Layout/Dashboard';
-
-// import RootPage from './pages/HOME/RootPage'
 
 import Profile from './pages/PROFILE/Profile'
 import Trequest from './Components/Page/Admin/Trequest'
 import ProtectedRoutes from './routes/ProtectedRoutes';
 import LoginPage from './Components/Page/authUi/LoginPage';
-import AsidDashboard from './Layout/AsidDashboard';
 import { Toaster } from 'react-hot-toast';
 import AuthProvider from './provider/AuthProvider';
 import RoleProtectedRoute from './routes/RoleProtectedRoute';
@@ -159,7 +159,7 @@ const router = createBrowserRouter([
       element: <RoleProtectedRoute allowedRoles={["admin"]} />,
       children: [
         {
-          element: <AsidDashboard />,
+          element: <Dashboard />,
           children: [
             {
               path: "/dashboard",

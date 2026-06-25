@@ -24,11 +24,11 @@ function Tournament_request() {
                         </div>
 
                         <div className="min-w-0">
-                            <p className="text-[10px] font-black uppercase tracking-[0.2em] text-cyan-300">
+                            <p className="text-[10px] font-tech uppercase tracking-[0.2em] text-cyan-300">
                                 Tournament Studio
                             </p>
 
-                            <h2 className="mt-1 truncate text-lg font-black tracking-tight text-white">
+                            <h2 className="mt-1 truncate text-lg font-bold tracking-tight text-white">
                                 Tournament Organization
                             </h2>
 
@@ -37,17 +37,12 @@ function Tournament_request() {
                             </p>
                         </div>
                     </div>
-
-                    <span className="inline-flex shrink-0 items-center gap-1 rounded-full border border-emerald-400/15 bg-emerald-400/10 px-2.5 py-1 text-[10px] font-black uppercase text-emerald-300">
-                        <ShieldCheck size={12} />
-                        Active
-                    </span>
                 </div>
 
                 {/* Info box */}
                 <div className="mb-4 rounded-2xl border border-white/10 bg-white/[0.035] p-3">
-                    <p className="text-sm font-bold text-white">
-                        Host your next tournament
+                    <p className="text-sm font-bold text-emerald-400">
+                        How to host your tournament ?
                     </p>
 
                     <p className="mt-1 text-xs leading-5 text-slate-500">
@@ -75,7 +70,7 @@ function Tournament_request() {
 
                     <Link
                         to="/studio/dashboard"
-                        className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.04] px-4 py-3 text-sm font-black text-slate-200 transition hover:bg-white/[0.08] hover:text-white active:scale-[0.98]"
+                        className="group flex items-center justify-between rounded-2xl border border-white/10 bg-white/4 px-4 py-3 text-sm font-black text-slate-200 transition hover:bg-white/[0.08] hover:text-white active:scale-[0.98]"
                     >
                         <span className="flex items-center gap-2">
                             <LayoutDashboard size={17} className="text-cyan-300" />

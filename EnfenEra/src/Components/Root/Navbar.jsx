@@ -3,8 +3,8 @@ import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Home, Compass, Cpu, MessageSquare, Menu, X, Zap, Gamepad2, ChevronRight, Sparkle, Panda, User2, Info, XCircle, } from 'lucide-react';
 import WebLogo from '../horizon/WebLogo';
-import { useSelector } from 'react-redux'
-
+import { useSelector } from 'react-redux';
+import Verifiedbadge from '../common/Verified'
 
 
 const navItems = [
@@ -26,6 +26,7 @@ const Navbar = () => {
   const navigate = useNavigate();
 
   const user = useSelector((state) => state.auth.user);
+  const profile = useSelector((state) => state.auth.profile);
 
   return (
     /* রুট কন্টেনারে relative ট্র্যাকিং সেফটি এবং isolation যুক্ত করা হয়েছে */
@@ -94,13 +95,13 @@ const Navbar = () => {
             )} */}
 
 
-            {user && (
+            {profile?.role  && (
             <div className="group relative inline-block">
   <button
     type="button"
-    className="rounded-2xl border border-white/10 p-2 text-white transition hover:bg-white/10"
+    className="rounded-2xl border border-white/10 p-2 flex items-center gap-2  text-white transition hover:bg-white/10"
   >
-    <User2 size={22} />
+    <User2 size={22} /> {profile?.role === "admin" && "Admin" || profile?.role === "user" && profile?.name} 
   </button>
 
   <div
@@ -112,18 +113,28 @@ const Navbar = () => {
   >
     <div
       className="
-        rounded-xl border border-white/10 bg-slate-950 p-2 text-white shadow-xl
+        rounded-xl backdrop-blur-3xl bg-gray-900/50    p-2 text-white shadow-xl
       "
     >
-      <div className="cursor-pointer rounded-lg px-3 py-2 hover:bg-white/10">
+      <div className='px-2 bg-gray-500/50 py-1.5 rounded-xl '>
+          <h1 className='flex gap-2 items-center '><User2 size={18} /> {profile?.name} <span>{profile?.isVerified&& (<Verifiedbadge size={14}/>)}</span></h1>
+      </div>
+
+      <div 
+        onClick={() => navigate("/profile")}
+        className="cursor-pointer rounded-lg px-3 py-2 hover:bg-white/10">
         Profile
       </div>
 
-      <div className="cursor-pointer rounded-lg px-3 py-2 hover:bg-white/10">
-        Settings
+      {profile?.role === "admin" && (
+        <div
+          onClick={() => navigate("/dashboard")}
+          className="cursor-pointer rounded-lg px-3 py-2 hover:bg-white/10">
+        Dashboard
       </div>
+      )}
 
-      <div className="cursor-pointer rounded-lg px-3 py-2 text-red-400 hover:bg-red-500/10">
+      <div className="cursor-pointer rounded-lg px-3 py-2 text-red-600 hover:bg-red-500/10">
         Logout
       </div>
     </div>

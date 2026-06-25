@@ -103,12 +103,12 @@ function Studio() {
             </div>
 
             <div>
-              <h1 className="text-xl md:text-3xl font-black tracking-tight bg-gradient-to-r from-pink-500 via-orange-500 to-yellow-400 bg-clip-text text-transparent">
+              <h1 className="text-xl md:text-3xl font-bold  tracking-tight bg-linear-to-r from-pink-500 via-orange-500 to-yellow-400 bg-clip-text text-transparent">
                 INFENERA STUDIO
               </h1>
               <div className="flex items-center gap-1.5 mt-1">
                 <Sparkles size={12} className="text-purple-400 animate-pulse" />
-                <span className="font-mono text-slate-500 font-bold tracking-widest text-[9px] uppercase">
+                <span className="font-tech text-slate-500 font-semibold tracking-widest text-[9px] ">
                   Powered by InfenEra 2.0 Engine
                 </span>
               </div>
@@ -120,17 +120,17 @@ function Studio() {
             {/* Pop Trigger Button */}
             <button
               onClick={() => setIsNotificationOpen((prev) => !prev)}
-              className={`relative flex items-center gap-2 px-4 py-2.5 font-mono text-xs font-bold rounded-xl border transition-all duration-200 active:scale-95 cursor-pointer ${
+              className={`relative flex items-center gap-2 px-4 py-2.5 text-xs  font-bold rounded-xl border transition-all duration-200 active:scale-95 cursor-pointer ${
                 isNotificationOpen 
                   ? 'bg-purple-500/10 border-purple-500 text-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.15)]' 
                   : 'bg-[#070a12] border-slate-800 hover:border-slate-700 text-slate-300'
               }`}
             >
               <Bell size={15} className={isNotificationOpen ? 'animate-bounce' : ''} /> 
-              Responses
+              Notification
               <span className="relative flex h-2 w-2 ml-1">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
+                <span className="animate-ping absolute inline-flex h-full w-full  bg-linear-to-r from-pink-500 via-orange-500 to-yellow-400 rounded-full  opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2 w-2 "></span>
               </span>
             </button>
 

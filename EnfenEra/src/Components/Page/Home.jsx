@@ -90,7 +90,7 @@ function Home() {
             <div>
               <button 
                 
-                className='border pacifico logo-font cursor-pointer hover:backdrop-blur-3xl font-black border-sky-300/50 justify-center items-center gap-1 px-4 flex bg-white text-sm text-black  py-2 rounded-xl ' 
+                className='border pacifico text-xs  logo-heading  cursor-pointer hover:backdrop-blur-3xl font-black border-sky-300/50 justify-center items-center gap-1 px-4 flex bg-white md:text-sm text-black  py-2 rounded-xl ' 
                 type="button"> <UserCheck size={20} />
                   Join Tournament
                 </button>
