@@ -32,16 +32,16 @@ function BasicInfo({
         </header>
 
 
-        <main>
+        <main className='bg-gray-600/50 rounded-2xl md:p-5 p-2  '>
          
               {/* request id  */}
             <div
-              className='flex w-full  flex-col bg-linear-to-bl from-gray-950 to-slate-900  text-white  mt-3 border border-blue-600 rounded-xl p-2'>
+              className='flex w-full  flex-col text-sm  text-white  mt-3  p-2'>
               <label
-                className='px-5 font-bold '
+                className='px-5 font-bold  text-sm'
                 htmlFor="requestId">
                 <h1>Generate Request Id</h1>
-                <h6 className='text-sm space-x-0 text-gray-500'> Generate user request Id that help identyfy your tournament </h6>
+                <h6 className='text-xs space-x-0 text-amber-100 '> Generate user request Id that help identyfy your tournament </h6>
               </label>
               {/* <h1>{select,discop}</h1> */}
               <div className='w-full flex gap-2  '>
@@ -70,7 +70,7 @@ function BasicInfo({
             {item.map((Element, index) => (
               <div
                 key={index}
-                className='flex flex-col bg-linear-to-bl from-gray-950 to-slate-900  text-white mt-3 border border-blue-600 rounded-2xl p-2 py-4 '>
+                className='flex flex-col   text-white  rounded-2xl p-2  text-sm'>
                 <label
                   className='px-5 font-bold '
                   htmlFor={Element.ID}>
@@ -79,7 +79,7 @@ function BasicInfo({
                 </label>
 
                 <input
-                  className=' px-4 outline-0 bg-gray-300 font-medium text-black  placeholder:text-gray-500 placeholder:text-[12px] m-3 p-1 h-10 rounded-xl'
+                  className=' px-4 ml-5 outline-0  font-medium text-black bg-gray-500/20  placeholder:text-amber-100 py-1.5 rounded-sm placeholder:text-[12px] '
                   type="text"
                   {...register(Element.ID)}
                   required
@@ -87,6 +87,8 @@ function BasicInfo({
                   id={Element.ID} />
               </div>
             ))}
+
+            
         </main>
 
       </div>

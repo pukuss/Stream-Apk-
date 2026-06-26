@@ -30,6 +30,9 @@ import {
 
 } from './Components/Page/index';
 
+// Super Admin
+import {RequestPage} from './Components/Page/supperAdmin/superIndex'
+
 
 
 import Profile from './pages/PROFILE/Profile'
@@ -165,6 +168,10 @@ const router = createBrowserRouter([
               path: "/dashboard",
               element: <SuperAdminPage />,
             },
+            {
+              path : "/dashboard/requests-get",
+              element : <RequestPage />
+            }
           ],
         },
       ],

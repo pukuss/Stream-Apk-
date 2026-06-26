@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { useDispatch,useSelector } from "react-redux";
 import VerifyedBadge from '../../common/Verified'
+import {useNavigate} from 'react-router-dom'
 
 
 
@@ -54,10 +55,10 @@ function UserOverviewPage() {
     ];
 
     const quickActions = [
-        { title: "Join Tournament", icon: <Swords size={18} /> },
-        { title: "Create Team", icon: <Users size={18} /> },
-        { title: "Add Money", icon: <Wallet size={18} /> },
-        { title: "View Matches", icon: <Gamepad2 size={18} /> },
+        { title: "Request Tournament", path : "/studio", icon: <Swords size={18} /> },
+        { title: "Create Team",path : "", icon: <Users size={18} /> },
+        { title: "Add Money",path : "", icon: <Wallet size={18} /> },
+        { title: "View Matches",path : "", icon: <Gamepad2 size={18} /> },
     ];
 
     const activities = [
@@ -93,6 +94,7 @@ function UserOverviewPage() {
         },
     ];
 
+    const navigate = useNavigate()
     // REDUX 
     const dispatch = useDispatch();
     const {user,profile,loading} = useSelector((state) => state.auth)
@@ -271,6 +273,7 @@ function UserOverviewPage() {
                         <div className="mt-5 grid grid-cols-1 gap-3">
                             {quickActions.map((action) => (
                                 <button
+                                onClick={() => navigate(action.path)}
                                     key={action.title}
                                     className="group flex items-center justify-between rounded-2xl border border-slate-800 bg-slate-950 px-4 py-4 text-left transition-all hover:border-blue-500/50 hover:bg-blue-500/10"
                                 >

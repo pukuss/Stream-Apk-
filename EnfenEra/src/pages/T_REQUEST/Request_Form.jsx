@@ -84,7 +84,8 @@ function Request_Form() {
   const total = watch("totalAmount");
   const UID = watch("requestId");
   const PName = watch("name");
-  const gmail = watch("email")
+  const gmail = watch("email");
+  const totalBill = watch("totalAmount");
 
 
 
@@ -320,44 +321,29 @@ function Request_Form() {
         {/* SUBMIT SECTION */}
         {/* =============================== */}
 
-        <div
-          className={`${paymentstate ? "hidden" : ""}
-          flex flex-col
-          bg-linear-to-r
-          from-pink-600/20
-          to-black
-          mt-3
-          border border-pink-700/20
-          rounded-2xl
-          p-4
-          m-4
-        `}>
-          <label className="px-5 font-bold">
-            <h1 className="text-xl">ENTRY FEES AND PAY AMOUNT</h1>
 
-            <h6 className="text-[10px] text-gray-400">
-              What Is The Amount To Pay And Players Payable Amount
-            </h6>
-          </label>
-
-          <button
-            // disabled={!formData.entryFee}
+       <div className="w-full border flex justify-center items-center">
+           {currentStep === 5 &&
+                  <button
+            disabled={!totalBill}
 
             type="submit"
             // onClick={() => handleSubmit(onDone)}
             className="
-            border py-3 rounded-xl disabled:bg-slate-900
+            border py-2 rounded-xl disabled:bg-slate-900
             bg-blue-600 hover:bg-blue-500
-            m-4 border-cyan-500/50
+            m-4 border-cyan-500/50 px-10
             font-black cursor-pointer
             active:scale-95 transition-all
           ">
-            Quick Request
+            Pay  now 
           </button>
+          }
+       </div>
 
 
 
-        </div>
+    
       </form>
     </main>
   );
